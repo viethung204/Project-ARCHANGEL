@@ -56,7 +56,7 @@ public class ShotgunScript : MonoBehaviour
                 }
             }
             animator.SetTrigger("mouse1");
-            CurrentAmmo--;
+            CurrentAmmo-=2;
             if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
             {
                 Reload();

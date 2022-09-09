@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 20
   EnemyAnimator: {fileID: 6413818554257791450}
 --- !u!54 &-3074779304798989834
 Rigidbody:
