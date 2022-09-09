@@ -1011,8 +1011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -136, y: 199.25}
-  m_SizeDelta: {x: 695.9777, y: 398.5032}
+  m_AnchoredPosition: {x: -173, y: 170}
+  m_SizeDelta: {x: 695.9777, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &873368545
 AudioSource:
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 1
+  m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &873368553
 CanvasRenderer:

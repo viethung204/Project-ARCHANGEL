@@ -32,20 +32,7 @@ public class ShotgunScript : MonoBehaviour
         
         if(Input.GetButtonDown("Fire1"))
         {
-            if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
-            {
-                Shoot();
-            }
-            else if (CurrentAmmo==0 && InvAmmo ==0)
-            {
-                //play *click* sound
-                return;
-            }
-            else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-            {
-                Reload();
-
-            }
+            Shoot();
         }
        if (Input.GetKeyDown(KeyCode.R) && !isPlaying(animator, "reload"))
         {
@@ -60,35 +47,51 @@ public class ShotgunScript : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        RaycastHit HitInfo;
-        if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
+        if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
         {
-            Health health = HitInfo.transform.GetComponent<Health>();
-            if (health != null)
+            RaycastHit HitInfo;
+            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
             {
-                health.TakeDamage(damage);
+                Health health = HitInfo.transform.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                }
+            }
+            animator.SetTrigger("mouse1");
+            CurrentAmmo--;
+            if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
+            {
+                Reload();
+
             }
         }
-        animator.SetTrigger("mouse1");
-        CurrentAmmo--;
-        if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
+        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        {
+            //play *click* sound
+            return;
+        }
+        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
         {
             Reload();
 
         }
+        
 
     }
 
     //Reload
     void Reload()
     {
-        animator.SetTrigger("rkey");
+        
         if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
         {
+            animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
         else if (InvAmmo<MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
         {
+            animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
         else if (InvAmmo == 0)
