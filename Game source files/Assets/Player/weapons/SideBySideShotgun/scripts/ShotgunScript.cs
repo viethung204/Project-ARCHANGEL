@@ -21,19 +21,16 @@ public class ShotgunScript : MonoBehaviour
 
 
     void Update()
-    {
-           
-         
-
+    {           
         //display ammo in UI
         currentAmmoText.text = CurrentAmmo.ToString();
         invAmmoText.text = InvAmmo.ToString("00#");
-
-        
+       
         if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
+
        if (Input.GetKeyDown(KeyCode.R) && !isPlaying(animator, "reload"))
         {
             Reload();
@@ -83,7 +80,6 @@ public class ShotgunScript : MonoBehaviour
     //Reload
     void Reload()
     {
-        
         if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
         {
             animator.SetTrigger("rkey");
@@ -105,8 +101,7 @@ public class ShotgunScript : MonoBehaviour
         else if (CurrentAmmo==0 && InvAmmo == 0)
         {
             return;
-        }
-        
+        }   
     }
 
     //put here so the UI get update after reload animation done playing
