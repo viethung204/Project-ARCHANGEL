@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class ShotgunScript : MonoBehaviour
+public class GunScript : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 100f;
@@ -20,6 +20,7 @@ public class ShotgunScript : MonoBehaviour
     int animLayer = 0;
     public AudioSource EmptyClick;
 
+
     void Update()
     {           
         //display ammo in UI
@@ -30,12 +31,17 @@ public class ShotgunScript : MonoBehaviour
         {
             Shoot();
         }
+
+       if (Input.GetKeyDown(KeyCode.R) && !isPlaying(animator, "reload"))
+        {
+            Reload();
+        }
         
         //play headbobbing animation
         animator.SetBool("isRunning", Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
     }
 
-    //it is in the name (but check if the CurrentAmmo is 0 after shoot, if true, reload)
+    //it is in the name (but check if the CurrentAmmo is 0 after shoot, if true, reload
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
@@ -52,7 +58,11 @@ public class ShotgunScript : MonoBehaviour
             }
             animator.SetTrigger("mouse1");
             CurrentAmmo-=2;
-            Reload();   
+            if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
+            {
+                Reload();
+
+            }
         }
         else if (CurrentAmmo == 0 && InvAmmo == 0)
         {
@@ -63,18 +73,34 @@ public class ShotgunScript : MonoBehaviour
         else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
         {
             Reload();
+
         }
+        
+
     }
 
     //Reload
     void Reload()
     {
-        if (InvAmmo >= MaxAmmo && CurrentAmmo == 0)
+        if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
+        {
+            animator.SetTrigger("rkey");
+            StartCoroutine(ReloadUI());
+        }
+        else if (InvAmmo<MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
         {
             animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
         else if (InvAmmo == 0)
+        {
+            return;
+        }
+        else if (CurrentAmmo == MaxAmmo)
+        {
+            return;
+        }
+        else if (CurrentAmmo==0 && InvAmmo == 0)
         {
             return;
         }   
@@ -84,8 +110,18 @@ public class ShotgunScript : MonoBehaviour
     IEnumerator ReloadUI()
     {
         yield return new WaitForSeconds(1.27f);
-        CurrentAmmo += 2;
-        InvAmmo -= 2;    
+        if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
+        {
+            //Update InvAmmo first be4 update CurrentAmmo (if you let CA update first it will be InvAmmo = InvAmmo - n + n because now CA and MA are the same)
+            InvAmmo = InvAmmo - MaxAmmo + CurrentAmmo;
+            CurrentAmmo = MaxAmmo;
+
+        }
+        else if (InvAmmo < MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
+        {
+            CurrentAmmo = CurrentAmmo + InvAmmo;
+            InvAmmo = 0;
+        }
     }
 
     //check if animtion is playing
