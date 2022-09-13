@@ -1612,6 +1612,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &875497156 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: -3074779304798989834, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+  m_PrefabInstance: {fileID: 2033443443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -2047,6 +2052,11 @@ Transform:
 --- !u!4 &1089099552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+  m_PrefabInstance: {fileID: 1977591448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1089099553 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: -3074779304798989834, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
   m_PrefabInstance: {fileID: 1977591448}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1104065374
@@ -2799,6 +2809,26 @@ PrefabInstance:
     m_TransformParent: {fileID: 557526327}
     m_Modifications:
     - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 800903967}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: travelSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: deceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: newColliderX
       value: 2
       objectReference: {fileID: 0}
@@ -2806,6 +2836,22 @@ PrefabInstance:
       propertyPath: newColliderY
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: thisRigidbody
+      value: 
+      objectReference: {fileID: 1089099553}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: PlayerTranform
+      value: 
+      objectReference: {fileID: 800903967}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: SetbackDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: TargetTransform
+      value: 
+      objectReference: {fileID: 800903967}
     - target: {fileID: 6413818554257791449, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: MainCamera
       value: 
@@ -2884,9 +2930,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 800903967}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: Collider
       value: 
       objectReference: {fileID: 762708180}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: travelSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: deceleration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: newColliderX
       value: 0.5
@@ -2899,6 +2965,18 @@ PrefabInstance:
       propertyPath: EnemyAnimator
       value: 
       objectReference: {fileID: 762708182}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: thisRigidbody
+      value: 
+      objectReference: {fileID: 875497156}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: PlayerTranform
+      value: 
+      objectReference: {fileID: 800903967}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: SetbackDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6413818554257791449, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: MainCamera
       value: 
@@ -3099,7 +3177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550184116275728717, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
@@ -3124,6 +3202,7 @@ MonoBehaviour:
   TargetTransform: {fileID: 800903967}
   RotationSpeed: 1.75
   minimumDistance: 10
+  maximumDistance: 0
 --- !u!1001 &6662713351310076793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3131,6 +3210,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 557526327}
     m_Modifications:
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 800903967}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: travelSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: deceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: EnemyAnimator
+      value: 
+      objectReference: {fileID: 6662713351310076804}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: thisRigidbody
+      value: 
+      objectReference: {fileID: 6662713351310076800}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: PlayerTranform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: SetbackDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6413818554257791449, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: MainCamera
       value: 
@@ -3188,5 +3307,15 @@ PrefabInstance:
 --- !u!4 &6662713351310076799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+  m_PrefabInstance: {fileID: 6662713351310076793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &6662713351310076800 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: -3074779304798989834, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+  m_PrefabInstance: {fileID: 6662713351310076793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6662713351310076804 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6413818554257791450, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
   m_PrefabInstance: {fileID: 6662713351310076793}
   m_PrefabAsset: {fileID: 0}
