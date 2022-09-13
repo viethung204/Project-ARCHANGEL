@@ -11,26 +11,46 @@ public class EnemyAI : MonoBehaviour
     public Transform TargetTransform;
     public float RotationSpeed;
     public float minimumDistance;
+    public float maximumDistance;
 
     // Update is called once per frame
     void Update()
     {
-        //ChasingScript: If distance from this bot to player is greater than minimumDistance, then chase after the Player;
-        if(Vector3.Distance(transform.position, TargetTransform.position) > minimumDistance)
+        
+    }
+
+    //Note bcuz 4 some reason I get confused by this: minimumDistance < currentDistance < maximumDistance
+
+    //ChasingScript: If distance from this bot to player is greater than maximumDistance, then chase after the Player
+    void ChaseAfterPlayer()
+    {
+        if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, RunningSpeed * Time.deltaTime);
-            LookAtPlayer();
+            FacingPlayer();
         }
         else
         {
-            LookAtPlayer();
+            FacingPlayer();
+        }
+    }
+    
+    //ReatreatScript: If distance from this bot to player is smaller than the minimum distance, start retreating
+    void ReatreatFromPlayer()
+    {
+        if (Vector3.Distance(transform.position, TargetTransform.position) > minimumDistance)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, -RunningSpeed * Time.deltaTime);
+            FacingPlayer();
+        }
+        else
+        {
+            FacingPlayer();
         }
     }
 
-
-
     //Look at player with lerp to control the rotation speed
-    void LookAtPlayer()
+    void FacingPlayer()
     {
         Vector3 relativePos = TargetTransform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
@@ -39,5 +59,15 @@ public class EnemyAI : MonoBehaviour
 
         transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime
             * RotationSpeed);
+    }
+
+    void EnemyFOV()
+    {
+
+    }
+
+    void AttackPlayer()
+    {
+
     }
 }
