@@ -1315,7 +1315,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 34274816cb6505b44951fc123f4499d5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1.5
   Loop: 0
   Mute: 0
@@ -1683,7 +1683,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6d3e5ba2573e369409f0a4be1060bdb5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3097,8 +3097,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleMachinegunner
       objectReference: {fileID: 0}
+    - target: {fileID: 5550184116275728717, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+--- !u!1 &5220503800738898746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5550184116275728717, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+  m_PrefabInstance: {fileID: 5220503800738898745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5220503800738898747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220503800738898746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c2fc9697f696148a91eede21e7c6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunningSpeed: 1.5
+  TargetTransform: {fileID: 800903967}
+  RotationSpeed: 1.75
+  minimumDistance: 10
 --- !u!1001 &6662713351310076793
 PrefabInstance:
   m_ObjectHideFlags: 0
