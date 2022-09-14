@@ -29,16 +29,15 @@ public class ShotgunScript : MonoBehaviour
        
         if(Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            ShootConditions();
         }
         
         //play headbobbing animation
         animator.SetBool("isRunning", Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
     }
 
-    //it is in the name (but check if the CurrentAmmo is 0 after shoot, if true, reload)
-    //note: if 2 trigger set at once, you can set the priority in the Animator
-    void Shoot()
+    //check for conditions before shoot to determine how to reload
+    void ShootConditions()
     {
         if (CurrentAmmo > 0 && InvAmmo != 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
@@ -61,30 +60,12 @@ public class ShotgunScript : MonoBehaviour
         else if (CurrentAmmo ==0 && InvAmmo == 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThen Reload"))
         {
             //play *click* sound
-            EmptyClick.Play();
-
+            EmptyClick.Play();    
         }
     }
 
-    //Reload
-    /*void ShootReload()
-    {
-        if (InvAmmo >= MaxAmmo && CurrentAmmo == 0)
-        {
-            
-            StartCoroutine(ReloadUI());
-        }
-        else if (InvAmmo == 0)
-        {
-            return;
-        }
-        if( CurrentAmmo == 0 && InvAmmo == 0)
-        {
-            
-        }
-    }*/
-
-    void ShootMechanics()
+    //it's in the name
+     void ShootMechanics()
     {
         RaycastHit HitInfo;
         if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
