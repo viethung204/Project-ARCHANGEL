@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
     //ReatreatScript: If distance from this bot to player is smaller than the minimum distance, start retreating
     void ReatreatFromPlayer()
     {
-        if (Vector3.Distance(transform.position, TargetTransform.position) > minimumDistance)
+        if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, -RunningSpeed * Time.deltaTime);
             FacingPlayer();

@@ -19,6 +19,7 @@ public class ShotgunScript : MonoBehaviour
     public Text invAmmoText;
     int animLayer = 0;
     public AudioSource EmptyClick;
+    
 
     void Update()
     {           
@@ -39,50 +40,67 @@ public class ShotgunScript : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
+        if (CurrentAmmo > 0 && InvAmmo != 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
-            RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
-            {
-                Health health = HitInfo.transform.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
-            }
+            ShootMechanics();
             animator.SetTrigger("mouse1");
-            CurrentAmmo-=2;
-            Reload();   
+            CurrentAmmo -=2;
+            StartCoroutine(ReloadUI());
         }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        {
+            StartCoroutine(ReloadUI());
+            animator.SetTrigger("rkey");
+        }
+        else if (CurrentAmmo == 2 && InvAmmo == 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        {
+            ShootMechanics();
+            animator.SetTrigger("ShootOnly");
+            CurrentAmmo -=2 ;
+        }
+        else if (CurrentAmmo ==0 && InvAmmo == 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThen Reload"))
         {
             //play *click* sound
             EmptyClick.Play();
-            
-        }
-        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-        {
-            Reload();
+
         }
     }
 
     //Reload
-    void Reload()
+    /*void ShootReload()
     {
         if (InvAmmo >= MaxAmmo && CurrentAmmo == 0)
         {
-            animator.SetTrigger("rkey");
+            
             StartCoroutine(ReloadUI());
         }
         else if (InvAmmo == 0)
         {
             return;
-        }   
+        }
+        if( CurrentAmmo == 0 && InvAmmo == 0)
+        {
+            
+        }
+    }*/
+
+    void ShootMechanics()
+    {
+        RaycastHit HitInfo;
+        if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
+        {
+            Health health = HitInfo.transform.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
+        }
     }
 
     //put here so the UI get update after reload animation done playing
     IEnumerator ReloadUI()
     {
+        
         yield return new WaitForSeconds(1.27f);
         CurrentAmmo += 2;
         InvAmmo -= 2;    

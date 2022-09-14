@@ -3096,9 +3096,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3199489081571386604, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 800903967}
+    - target: {fileID: -3199489081571386604, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: Collider
       value: 
       objectReference: {fileID: 284026840}
+    - target: {fileID: -3199489081571386604, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: travelSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3199489081571386604, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: deceleration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3199489081571386604, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: newColliderX
       value: 2.3
@@ -3177,7 +3189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5550184116275728717, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
@@ -3202,7 +3214,7 @@ MonoBehaviour:
   TargetTransform: {fileID: 800903967}
   RotationSpeed: 1.75
   minimumDistance: 10
-  maximumDistance: 0
+  maximumDistance: 15
 --- !u!1001 &6662713351310076793
 PrefabInstance:
   m_ObjectHideFlags: 0
