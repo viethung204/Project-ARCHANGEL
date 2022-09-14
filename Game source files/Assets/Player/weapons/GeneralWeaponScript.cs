@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class GunScript : MonoBehaviour
+public class GeneralWeaponScript : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 100f;
