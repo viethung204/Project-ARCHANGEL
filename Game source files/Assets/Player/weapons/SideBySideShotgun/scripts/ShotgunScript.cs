@@ -88,7 +88,7 @@ public class ShotgunScript : MonoBehaviour
     }
 
     //check if animtion is playing
-    bool isPlaying(Animator anim, string stateName)
+    public bool isPlaying(Animator anim, string stateName)
     {
         if (anim.GetCurrentAnimatorStateInfo(animLayer).IsName(stateName) &&
                 anim.GetCurrentAnimatorStateInfo(animLayer).normalizedTime < 1.0f)

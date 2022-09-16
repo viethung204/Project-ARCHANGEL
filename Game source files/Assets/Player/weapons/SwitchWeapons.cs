@@ -5,7 +5,13 @@ using UnityEngine;
 public class SwitchWeapons : MonoBehaviour
 {
     public int selectedWeapon = 0;
-
+    public Animator FistAnimator;
+    public Animator RevolverAnimator;
+    public Animator PumpShotgunAnimator;
+    public Animator DoubleBarrelShotgunAnimator;
+    public Animator GrenadeLauncherAnimator;
+    public Animator ShredderAnimator;
+    public Animator HFGAnimator;
     void Start()
     {
         //first when boot up, call SelectWeapon method so that fist is the 1st weapon
@@ -14,6 +20,7 @@ public class SwitchWeapons : MonoBehaviour
 
     void Update()
     {
+
         //basically, what is do is have a number that represent the weapon b4 changing 
         //keep in mind that c sharp is order sensitive
         //then throw in some script that change weapon and the selectedWeapon variable based on keys
@@ -21,7 +28,7 @@ public class SwitchWeapons : MonoBehaviour
 
         int previousSelectedWeapons = selectedWeapon;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !DoubleBarrelShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !FistAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off"))
         {
             if (selectedWeapon >= transform.childCount - 1)
             {
@@ -33,7 +40,7 @@ public class SwitchWeapons : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !DoubleBarrelShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !FistAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off"))
         {
             if (selectedWeapon <= 0)
             {
@@ -45,7 +52,7 @@ public class SwitchWeapons : MonoBehaviour
             }
         }
 
-        if(previousSelectedWeapons != selectedWeapon)
+        if (previousSelectedWeapons != selectedWeapon)
         {
             SelectWeapon();
         }
@@ -68,6 +75,7 @@ public class SwitchWeapons : MonoBehaviour
                 weapon.gameObject.SetActive(false);
             }
             i++;
-        } 
+        }
     }
 }
+   
