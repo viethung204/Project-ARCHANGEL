@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Fist : MonoBehaviour
 {
@@ -14,17 +15,23 @@ public class Fist : MonoBehaviour
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
+    public Text weaponName;
+    public Text ammoDivider;
     int animLayer = 0;
     public AudioSource EmptyClick;
+    int chosenNumber;
 
 
     void Update()
-    {           
-        //display ammo in UI
+    {
+        //display ammo and wepaon name in UI
+        currentAmmoText.gameObject.SetActive(true);
+        ammoDivider.gameObject.SetActive(true);
         currentAmmoText.text = "X";
         invAmmoText.text = "XXX";
+        weaponName.text = "Fist";
        
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && !isPlaying(animator, "punching") & !isPlaying(animator,"punching2"))
         {
             Shoot();
         }
@@ -38,7 +45,9 @@ public class Fist : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-            RaycastHit HitInfo;
+        chosenNumber = Random.Range(1, 10);
+
+        RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
             {
                 Health health = HitInfo.transform.GetComponent<Health>();
@@ -47,7 +56,14 @@ public class Fist : MonoBehaviour
                     health.TakeDamage(damage);
                 }
             }
+        if(chosenNumber < 5)
+        {
             animator.SetTrigger("punch");
+        }
+        else if (chosenNumber > 5)
+        {
+            animator.SetTrigger("punch2");
+        }
        
     }
 

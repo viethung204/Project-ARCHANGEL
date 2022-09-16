@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class ShotgunScript : MonoBehaviour
 {
@@ -17,17 +18,28 @@ public class ShotgunScript : MonoBehaviour
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
+    public Text weaponName;
+    public Text ammoDivider;
+    public GameObject UIWeaponIcon;
+    public Sprite weaponIcon;
+    public Image weaponIconRect;
     int animLayer = 0;
     public AudioSource EmptyClick;
     
 
     void Update()
-    {           
-        //display ammo in UI
+    {
+        //display ammo and weapon name in UI
+        currentAmmoText.gameObject.SetActive(true);
+        ammoDivider.gameObject.SetActive(true);
         currentAmmoText.text = CurrentAmmo.ToString();
         invAmmoText.text = InvAmmo.ToString("00#");
-       
-        if(Input.GetButtonDown("Fire1"))
+        weaponName.text = "A1 Shotgun";
+        UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
+        weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        
+
+        if (Input.GetButtonDown("Fire1"))
         {
             ShootConditions();
         }

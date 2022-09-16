@@ -354,6 +354,8 @@ GameObject:
   m_Component:
   - component: {fileID: 239036378}
   - component: {fileID: 239036379}
+  - component: {fileID: 239036380}
+  - component: {fileID: 239036381}
   m_Layer: 0
   m_Name: GrenadeLauncher
   m_TagString: Untagged
@@ -433,6 +435,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &239036380
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239036377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75624e8ada2a3c5429b919b19ad670fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &239036381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239036377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c33336d2ee92cd4ebcc7cfe72b49e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  PlayerCam: {fileID: 963194227}
+  CurrentAmmo: 2
+  InvAmmo: 10
+  animator: {fileID: 239036380}
+  currentAmmoText: {fileID: 368589748}
+  invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  ammoDivider: {fileID: 256658598}
+  UIWeaponIcon: {fileID: 350480719}
+  weaponIcon: {fileID: 21300000, guid: b1f6e4f8158a4ef4cbbdbbf6a5061080, type: 3}
+  weaponIconRect: {fileID: 350480721}
+  EmptyClick: {fileID: 0}
 --- !u!1 &256658596
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +492,7 @@ GameObject:
   - component: {fileID: 256658597}
   - component: {fileID: 256658599}
   - component: {fileID: 256658598}
+  - component: {fileID: 256658600}
   m_Layer: 5
   m_Name: Divider
   m_TagString: Untagged
@@ -468,7 +517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 764.7601, y: -462}
+  m_AnchoredPosition: {x: 771.96, y: -453.8}
   m_SizeDelta: {x: 41.818, y: 105.3649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &256658598
@@ -513,6 +562,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256658596}
   m_CullTransparentMesh: 1
+--- !u!114 &256658600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256658596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!65 &284026840 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 5220503801043595261, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
@@ -529,6 +593,7 @@ GameObject:
   - component: {fileID: 350480720}
   - component: {fileID: 350480722}
   - component: {fileID: 350480721}
+  - component: {fileID: 350480723}
   m_Layer: 5
   m_Name: weapon icon
   m_TagString: Untagged
@@ -553,8 +618,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 788.3002, y: -389.1}
-  m_SizeDelta: {x: 200, y: 31.428572}
+  m_AnchoredPosition: {x: 799, y: -357.9}
+  m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &350480721
 MonoBehaviour:
@@ -576,7 +641,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c31424bef462d914995808c734fcd288, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc45a1acb5da81442a8aec8373ea2e8c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -584,7 +649,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &350480722
 CanvasRenderer:
@@ -594,6 +659,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350480719}
   m_CullTransparentMesh: 1
+--- !u!114 &350480723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350480719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &359568794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -667,6 +747,7 @@ GameObject:
   - component: {fileID: 368589747}
   - component: {fileID: 368589749}
   - component: {fileID: 368589748}
+  - component: {fileID: 368589750}
   m_Layer: 5
   m_Name: curentAmmoText
   m_TagString: Untagged
@@ -691,7 +772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -246.42993, y: 89.79999}
+  m_AnchoredPosition: {x: -239.22998, y: 98}
   m_SizeDelta: {x: 60.2402, y: 54.3273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &368589748
@@ -736,6 +817,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368589746}
   m_CullTransparentMesh: 1
+--- !u!114 &368589750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368589746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &373087141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -936,6 +1032,8 @@ GameObject:
   m_Component:
   - component: {fileID: 734918412}
   - component: {fileID: 734918413}
+  - component: {fileID: 734918414}
+  - component: {fileID: 734918415}
   m_Layer: 0
   m_Name: PumpShotgun
   m_TagString: Untagged
@@ -1015,6 +1113,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &734918414
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734918411}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9cbb5ec06681b44ba776c69ffcaca9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &734918415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734918411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c9a5317370a7ad47b4a0e66e6c88c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  PlayerCam: {fileID: 963194227}
+  CurrentAmmo: 2
+  InvAmmo: 10
+  animator: {fileID: 734918414}
+  currentAmmoText: {fileID: 368589748}
+  invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  ammoDivider: {fileID: 256658598}
+  UIWeaponIcon: {fileID: 350480719}
+  weaponIcon: {fileID: 21300000, guid: 4bf15a246e064ac409e893ec003d5c1c, type: 3}
+  weaponIconRect: {fileID: 350480721}
+  EmptyClick: {fileID: 0}
 --- !u!4 &762708178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
@@ -1147,6 +1291,102 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800903966}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &827176430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827176431}
+  - component: {fileID: 827176433}
+  - component: {fileID: 827176432}
+  - component: {fileID: 827176434}
+  m_Layer: 5
+  m_Name: weaponName
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &827176431
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827176430}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980811518}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 807.97, y: -282.8}
+  m_SizeDelta: {x: 304.05, y: 37.3275}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &827176432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827176430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 05b9f0e80cfe05e4f92594cbba72c01b, type: 3}
+    m_FontSize: 45
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 85
+    m_Alignment: 4
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: weapon name
+--- !u!222 &827176433
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827176430}
+  m_CullTransparentMesh: 1
+--- !u!114 &827176434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827176430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &873368543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1881,11 @@ MonoBehaviour:
   animator: {fileID: 873368551}
   currentAmmoText: {fileID: 368589748}
   invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  ammoDivider: {fileID: 256658598}
+  UIWeaponIcon: {fileID: 350480719}
+  weaponIcon: {fileID: 21300000, guid: c31424bef462d914995808c734fcd288, type: 3}
+  weaponIconRect: {fileID: 0}
   EmptyClick: {fileID: 873368557}
 --- !u!212 &873368555
 SpriteRenderer:
@@ -1924,6 +2169,8 @@ MonoBehaviour:
   animator: {fileID: 883899732}
   currentAmmoText: {fileID: 368589748}
   invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  ammoDivider: {fileID: 256658598}
   EmptyClick: {fileID: 0}
 --- !u!20 &963194227
 Camera:
@@ -2231,6 +2478,7 @@ RectTransform:
   - {fileID: 350480720}
   - {fileID: 256658597}
   - {fileID: 368589747}
+  - {fileID: 827176431}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2378,6 +2626,7 @@ GameObject:
   - component: {fileID: 1104065375}
   - component: {fileID: 1104065377}
   - component: {fileID: 1104065376}
+  - component: {fileID: 1104065378}
   m_Layer: 5
   m_Name: crosshair
   m_TagString: Untagged
@@ -2443,6 +2692,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104065374}
   m_CullTransparentMesh: 1
+--- !u!114 &1104065378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104065374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1120736557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,6 +2750,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1166326083}
   - component: {fileID: 1166326084}
+  - component: {fileID: 1166326085}
+  - component: {fileID: 1166326086}
   m_Layer: 0
   m_Name: HFG40k
   m_TagString: Untagged
@@ -2554,7 +2820,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78db82ba09c7915439b4955fdab07b3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8986381d60340064bbecf44b34f5f7ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2565,6 +2831,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1166326085
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166326082}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3f2547adfd88a74a90dec607791f018, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1166326086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166326082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a23acc49537e6499561bf4118a0d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  PlayerCam: {fileID: 963194227}
+  CurrentAmmo: 2
+  InvAmmo: 10
+  animator: {fileID: 1166326085}
+  currentAmmoText: {fileID: 368589748}
+  invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  ammoDivider: {fileID: 256658598}
+  UIWeaponIcon: {fileID: 350480719}
+  weaponIcon: {fileID: 21300000, guid: 8f538c545b0cb824ca15d85c48f42857, type: 3}
+  weaponIconRect: {fileID: 350480721}
+  EmptyClick: {fileID: 0}
 --- !u!1001 &1199433074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2821,6 +3133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1399607666}
   - component: {fileID: 1399607667}
+  - component: {fileID: 1399607668}
+  - component: {fileID: 1399607669}
   m_Layer: 0
   m_Name: Revolver
   m_TagString: Untagged
@@ -2900,6 +3214,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1399607668
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399607665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a102d631743cf44fa728114ae9dc80e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1399607669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399607665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c65c6113aa1a494cbbcfac51c2f0b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  PlayerCam: {fileID: 963194227}
+  CurrentAmmo: 2
+  InvAmmo: 10
+  animator: {fileID: 1399607668}
+  currentAmmoText: {fileID: 368589748}
+  invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  ammoDivider: {fileID: 256658598}
+  UIWeaponIcon: {fileID: 350480719}
+  weaponIcon: {fileID: 21300000, guid: bc45a1acb5da81442a8aec8373ea2e8c, type: 3}
+  weaponIconRect: {fileID: 350480721}
+  EmptyClick: {fileID: 0}
 --- !u!1 &1490893293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,12 +3313,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedWeapon: 0
   FistAnimator: {fileID: 883899732}
-  RevolverAnimator: {fileID: 0}
-  PumpShotgunAnimator: {fileID: 0}
+  RevolverAnimator: {fileID: 1399607668}
+  PumpShotgunAnimator: {fileID: 734918414}
   DoubleBarrelShotgunAnimator: {fileID: 873368551}
-  GrenadeLauncherAnimator: {fileID: 0}
-  ShredderAnimator: {fileID: 0}
-  HFGAnimator: {fileID: 0}
+  GrenadeLauncherAnimator: {fileID: 239036380}
+  ShredderAnimator: {fileID: 1938207254}
+  HFGAnimator: {fileID: 1166326085}
 --- !u!1 &1661491644
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +3330,7 @@ GameObject:
   - component: {fileID: 1661491645}
   - component: {fileID: 1661491647}
   - component: {fileID: 1661491646}
+  - component: {fileID: 1661491648}
   m_Layer: 5
   m_Name: invAmmoText
   m_TagString: Untagged
@@ -2994,7 +3355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -84.2, y: 89.8}
+  m_AnchoredPosition: {x: -77, y: 98}
   m_SizeDelta: {x: 180.2693, y: 54.3273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661491646
@@ -3039,6 +3400,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661491644}
   m_CullTransparentMesh: 1
+--- !u!114 &1661491648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661491644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1718805127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3218,6 +3594,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1938207252}
   - component: {fileID: 1938207253}
+  - component: {fileID: 1938207254}
+  - component: {fileID: 1938207255}
   m_Layer: 0
   m_Name: Shredder
   m_TagString: Untagged
@@ -3297,6 +3675,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1938207254
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938207251}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2304d5de9e9fafd4caa47f9f6c4395e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1938207255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938207251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec261d9d2b0cdb24bb44f6f4fc339f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  PlayerCam: {fileID: 963194227}
+  CurrentAmmo: 2
+  InvAmmo: 10
+  ammoDivider: {fileID: 256658598}
+  animator: {fileID: 1938207254}
+  currentAmmoText: {fileID: 368589748}
+  invAmmoText: {fileID: 1661491646}
+  weaponName: {fileID: 827176432}
+  UIWeaponIcon: {fileID: 350480719}
+  weaponIcon: {fileID: 21300000, guid: fb5c9030e83fc4d4ab42e7ebdb506f7f, type: 3}
+  weaponIconRect: {fileID: 350480721}
+  EmptyClick: {fileID: 0}
 --- !u!1 &1968169358
 GameObject:
   m_ObjectHideFlags: 0
