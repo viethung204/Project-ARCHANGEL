@@ -12,9 +12,9 @@ public class RevolverScript : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float CurrentAmmo = 2f;
-    public float InvAmmo = 10f;
-    const float MaxAmmo = 6f;
+    public float RevolverCurrentAmmo = 6f;
+    public float RevolverInvAmmo = 12f;
+    const float RevolverMaxAmmo = 6f;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -30,12 +30,13 @@ public class RevolverScript : MonoBehaviour
 
     void Update()
     {
-        //display ammo and weapon name in UI
+        //display ammo and weapon name and icon in UI
+        UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
         weaponName.text = "Revolver";
-        currentAmmoText.text = CurrentAmmo.ToString();
-        invAmmoText.text = InvAmmo.ToString("00#");
+        currentAmmoText.text = RevolverCurrentAmmo.ToString();
+        invAmmoText.text = RevolverInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
@@ -57,7 +58,7 @@ public class RevolverScript : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
+        if (RevolverCurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
         {
             RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
@@ -68,21 +69,21 @@ public class RevolverScript : MonoBehaviour
                     health.TakeDamage(damage);
                 }
             }
-            animator.SetTrigger("mouse1");
-            CurrentAmmo -= 2;
-            if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
+            animator.SetTrigger("shoot");
+            RevolverCurrentAmmo--;
+            if (RevolverCurrentAmmo == 0 && RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
             {
                 Reload();
 
             }
         }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();
 
         }
-        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
+        else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
         {
             Reload();
 
@@ -94,25 +95,25 @@ public class RevolverScript : MonoBehaviour
     //Reload
     void Reload()
     {
-        if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
+        if (RevolverInvAmmo >= RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo)
         {
             animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
-        else if (InvAmmo < MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
+        else if (RevolverInvAmmo < RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo && RevolverInvAmmo != 0)
         {
             animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
-        else if (InvAmmo == 0)
+        else if (RevolverInvAmmo == 0)
         {
             return;
         }
-        else if (CurrentAmmo == MaxAmmo)
+        else if (RevolverCurrentAmmo == RevolverMaxAmmo)
         {
             return;
         }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo == 0)
         {
             return;
         }
@@ -122,17 +123,17 @@ public class RevolverScript : MonoBehaviour
     IEnumerator ReloadUI()
     {
         yield return new WaitForSeconds(1.27f);
-        if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
+        if (RevolverInvAmmo >= RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo)
         {
             //Update InvAmmo first be4 update CurrentAmmo (if you let CA update first it will be InvAmmo = InvAmmo - n + n because now CA and MA are the same)
-            InvAmmo = InvAmmo - MaxAmmo + CurrentAmmo;
-            CurrentAmmo = MaxAmmo;
+            RevolverInvAmmo = RevolverInvAmmo - RevolverMaxAmmo + RevolverCurrentAmmo;
+            RevolverCurrentAmmo = RevolverMaxAmmo;
 
         }
-        else if (InvAmmo < MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
+        else if (RevolverInvAmmo < RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo && RevolverInvAmmo != 0)
         {
-            CurrentAmmo = CurrentAmmo + InvAmmo;
-            InvAmmo = 0;
+            RevolverCurrentAmmo = RevolverCurrentAmmo + RevolverInvAmmo;
+            RevolverInvAmmo = 0;
         }
     }
 

@@ -29,7 +29,8 @@ public class ShotgunScript : MonoBehaviour
 
     void Update()
     {
-        //display ammo and weapon name in UI
+        //display ammo and weapon name and icon in UI
+        UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
         currentAmmoText.text = CurrentAmmo.ToString();
@@ -51,25 +52,25 @@ public class ShotgunScript : MonoBehaviour
     //check for conditions before shoot to determine how to reload
     void ShootConditions()
     {
-        if (CurrentAmmo > 0 && InvAmmo != 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        if (CurrentAmmo > 0 && InvAmmo >1  && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
             ShootMechanics();
             animator.SetTrigger("mouse1");
             CurrentAmmo -=2;
             StartCoroutine(ReloadUI());
         }
-        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        else if (CurrentAmmo == 0 && InvAmmo > 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
             StartCoroutine(ReloadUI());
             animator.SetTrigger("rkey");
         }
-        else if (CurrentAmmo == 2 && InvAmmo == 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        else if (CurrentAmmo == 2 && InvAmmo <= 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
             ShootMechanics();
             animator.SetTrigger("ShootOnly");
             CurrentAmmo -=2 ;
         }
-        else if (CurrentAmmo ==0 && InvAmmo == 0 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThen Reload"))
+        else if (CurrentAmmo ==0 && InvAmmo <= 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThen Reload"))
         {
             //play *click* sound
             EmptyClick.Play();    

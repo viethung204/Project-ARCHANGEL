@@ -20,7 +20,7 @@ public class SwitchWeapons : MonoBehaviour
 
     void Update()
     {
-
+        
         //basically, what is do is have a number that represent the weapon b4 changing 
         //keep in mind that c sharp is order sensitive
         //then throw in some script that change weapon and the selectedWeapon variable based on keys
@@ -28,7 +28,7 @@ public class SwitchWeapons : MonoBehaviour
 
         int previousSelectedWeapons = selectedWeapon;
 
-        if (Input.GetKeyDown(KeyCode.E) && !DoubleBarrelShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !FistAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off"))
+        if (Input.GetKeyDown(KeyCode.E) && !DoubleBarrelShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !FistAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !PumpShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !RevolverAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !GrenadeLauncherAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !ShredderAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !HFGAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off"))
         {
             if (selectedWeapon >= transform.childCount - 1)
             {
@@ -40,7 +40,7 @@ public class SwitchWeapons : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && !DoubleBarrelShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !FistAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off"))
+        if (Input.GetKeyDown(KeyCode.Q) && !DoubleBarrelShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !FistAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !PumpShotgunAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !RevolverAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !GrenadeLauncherAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !ShredderAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off") && !HFGAnimator.GetCurrentAnimatorStateInfo(0).IsTag("off"))
         {
             if (selectedWeapon <= 0)
             {

@@ -29,8 +29,9 @@ public class HFG40K : MonoBehaviour
 
     void Update()
     {
-        //display ammo and weapon name in UI
+        //display ammo and weapon name and icon in UI
         weaponName.text = "HFG40K";
+        UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
         ammoDivider.gameObject.SetActive(false);
         invAmmoText.text = InvAmmo.ToString("00#");

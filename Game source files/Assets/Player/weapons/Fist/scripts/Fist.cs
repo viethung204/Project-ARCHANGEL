@@ -17,6 +17,7 @@ public class Fist : MonoBehaviour
     public Text invAmmoText;
     public Text weaponName;
     public Text ammoDivider;
+    public GameObject UIWeaponIcon;
     int animLayer = 0;
     public AudioSource EmptyClick;
     int chosenNumber;
@@ -25,6 +26,7 @@ public class Fist : MonoBehaviour
     void Update()
     {
         //display ammo and wepaon name in UI
+        UIWeaponIcon.gameObject.SetActive(false);
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
         currentAmmoText.text = "X";
