@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 public class Shredder : MonoBehaviour
 {
-    public float damage = 10f;
+    public float damage = 5f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float CurrentAmmo = 2f;
-    public float InvAmmo = 10f;
+    public int ShredderInvAmmo = 100;
     public Text ammoDivider;
     public Animator animator;
     public Text currentAmmoText;
@@ -27,7 +27,10 @@ public class Shredder : MonoBehaviour
     public AudioSource EmptyClick;
     public Image UICrosshair;
     public Sprite crosshair;
+    public AudioSource revvingSound;
+    public SC_FPSController speed;
 
+    private float NextTimeToShot = 0f;
 
     void Update()
     {
@@ -37,20 +40,25 @@ public class Shredder : MonoBehaviour
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
         ammoDivider.gameObject.SetActive(false);
-        invAmmoText.text = InvAmmo.ToString("00#");
+        invAmmoText.text = ShredderInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+        speed.walkingSpeed = 7.5f;
+        speed.runningSpeed = 7.5f;
 
-        if (Input.GetKeyDown(KeyCode.R) && !isPlaying(animator, "reload"))
+        if (Input.GetButton("Fire1") &&  Time.time > NextTimeToShot)
         {
-            
+            NextTimeToShot = Time.time + 1f / RateOFire;
+            Shoot();  
+        }
+        if(Input.GetButtonUp("Fire1"))
+        {
+            animator.SetBool("shoot", false);
+            revvingSound.Stop();
+            animator.SetTrigger("revout");
         }
 
         //play headbobbing animation
@@ -61,7 +69,7 @@ public class Shredder : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
+        if (ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
         {
             RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
@@ -72,30 +80,23 @@ public class Shredder : MonoBehaviour
                     health.TakeDamage(damage);
                 }
             }
-            animator.SetTrigger("mouse1");
-            CurrentAmmo -= 2;
-            if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-            {
-               
-
-            }
+            animator.SetBool("shoot", true);
         }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        if (ShredderInvAmmo <= 0)
+        {
+            revvingSound.Stop();
+            animator.SetBool("shoot", false);
+            animator.SetTrigger("revout");
+        }
+        else if (ShredderInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();
-
         }
-        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-        {
-           
-
-        }
-
-
     }
 
-   
+
+
 
     //check if animtion is playing
     bool isPlaying(Animator anim, string stateName)

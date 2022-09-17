@@ -27,6 +27,7 @@ public class HFG40K : MonoBehaviour
     public AudioSource EmptyClick;
     public Image UICrosshair;
     public Sprite crosshair;
+    public SC_FPSController speed;
 
 
 
@@ -43,6 +44,9 @@ public class HFG40K : MonoBehaviour
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(200f, 200f);
+
+        speed.walkingSpeed = 7.5f;
+        speed.runningSpeed = 7.5f;
 
         if (Input.GetButtonDown("Fire1"))
         {

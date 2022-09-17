@@ -25,6 +25,7 @@ public class Fist : MonoBehaviour
     public Text ammoType;
     public Image UICrosshair;
     public Sprite crosshair;
+    public SC_FPSController speed;
 
 
 
@@ -41,6 +42,9 @@ public class Fist : MonoBehaviour
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(128f, 128f);
 
+        speed.walkingSpeed = 11.5f;
+        speed.runningSpeed = 11.5f;
+
         if (Input.GetButtonDown("Fire1") && !isPlaying(animator, "punching") & !isPlaying(animator,"punching2"))
         {
             Shoot();
@@ -48,7 +52,7 @@ public class Fist : MonoBehaviour
 
         
         //play headbobbing animation
-        //animator.SetBool("isRunning", Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
+        animator.SetBool("isRunning", Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
     }
 
     //it is in the name (but check if the CurrentAmmo is 0 after shoot, if true, reload
