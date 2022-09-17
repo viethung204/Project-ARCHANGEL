@@ -23,13 +23,17 @@ public class HFG40K : MonoBehaviour
     public Sprite weaponIcon;
     public Image weaponIconRect;
     int animLayer = 0;
-
+    public Text ammoType;
     public AudioSource EmptyClick;
+    public Image UICrosshair;
+    public Sprite crosshair;
+
 
 
     void Update()
     {
         //display ammo and weapon name and icon in UI
+        ammoType.text = "e-core";
         weaponName.text = "HFG40K";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
@@ -37,6 +41,8 @@ public class HFG40K : MonoBehaviour
         invAmmoText.text = InvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(200f, 200f);
 
         if (Input.GetButtonDown("Fire1"))
         {

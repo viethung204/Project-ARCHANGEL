@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using Image = UnityEngine.UI.Image;
 
 public class Fist : MonoBehaviour
 {
@@ -21,19 +22,26 @@ public class Fist : MonoBehaviour
     int animLayer = 0;
     public AudioSource EmptyClick;
     int chosenNumber;
+    public Text ammoType;
+    public Image UICrosshair;
+    public Sprite crosshair;
+
 
 
     void Update()
     {
         //display ammo and wepaon name in UI
+        ammoType.text = "X";
         UIWeaponIcon.gameObject.SetActive(false);
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
         currentAmmoText.text = "X";
         invAmmoText.text = "XXX";
-        weaponName.text = "Fist";
-       
-        if(Input.GetButtonDown("Fire1") && !isPlaying(animator, "punching") & !isPlaying(animator,"punching2"))
+        weaponName.text = "";
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(128f, 128f);
+
+        if (Input.GetButtonDown("Fire1") && !isPlaying(animator, "punching") & !isPlaying(animator,"punching2"))
         {
             Shoot();
         }

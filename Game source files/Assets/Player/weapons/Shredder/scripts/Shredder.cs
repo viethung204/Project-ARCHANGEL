@@ -22,13 +22,17 @@ public class Shredder : MonoBehaviour
     public Sprite weaponIcon;
     public Image weaponIconRect;
     int animLayer = 0;
-
+    public Text ammoType;
+    public int RateOFire = 50;
     public AudioSource EmptyClick;
+    public Image UICrosshair;
+    public Sprite crosshair;
 
 
     void Update()
     {
         //display ammo and weapon name and icon in UI
+        ammoType.text = ".50 bmg";
         weaponName.text = "Shredder";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
@@ -36,6 +40,8 @@ public class Shredder : MonoBehaviour
         invAmmoText.text = InvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
 
         if (Input.GetButtonDown("Fire1"))
         {

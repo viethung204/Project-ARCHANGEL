@@ -24,13 +24,16 @@ public class RevolverScript : MonoBehaviour
     public Sprite weaponIcon;
     public Image weaponIconRect;
     int animLayer = 0;
-
+    public Text ammoType;
     public AudioSource EmptyClick;
+    public Image UICrosshair;
+    public Sprite crosshair;
 
 
     void Update()
     {
         //display ammo and weapon name and icon in UI
+        ammoType.text = ".308";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
@@ -39,6 +42,8 @@ public class RevolverScript : MonoBehaviour
         invAmmoText.text = RevolverInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(100f, 100f);
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(128f, 128f);
 
         if (Input.GetButtonDown("Fire1"))
         {

@@ -11,7 +11,7 @@ public class PumpShotgun : MonoBehaviour
     public float damage = 10f;
     public float range = 50f;
     public Camera PlayerCam;
-    public float CurrentAmmo;
+    public float CurrentAmmo = 1f;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -23,22 +23,27 @@ public class PumpShotgun : MonoBehaviour
     int animLayer = 0;
     public ShotgunScript shotgunscript4shells;
     public AudioSource EmptyClick;
+    public Text ammoType;
+    public Image UICrosshair;
+    public Sprite crosshair;
 
     void Update()
     {
 
         //display ammo and weapon name and icon in UI
+        ammoType.text = "12g";
         weaponName.text = "Shotgun";
         UIWeaponIcon.gameObject.SetActive(true);
-        currentAmmoText.gameObject.SetActive(false);
-        ammoDivider.gameObject.SetActive(false);
+        currentAmmoText.text = CurrentAmmo.ToString();
         invAmmoText.text = shotgunscript4shells.InvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            ShootConditions();
         }
 
 
@@ -48,43 +53,54 @@ public class PumpShotgun : MonoBehaviour
 
     //it is in the name (but check if the CurrentAmmo is 0 after shoot, if true, reload
     //note: if 2 trigger set at once, you can set the priority in the Animator
-    void Shoot()
+    void ShootConditions()
     {
-        if (shotgunscript4shells.InvAmmo > 1 && !isPlaying(animator, "shoot") && !isPlaying(animator, "shootonly"))
+        if (CurrentAmmo > 0 && shotgunscript4shells.InvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
-            RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
-            {
-                Health health = HitInfo.transform.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
-            }
+            Shoot();
             animator.SetTrigger("shoot");
-            shotgunscript4shells.InvAmmo--;
+            CurrentAmmo --;
+            StartCoroutine(ReloadUI());
         }
-        else if (shotgunscript4shells.InvAmmo == 1 && !isPlaying(animator, "shoot") && !isPlaying(animator, "shootonly"))
+        else if (CurrentAmmo == 0 && shotgunscript4shells.InvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
-            RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
-            {
-                Health health = HitInfo.transform.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
-            }
-            animator.SetTrigger("oneleft");
-            shotgunscript4shells.InvAmmo--;
+            StartCoroutine(ReloadUI());
+            animator.SetTrigger("reloadOnly");
         }
-
-        else if (shotgunscript4shells.InvAmmo == 0)
+        else if (CurrentAmmo == 1 && shotgunscript4shells.InvAmmo <= 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
+        {
+            Shoot();
+            animator.SetTrigger("oneleft");
+            CurrentAmmo --;
+        }
+        else if (CurrentAmmo == 0 && shotgunscript4shells.InvAmmo <= 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
             //play *click* sound
             EmptyClick.Play();
-
         }
+    }
+
+
+    void Shoot()
+    {
+
+            RaycastHit HitInfo;
+            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
+            {
+                Health health = HitInfo.transform.GetComponent<Health>();
+                if (health != null)
+                {
+                    health.TakeDamage(damage);
+                }
+            }
+
+    }
+
+    IEnumerator ReloadUI()
+    {
+        yield return new WaitForSeconds(0.6f);
+        CurrentAmmo += 1;
+        shotgunscript4shells.InvAmmo -= 1;
     }
 
 

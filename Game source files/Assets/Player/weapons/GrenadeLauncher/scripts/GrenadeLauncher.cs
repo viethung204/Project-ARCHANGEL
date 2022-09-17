@@ -24,13 +24,16 @@ public class GrenadeLauncher : MonoBehaviour
     public Sprite weaponIcon;
     public Image weaponIconRect;
     int animLayer = 0;
-
+    public Text ammoType;
     public AudioSource EmptyClick;
+    public Image UICrosshair;
+    public Sprite crosshair;
 
 
     void Update()
     {
         //display ammo and weapon name and icon in UI
+        ammoType.text = "40mm";
         weaponName.text = "MGL";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
@@ -38,6 +41,8 @@ public class GrenadeLauncher : MonoBehaviour
         invAmmoText.text = InvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(128f, 128f);
 
         if (Input.GetButtonDown("Fire1"))
         {

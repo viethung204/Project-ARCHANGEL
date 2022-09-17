@@ -25,11 +25,14 @@ public class ShotgunScript : MonoBehaviour
     public Image weaponIconRect;
     int animLayer = 0;
     public AudioSource EmptyClick;
-    
+    public Text ammoType;
+    public Image UICrosshair;
+    public Sprite crosshair;
 
     void Update()
     {
         //display ammo and weapon name and icon in UI
+        ammoType.text = "12g";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
@@ -38,7 +41,9 @@ public class ShotgunScript : MonoBehaviour
         weaponName.text = "A1 Shotgun";
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
-        
+        UICrosshair.GetComponent<Image>().sprite = crosshair;
+        UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
+
 
         if (Input.GetButtonDown("Fire1"))
         {
