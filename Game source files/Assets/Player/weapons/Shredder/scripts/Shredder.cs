@@ -32,6 +32,13 @@ public class Shredder : MonoBehaviour
 
     private float NextTimeToShot = 0f;
 
+    public Recoil RecoilScript;
+
+    public void Start()
+    {
+
+    }
+
     void Update()
     {
         //display ammo and weapon name and icon in UI
@@ -44,10 +51,19 @@ public class Shredder : MonoBehaviour
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
-        UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
-        speed.walkingSpeed = 7.5f;
-        speed.runningSpeed = 7.5f;
+
+        if(Input.GetButton("Fire1") && ShredderInvAmmo > 0)
+        {
+            speed.walkingSpeed = 5f;
+            speed.runningSpeed = 5f;
+        }
+        else
+        {
+            speed.walkingSpeed = 7f;
+            speed.runningSpeed = 7f;
+        }
 
         if (Input.GetButton("Fire1") &&  Time.time > NextTimeToShot)
         {
@@ -69,7 +85,7 @@ public class Shredder : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
+        if (ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "revving down"))
         {
             RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
@@ -81,6 +97,7 @@ public class Shredder : MonoBehaviour
                 }
             }
             animator.SetBool("shoot", true);
+            RecoilScript.RecoilFire();
         }
         if (ShredderInvAmmo <= 0)
         {

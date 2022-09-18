@@ -43,19 +43,14 @@ public class HFG40K : MonoBehaviour
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
-        UICrosshair.rectTransform.sizeDelta = new Vector2(200f, 200f);
+        UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
 
-        speed.walkingSpeed = 7.5f;
-        speed.runningSpeed = 7.5f;
+        speed.walkingSpeed = 7f;
+        speed.runningSpeed = 7f;
 
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && !isPlaying(animator, "reload"))
-        {
-           
         }
 
         //play headbobbing animation
@@ -79,11 +74,7 @@ public class HFG40K : MonoBehaviour
             }
             animator.SetTrigger("mouse1");
             CurrentAmmo -= 2;
-            if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-            {
-               
 
-            }
         }
         else if (CurrentAmmo == 0 && InvAmmo == 0)
         {
@@ -91,12 +82,6 @@ public class HFG40K : MonoBehaviour
             EmptyClick.Play();
 
         }
-        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-        {
-            
-
-        }
-
 
     }
 

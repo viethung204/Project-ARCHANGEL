@@ -43,7 +43,7 @@ public class RevolverScript : MonoBehaviour
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(100f, 100f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
-        UICrosshair.rectTransform.sizeDelta = new Vector2(128f, 128f);
+        UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
         speed.walkingSpeed = 11.5f;
         speed.runningSpeed = 11.5f;
