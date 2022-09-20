@@ -12,9 +12,7 @@ public class GrenadeLauncher : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float CurrentAmmo = 2f;
-    public float InvAmmo = 10f;
-    const float MaxAmmo = 6f;
+    public float GLInvAmmo = 10f;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -30,6 +28,8 @@ public class GrenadeLauncher : MonoBehaviour
     public Sprite crosshair;
     public SC_FPSController speed;
 
+    public GameObject grenadeProjectile;
+    public GameObject SpawnLocation;
 
     void Update()
     {
@@ -39,7 +39,7 @@ public class GrenadeLauncher : MonoBehaviour
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
         ammoDivider.gameObject.SetActive(false);
-        invAmmoText.text = InvAmmo.ToString("00#");
+        invAmmoText.text = GLInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
@@ -53,11 +53,6 @@ public class GrenadeLauncher : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && !isPlaying(animator, "reload"))
-        {
-            Reload();
-        }
-
         //play headbobbing animation
         animator.SetBool("isRunning", Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
     }
@@ -66,83 +61,20 @@ public class GrenadeLauncher : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
+        if (GLInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
-            RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
-            {
-                Health health = HitInfo.transform.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
-            }
-            animator.SetTrigger("mouse1");
-            CurrentAmmo -= 2;
-            if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-            {
-                Reload();
-
-            }
+            Instantiate(grenadeProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+            animator.SetTrigger("shoot");
+            GLInvAmmo -= 1;
         }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        else if (GLInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();
 
         }
-        else if (CurrentAmmo == 0 && InvAmmo > 0 && !isPlaying(animator, "reload"))
-        {
-            Reload();
-
-        }
 
 
-    }
-
-    //Reload
-    void Reload()
-    {
-        if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
-        {
-            animator.SetTrigger("rkey");
-            StartCoroutine(ReloadUI());
-        }
-        else if (InvAmmo < MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
-        {
-            animator.SetTrigger("rkey");
-            StartCoroutine(ReloadUI());
-        }
-        else if (InvAmmo == 0)
-        {
-            return;
-        }
-        else if (CurrentAmmo == MaxAmmo)
-        {
-            return;
-        }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
-        {
-            return;
-        }
-    }
-
-    //put here so the UI get update after reload animation done playing
-    IEnumerator ReloadUI()
-    {
-        yield return new WaitForSeconds(1.27f);
-        if (InvAmmo >= MaxAmmo && CurrentAmmo != MaxAmmo)
-        {
-            //Update InvAmmo first be4 update CurrentAmmo (if you let CA update first it will be InvAmmo = InvAmmo - n + n because now CA and MA are the same)
-            InvAmmo = InvAmmo - MaxAmmo + CurrentAmmo;
-            CurrentAmmo = MaxAmmo;
-
-        }
-        else if (InvAmmo < MaxAmmo && CurrentAmmo != MaxAmmo && InvAmmo != 0)
-        {
-            CurrentAmmo = CurrentAmmo + InvAmmo;
-            InvAmmo = 0;
-        }
     }
 
     //check if animtion is playing

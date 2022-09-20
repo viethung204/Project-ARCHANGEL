@@ -12,6 +12,7 @@ public class AnimatedBillboardShaderSprite : MonoBehaviour {
     Animator m_Anim;
     float minMirrorAngle = 0;
     float maxMirrorAngle = 0;
+   
 	// Use this for initialization
 	void Start () {
         m_Anim = this.GetComponent<Animator>();
@@ -21,7 +22,8 @@ public class AnimatedBillboardShaderSprite : MonoBehaviour {
             directions = 1;
         } 
         minMirrorAngle = (360 / directions) / 2;
-        maxMirrorAngle = 180 - minMirrorAngle; 
+        maxMirrorAngle = 180 - minMirrorAngle;
+        MainCamera = Camera.main;
 	}
 	
 	// Update is called once per frame

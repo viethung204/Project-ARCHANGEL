@@ -2,25 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HFG40KAudio : MonoBehaviour
+public class ECProjectile : MonoBehaviour
 {
-    public AudioSource shoot;
+    public float speed = 100f;
+    private Rigidbody thisRigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        thisRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        thisRigidbody.AddForce(thisRigidbody.transform.forward * speed);
     }
-
-    //play shoot sound
-    void ShootAudio()
-    {
-        shoot.Play();
-    }
-
 }

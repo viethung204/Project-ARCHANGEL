@@ -12,8 +12,7 @@ public class HFG40K : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float CurrentAmmo = 2f;
-    public float InvAmmo = 10f;
+    public float CoreInvAmmo = 10f;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -29,7 +28,8 @@ public class HFG40K : MonoBehaviour
     public Sprite crosshair;
     public SC_FPSController speed;
 
-
+    public GameObject ECoreProjectile;
+    public GameObject SpawnLocation;
 
     void Update()
     {
@@ -39,7 +39,7 @@ public class HFG40K : MonoBehaviour
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);
         ammoDivider.gameObject.SetActive(false);
-        invAmmoText.text = InvAmmo.ToString("00#");
+        invAmmoText.text = CoreInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
@@ -61,22 +61,13 @@ public class HFG40K : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (CurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
+        if (CoreInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
-            RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
-            {
-                Health health = HitInfo.transform.GetComponent<Health>();
-                if (health != null)
-                {
-                    health.TakeDamage(damage);
-                }
-            }
-            animator.SetTrigger("mouse1");
-            CurrentAmmo -= 2;
-
+            Instantiate(ECoreProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+            animator.SetTrigger("shoot");
+            CoreInvAmmo -= 1;
         }
-        else if (CurrentAmmo == 0 && InvAmmo == 0)
+        else if (CoreInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ECPFrontRight
+  m_Name: ECoreProjectile
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 3fb835f8db23e4e41afc8eb6c3add3d8, type: 3}
+      value: {fileID: 21300000, guid: 95a930db1d596be49b8c89de889f2844, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 1908351a0f51aea45b9755b8012254df, type: 3}
+      value: {fileID: 21300000, guid: 79a51d24bff4f014d862cae026dc8b7e, type: 3}
     - time: 0.48333332
-      value: {fileID: 21300000, guid: 3fb835f8db23e4e41afc8eb6c3add3d8, type: 3}
+      value: {fileID: 21300000, guid: 95a930db1d596be49b8c89de889f2844, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 3fb835f8db23e4e41afc8eb6c3add3d8, type: 3}
-    - {fileID: 21300000, guid: 1908351a0f51aea45b9755b8012254df, type: 3}
-    - {fileID: 21300000, guid: 3fb835f8db23e4e41afc8eb6c3add3d8, type: 3}
+    - {fileID: 21300000, guid: 95a930db1d596be49b8c89de889f2844, type: 3}
+    - {fileID: 21300000, guid: 79a51d24bff4f014d862cae026dc8b7e, type: 3}
+    - {fileID: 21300000, guid: 95a930db1d596be49b8c89de889f2844, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
