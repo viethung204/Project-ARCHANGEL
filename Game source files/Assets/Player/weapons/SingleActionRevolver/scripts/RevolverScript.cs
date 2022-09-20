@@ -30,6 +30,8 @@ public class RevolverScript : MonoBehaviour
     public Sprite crosshair;
     public SC_FPSController speed;
 
+
+
     void Update()
     {
         //display ammo and weapon name and icon in UI
@@ -82,8 +84,8 @@ public class RevolverScript : MonoBehaviour
             if (RevolverCurrentAmmo == 0 && RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
             {
                 Reload();
-
             }
+            
         }
         else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo == 0)
         {

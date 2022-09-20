@@ -11,7 +11,7 @@ public class Shredder : MonoBehaviour
 {
     public float damage = 5f;
     public float range = 100f;
-    public Camera PlayerCam;
+    public GameObject RecoilSys;
     public int ShredderInvAmmo = 100;
     public Text ammoDivider;
     public Animator animator;
@@ -34,11 +34,6 @@ public class Shredder : MonoBehaviour
 
     public Recoil RecoilScript;
 
-    public void Start()
-    {
-
-    }
-
     void Update()
     {
         //display ammo and weapon name and icon in UI
@@ -58,11 +53,13 @@ public class Shredder : MonoBehaviour
         {
             speed.walkingSpeed = 5f;
             speed.runningSpeed = 5f;
+            speed.lookSpeed = 0.5f;
         }
         else
         {
             speed.walkingSpeed = 7f;
             speed.runningSpeed = 7f;
+            speed.lookSpeed = 2f;
         }
 
         if (Input.GetButton("Fire1") &&  Time.time > NextTimeToShot)
@@ -88,7 +85,7 @@ public class Shredder : MonoBehaviour
         if (ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "revving down"))
         {
             RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
+            if (Physics.Raycast(RecoilSys.transform.position, RecoilSys.transform.forward, out HitInfo, range))
             {
                 Health health = HitInfo.transform.GetComponent<Health>();
                 if (health != null)

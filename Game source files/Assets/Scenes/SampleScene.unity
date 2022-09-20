@@ -458,7 +458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &239036378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &734918412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4756,8 +4756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 100
-  PlayerCam: {fileID: 963194227}
-  ShredderInvAmmo: 100
+  RecoilSys: {fileID: 1938207251}
+  ShredderInvAmmo: 999
   ammoDivider: {fileID: 256658598}
   animator: {fileID: 1938207254}
   currentAmmoText: {fileID: 368589748}
@@ -4767,7 +4767,7 @@ MonoBehaviour:
   weaponIcon: {fileID: 21300000, guid: fb5c9030e83fc4d4ab42e7ebdb506f7f, type: 3}
   weaponIconRect: {fileID: 350480721}
   ammoType: {fileID: 200797088}
-  RateOFire: 50
+  RateOFire: 90
   EmptyClick: {fileID: 1938207261}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: eaf4a1c4a1945dc45a5cc92b26cb5d22, type: 3}
@@ -5537,11 +5537,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRotation: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0}
-  RecoilX: 0
-  RecoilY: 0
-  RecoilZ: 0
-  snappiness: 0
-  returnSpeed: 0
+  RecoilX: -10
+  RecoilY: 3
+  RecoilZ: 0.35
+  snappiness: 7
+  returnSpeed: 4
 --- !u!1001 &2992268749182895396
 PrefabInstance:
   m_ObjectHideFlags: 0

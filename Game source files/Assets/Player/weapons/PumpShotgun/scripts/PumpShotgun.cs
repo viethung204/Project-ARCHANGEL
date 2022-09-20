@@ -28,6 +28,7 @@ public class PumpShotgun : MonoBehaviour
     public Sprite crosshair;
     public SC_FPSController speed;
 
+
     void Update()
     {
 

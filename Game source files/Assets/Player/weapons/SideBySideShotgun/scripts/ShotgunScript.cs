@@ -30,6 +30,7 @@ public class ShotgunScript : MonoBehaviour
     public Sprite crosshair;
     public SC_FPSController speed;
 
+
     void Update()
     {
         //display ammo and weapon name and icon in UI
@@ -98,6 +99,7 @@ public class ShotgunScript : MonoBehaviour
                 health.TakeDamage(damage);
             }
         }
+
     }
 
     //put here so the UI get update after reload animation done playing
