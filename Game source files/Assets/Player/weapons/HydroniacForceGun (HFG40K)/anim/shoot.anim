@@ -21,33 +21,35 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 37d713d3a9767c043981dc93aaef29d6, type: 3}
-    - time: 0.125
+    - time: 0.11111111
       value: {fileID: 21300000, guid: e465cea9b18eb9649a83a45f94205a43, type: 3}
-    - time: 0.25
+    - time: 0.22222222
       value: {fileID: 21300000, guid: 7355898906aee014da65c9739b57e54b, type: 3}
-    - time: 0.375
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 6116ae17f98ca744f8d2b2a9121a7755, type: 3}
-    - time: 0.5
+    - time: 0.44444445
       value: {fileID: 21300000, guid: 2c84803846adee34ebfb1273b5634484, type: 3}
-    - time: 0.625
+    - time: 0.5555556
       value: {fileID: 21300000, guid: 480746d739f0c534bb3d6a2510c71b99, type: 3}
-    - time: 0.75
+    - time: 0.6
       value: {fileID: 21300000, guid: 480746d739f0c534bb3d6a2510c71b99, type: 3}
-    - time: 0.875
+    - time: 0.6888889
       value: {fileID: 21300000, guid: 8fa31ebbe153471469b75e900acd2afe, type: 3}
-    - time: 1
+    - time: 0.76666665
       value: {fileID: 21300000, guid: 344a2a98b753d604b89bca5adc4a586c, type: 3}
-    - time: 1.125
+    - time: 0.84444445
       value: {fileID: 21300000, guid: e35f9c2842dca6847883d3f31c49f6bc, type: 3}
-    - time: 1.25
+    - time: 0.93333334
       value: {fileID: 21300000, guid: 24738bb24ff198744a888575f5e0110d, type: 3}
-    - time: 1.3625
-      value: {fileID: 21300000, guid: 24738bb24ff198744a888575f5e0110d, type: 3}
+    - time: 0.9444444
+      value: {fileID: 21300000, guid: 8986381d60340064bbecf44b34f5f7ce, type: 3}
+    - time: 1.1666666
+      value: {fileID: 21300000, guid: 8986381d60340064bbecf44b34f5f7ce, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 80
+  m_SampleRate: 90
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -73,13 +75,14 @@ AnimationClip:
     - {fileID: 21300000, guid: 344a2a98b753d604b89bca5adc4a586c, type: 3}
     - {fileID: 21300000, guid: e35f9c2842dca6847883d3f31c49f6bc, type: 3}
     - {fileID: 21300000, guid: 24738bb24ff198744a888575f5e0110d, type: 3}
-    - {fileID: 21300000, guid: 24738bb24ff198744a888575f5e0110d, type: 3}
+    - {fileID: 21300000, guid: 8986381d60340064bbecf44b34f5f7ce, type: 3}
+    - {fileID: 21300000, guid: 8986381d60340064bbecf44b34f5f7ce, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.375
+    m_StopTime: 1.1777778
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -98,4 +101,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5555556
+    functionName: ShootAudio
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

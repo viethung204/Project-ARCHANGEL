@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HFG40KAudio : MonoBehaviour
+public class GrenadeLauncherAudio : MonoBehaviour
 {
     public AudioSource shoot;
     // Start is called before the first frame update

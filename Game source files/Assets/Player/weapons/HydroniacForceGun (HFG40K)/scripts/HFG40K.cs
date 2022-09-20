@@ -12,7 +12,7 @@ public class HFG40K : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float CoreInvAmmo = 10f;
+    public int CoreInvAmmo = 10;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -31,6 +31,10 @@ public class HFG40K : MonoBehaviour
     public GameObject ECoreProjectile;
     public GameObject SpawnLocation;
 
+    private void Start()
+    {
+        animator.SetInteger("ammo", CoreInvAmmo);
+    }
     void Update()
     {
         //display ammo and weapon name and icon in UI
@@ -48,6 +52,14 @@ public class HFG40K : MonoBehaviour
         speed.walkingSpeed = 7f;
         speed.runningSpeed = 7f;
 
+        if(isPlaying(animator, "shoot"))
+        {
+            speed.walkingSpeed = 5f;
+            speed.runningSpeed = 5f;
+        }
+
+        animator.SetInteger("ammo", CoreInvAmmo);
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -63,9 +75,8 @@ public class HFG40K : MonoBehaviour
     {
         if (CoreInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
-            Instantiate(ECoreProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+            StartCoroutine(WaitAnim());
             animator.SetTrigger("shoot");
-            CoreInvAmmo -= 1;
         }
         else if (CoreInvAmmo == 0)
         {
@@ -74,6 +85,14 @@ public class HFG40K : MonoBehaviour
 
         }
 
+    }
+
+    //animation first, projectile comes later
+    IEnumerator WaitAnim()
+    {
+        yield return new WaitForSeconds(0.9f);
+        Instantiate(ECoreProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+        CoreInvAmmo -= 1;
     }
 
     //check if animtion is playing
