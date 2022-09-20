@@ -48,6 +48,11 @@ public class Shredder : MonoBehaviour
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
+        RecoilScript.RecoilX = -10f;
+        RecoilScript.RecoilY = 10f;
+        RecoilScript.RecoilZ = .35f;
+        RecoilScript.snappiness = 6f;
+        RecoilScript.returnSpeed = 2f;
 
         if(Input.GetButton("Fire1") && ShredderInvAmmo > 0)
         {

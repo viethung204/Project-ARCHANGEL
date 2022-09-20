@@ -10,8 +10,8 @@ public class Recoil : MonoBehaviour
     public float RecoilY;
     public float  RecoilZ;
 
-     public float snappiness;
-     public float returnSpeed;
+    public float snappiness;
+    public float returnSpeed;
 
     
     void Start()

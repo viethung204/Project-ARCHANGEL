@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class GrenadeProjectileScript : MonoBehaviour
 {
-    public float speed = 200f;
-    private Rigidbody thisRigidbody;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        thisRigidbody = GetComponent<Rigidbody>();
-    }
+    public float lifespan = 5f;
 
     // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
-        thisRigidbody.AddForce(thisRigidbody.transform.forward * speed);
+        Destroy(gameObject, lifespan);
     }
 }

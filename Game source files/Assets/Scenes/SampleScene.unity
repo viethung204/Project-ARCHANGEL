@@ -189,7 +189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.3, y: 0.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &194456229
@@ -618,10 +618,13 @@ MonoBehaviour:
   ammoType: {fileID: 200797088}
   EmptyClick: {fileID: 239036384}
   UICrosshair: {fileID: 1104065376}
-  crosshair: {fileID: 21300000, guid: 1d8e9606ed31b9f49bff6c34165f28d8, type: 3}
+  crosshair: {fileID: 21300000, guid: e40b1d198f7431b43ac3bf90a48766c8, type: 3}
   speed: {fileID: 1968169360}
   grenadeProjectile: {fileID: 4450485938580408121, guid: bfc8f5f06c5120241bd38789e52b8522, type: 3}
   SpawnLocation: {fileID: 52657161}
+  throwForce: 17
+  throwUpwardForce: 0.7
+  RecoilScript: {fileID: 2066734074}
 --- !u!82 &239036382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1273,7 +1276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1, y: -3.2}
+  m_AnchoredPosition: {x: 0.1, y: -2.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &557526326
@@ -3700,6 +3703,7 @@ MonoBehaviour:
   speed: {fileID: 1968169360}
   ECoreProjectile: {fileID: 7948019718669121248, guid: cde921cbda312704c8fd5e3bbe794a5c, type: 3}
   SpawnLocation: {fileID: 510485584}
+  RecoilScript: {fileID: 2066734074}
 --- !u!82 &1166326089
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6127,10 +6131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRotation: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0}
-  RecoilX: -10
-  RecoilY: 3
+  RecoilX: -5
+  RecoilY: 0
   RecoilZ: 0.35
-  snappiness: 7
+  snappiness: 9
   returnSpeed: 4
 --- !u!1001 &2992268749182895396
 PrefabInstance:

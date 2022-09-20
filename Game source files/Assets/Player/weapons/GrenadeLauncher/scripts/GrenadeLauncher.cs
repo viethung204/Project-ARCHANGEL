@@ -31,6 +31,11 @@ public class GrenadeLauncher : MonoBehaviour
     public GameObject grenadeProjectile;
     public GameObject SpawnLocation;
 
+    public float throwForce;
+    public float throwUpwardForce;
+
+    public Recoil RecoilScript;
+
     void Update()
     {
         //display ammo and weapon name and icon in UI
@@ -48,6 +53,12 @@ public class GrenadeLauncher : MonoBehaviour
         speed.walkingSpeed = 11.5f;
         speed.runningSpeed = 11.5f;
 
+        RecoilScript.RecoilX = -1f;
+        RecoilScript.RecoilY = 1f;
+        RecoilScript.RecoilZ = .35f;
+        RecoilScript.snappiness = 9f;
+        RecoilScript.returnSpeed = 4f;
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -63,9 +74,21 @@ public class GrenadeLauncher : MonoBehaviour
     {
         if (GLInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
-            Instantiate(grenadeProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+            //Create a new gameObject out of the newly spawn projectile
+            GameObject grenade =  Instantiate(grenadeProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+
+            //get its rigidbody
+            Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+            //calculate force 
+            Vector3 force = SpawnLocation.transform.forward * throwForce + transform.up * throwUpwardForce;
+
+            //apply the force
+            projectileRb.AddForce(force, ForceMode.Impulse);
+
             animator.SetTrigger("shoot");
             GLInvAmmo -= 1;
+            RecoilScript.RecoilFire();
         }
         else if (GLInvAmmo == 0)
         {

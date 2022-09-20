@@ -31,6 +31,8 @@ public class HFG40K : MonoBehaviour
     public GameObject ECoreProjectile;
     public GameObject SpawnLocation;
 
+    public Recoil RecoilScript;
+
     private void Start()
     {
         animator.SetInteger("ammo", CoreInvAmmo);
@@ -52,7 +54,13 @@ public class HFG40K : MonoBehaviour
         speed.walkingSpeed = 7f;
         speed.runningSpeed = 7f;
 
-        if(isPlaying(animator, "shoot"))
+        RecoilScript.RecoilX = -5f;
+        RecoilScript.RecoilY = 0;
+        RecoilScript.RecoilZ = .35f;
+        RecoilScript.snappiness = 9f;
+        RecoilScript.returnSpeed = 4f;
+
+        if (isPlaying(animator, "shoot"))
         {
             speed.walkingSpeed = 5f;
             speed.runningSpeed = 5f;
@@ -76,7 +84,9 @@ public class HFG40K : MonoBehaviour
         if (CoreInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
             StartCoroutine(WaitAnim());
+            //StartCoroutine(Recoil());
             animator.SetTrigger("shoot");
+
         }
         else if (CoreInvAmmo == 0)
         {
@@ -93,7 +103,15 @@ public class HFG40K : MonoBehaviour
         yield return new WaitForSeconds(0.9f);
         Instantiate(ECoreProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
         CoreInvAmmo -= 1;
+        RecoilScript.RecoilFire();
     }
+
+    //Recoil
+   /* IEnumerator Recoil()
+    {
+        yield return new WaitForSeconds(0.9f);
+        RecoilScript.RecoilFire();
+    } */
 
     //check if animtion is playing
     bool isPlaying(Animator anim, string stateName)
