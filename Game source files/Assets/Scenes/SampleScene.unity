@@ -606,7 +606,7 @@ MonoBehaviour:
   damage: 10
   range: 100
   PlayerCam: {fileID: 963194227}
-  GLInvAmmo: 10
+  GLInvAmmo: 100
   animator: {fileID: 239036380}
   currentAmmoText: {fileID: 368589748}
   invAmmoText: {fileID: 1661491646}
@@ -1030,6 +1030,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073437699}
     m_Modifications:
+    - target: {fileID: 4441134068070651744, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4441134068070651747, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
       propertyPath: m_Name
       value: wall cube
@@ -1188,6 +1192,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073437699}
     m_Modifications:
+    - target: {fileID: 4441134068070651744, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4441134068070651747, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
       propertyPath: m_Name
       value: wall cube (1)
@@ -1876,6 +1884,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073437699}
     m_Modifications:
+    - target: {fileID: 4441134068070651744, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4441134068070651747, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
       propertyPath: m_Name
       value: wall cube (3)
@@ -4013,6 +4025,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073437699}
     m_Modifications:
+    - target: {fileID: 4441134068070651744, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4441134068070651747, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
       propertyPath: m_Name
       value: wall cube (2)
@@ -5164,6 +5180,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073437699}
     m_Modifications:
+    - target: {fileID: 4441134068070651744, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4441134068070651747, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
       propertyPath: m_Name
       value: wall cube
@@ -6200,6 +6220,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7910778934643534982, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7910778934643534982, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: -3199489081571386604, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: Player
       value: 
@@ -6239,6 +6267,10 @@ PrefabInstance:
     - target: {fileID: 5220503801043595261, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: m_Center.y
       value: -0.005235076
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220503801043595261, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550184116275728713, guid: 68d9721ab351fa04c888dc75d977b4e1, type: 3}
       propertyPath: MainCamera
