@@ -135,8 +135,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.21, y: 0.17, z: 0.2974654}
-  m_Center: {x: 0, y: 0.085, z: -0.048732713}
+  m_Size: {x: 0.21, y: 0.17, z: 0.20532808}
+  m_Center: {x: 0, y: 0.085, z: -0.0026640445}
 --- !u!54 &7854935698817132891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,3 +168,6 @@ MonoBehaviour:
   lifespan: 10
   animator: {fileID: 4450485938580408126}
   Explosion: {fileID: 651778692274749347, guid: eae89c42ab18b4b459bb006a2b30f007, type: 3}
+  damage: 100
+  blastDamage: 10
+  radius: 3

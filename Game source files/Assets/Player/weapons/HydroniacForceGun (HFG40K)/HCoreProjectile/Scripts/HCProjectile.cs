@@ -2,39 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrenadeProjectileScript : MonoBehaviour
+public class HCProjectile : MonoBehaviour
 {
-    public float lifespan = 10f;
-    public Animator animator;
+    public float speed = 100f;
+    private Rigidbody thisRigidbody;
+    public float lifespan = 5f;
     public GameObject Explosion;
-    public int damage = 100;
-    public int blastDamage = 10;
-    public float radius = 3f;
+    public int blastDamage = 100;
+    public float radius = 50f;
 
-
-    // Update is called once per frame
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         Destroy(gameObject, lifespan);
+        thisRigidbody = GetComponent<Rigidbody>();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        thisRigidbody.AddForce(thisRigidbody.transform.forward * speed);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         Explode();
         ExplodeRadius();
-
-        if(collision.gameObject.tag == "Enemy")
-        {
-            //declare a Health varirable to get the Health script that this projectile collides with, it the sccript exist, call the TakeDamage method
-            Health health = collision.transform.GetComponent<Health>();
-            if ( health != null)
-            {
-                health.TakeDamage(damage);
-            }
-        }
-
-      
     }
 
     void Explode()

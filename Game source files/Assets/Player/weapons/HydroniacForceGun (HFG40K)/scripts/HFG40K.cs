@@ -40,7 +40,7 @@ public class HFG40K : MonoBehaviour
     void Update()
     {
         //display ammo and weapon name and icon in UI
-        ammoType.text = "e-core";
+        ammoType.text = "h-core";
         weaponName.text = "HFG40K";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.gameObject.SetActive(false);

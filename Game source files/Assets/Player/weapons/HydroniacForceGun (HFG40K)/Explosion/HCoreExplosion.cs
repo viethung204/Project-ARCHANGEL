@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ECProjectile : MonoBehaviour
+public class HCoreExplosion : MonoBehaviour
 {
-    public float speed = 100f;
-    private Rigidbody thisRigidbody;
-    public float lifespan = 5f;
+    public float lifespan = 0.545f;
+    public AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource.PlayClipAtPoint(audio.clip, this.gameObject.transform.position);
         Destroy(gameObject, lifespan);
-        thisRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        thisRigidbody.AddForce(thisRigidbody.transform.forward * speed);
+        
     }
 }

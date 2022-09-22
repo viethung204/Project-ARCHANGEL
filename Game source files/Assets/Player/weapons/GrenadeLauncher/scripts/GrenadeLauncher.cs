@@ -59,7 +59,7 @@ public class GrenadeLauncher : MonoBehaviour
         RecoilScript.snappiness = 9f;
         RecoilScript.returnSpeed = 4f;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Shoot();
         }
