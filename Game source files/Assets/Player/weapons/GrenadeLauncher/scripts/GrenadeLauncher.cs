@@ -42,9 +42,8 @@ public class GrenadeLauncher : MonoBehaviour
         ammoType.text = "40mm";
         weaponName.text = "MGL";
         UIWeaponIcon.gameObject.SetActive(true);
-        currentAmmoText.gameObject.SetActive(false);
-        ammoDivider.gameObject.SetActive(false);
-        invAmmoText.text = GLInvAmmo.ToString("00#");
+        currentAmmoText.text = GLInvAmmo.ToString("00#");
+        invAmmoText.text = "XXX";
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;

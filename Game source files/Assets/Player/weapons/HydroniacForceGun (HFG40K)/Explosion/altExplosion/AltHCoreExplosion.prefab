@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7731930472642548899}
   - component: {fileID: 2718480177885047131}
   m_Layer: 0
-  m_Name: HCoreExplosion
+  m_Name: AltHCoreExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
