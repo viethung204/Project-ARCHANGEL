@@ -8,6 +8,7 @@ public class HCoreExplosion : MonoBehaviour
     public AudioSource audio;
     public int blastDamage = 100;
     public float radius = 50f;
+    public float killDelay = 0.7f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class HCoreExplosion : MonoBehaviour
 
     IEnumerator explosionDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(killDelay);
         ExplodeRadius();
     }
 }

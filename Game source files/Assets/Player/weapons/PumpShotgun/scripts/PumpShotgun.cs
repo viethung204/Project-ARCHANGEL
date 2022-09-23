@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 public class PumpShotgun : MonoBehaviour
 {
     public float damage = 10f;
@@ -27,6 +28,9 @@ public class PumpShotgun : MonoBehaviour
     public Image UICrosshair;
     public Sprite crosshair;
     public SC_FPSController speed;
+
+    public float maxSpread;
+    public int pellets;
 
 
     void Update()
@@ -90,14 +94,22 @@ public class PumpShotgun : MonoBehaviour
     {
 
             RaycastHit HitInfo;
-            if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
+        for (int i = 0; i < pellets; i++)
+        {
+            var direction = PlayerCam.transform.forward + new Vector3(Random.Range(-maxSpread, maxSpread), Random.Range(-maxSpread, maxSpread), 0f);
+            if (Physics.Raycast(PlayerCam.transform.position, direction, out HitInfo, range))
             {
-                Health health = HitInfo.transform.GetComponent<Health>();
-                if (health != null)
+                if (HitInfo.transform.tag == "Enemy")
                 {
-                    health.TakeDamage(damage);
+                    Health health = HitInfo.transform.GetComponent<Health>();
+                    if (health != null)
+                    {
+                        health.TakeDamage(damage);
+                    }
                 }
+
             }
+        }
 
     }
 

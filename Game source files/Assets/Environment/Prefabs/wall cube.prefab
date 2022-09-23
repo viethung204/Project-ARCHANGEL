@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4441134068070651745}
   m_Layer: 0
   m_Name: wall cube
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,8 +7,8 @@ public class GrenadeProjectileScript : MonoBehaviour
     public float lifespan = 10f;
     public Animator animator;
     public GameObject Explosion;
-    public int damage = 100;
-    public int blastDamage = 10;
+    public int damage = 70;
+    public int blastDamage = 30;
     public float radius = 3f;
 
 
