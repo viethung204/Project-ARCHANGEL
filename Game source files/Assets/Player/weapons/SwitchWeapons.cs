@@ -61,7 +61,7 @@ public class SwitchWeapons : MonoBehaviour
     //selectedWeapon = array = childCount - 1 = 0
 
     //change weapon based on array
-    void SelectWeapon()
+    public void SelectWeapon()
     {
         int i = 0;
         foreach (Transform weapon in transform)

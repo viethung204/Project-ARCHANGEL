@@ -48,7 +48,7 @@ public class HFG40K : MonoBehaviour
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
-        UICrosshair.rectTransform.sizeDelta = new Vector2(150f, 150f);
+        UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
         speed.walkingSpeed = 7f;
         speed.runningSpeed = 7f;

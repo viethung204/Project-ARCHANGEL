@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class Grenade : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class Grenade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         GAnimator = this.transform.GetComponent<Animator>();
         Destroy(gameObject, lifespan);
         StartCoroutine(Explode());

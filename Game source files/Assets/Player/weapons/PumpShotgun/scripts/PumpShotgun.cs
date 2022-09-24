@@ -45,7 +45,7 @@ public class PumpShotgun : MonoBehaviour
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
-        UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
+        UICrosshair.rectTransform.sizeDelta = new Vector2(90f, 90f);
 
         speed.walkingSpeed = 11.5f;
         speed.runningSpeed = 11.5f;

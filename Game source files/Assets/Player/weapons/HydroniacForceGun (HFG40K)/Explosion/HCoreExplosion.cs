@@ -5,7 +5,7 @@ using UnityEngine;
 public class HCoreExplosion : MonoBehaviour
 {
     public float lifespan = 0.949f;
-    public AudioSource audio;
+    public new AudioSource audio;
     public int blastDamage = 100;
     public float radius = 50f;
     public float killDelay = 0.7f;

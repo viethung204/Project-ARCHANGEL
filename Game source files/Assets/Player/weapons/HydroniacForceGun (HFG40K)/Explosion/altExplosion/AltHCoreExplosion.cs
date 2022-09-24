@@ -5,7 +5,7 @@ using UnityEngine;
 public class AltHCoreExplosion : MonoBehaviour
 {
     public float lifespan = 0.545f;
-    public AudioSource audio;
+    public new AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
