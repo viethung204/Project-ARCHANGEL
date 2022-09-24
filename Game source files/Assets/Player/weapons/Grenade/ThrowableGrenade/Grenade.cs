@@ -27,11 +27,12 @@ public class Grenade : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GAnimator.SetBool("idle", true);
+        
 
         if (collision.gameObject.tag == "Environment")
         {
             bounce.Play();
+            GAnimator.SetBool("idle", true);
         }
 
 
