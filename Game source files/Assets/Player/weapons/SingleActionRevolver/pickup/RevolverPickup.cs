@@ -42,7 +42,8 @@ public class RevolverPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && Revolver.transform.parent != WeaponsHolder)
         {
-
+            revolverScript.enabled = true;
+            RevolverSpriteRenderer.enabled = true;
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Revolver!";
 

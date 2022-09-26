@@ -14,8 +14,8 @@ public class ShotgunScript : MonoBehaviour
     public float range = 100f;
     public Camera PlayerCam;
     public float CurrentAmmo = 2f;
-    public float InvAmmo = 10f;
     const float MaxAmmo = 2f;
+    public AmmoManager ammoManager;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -30,10 +30,10 @@ public class ShotgunScript : MonoBehaviour
     public Image UICrosshair;
     public Sprite crosshair;
     public SC_FPSController speed;
+    
 
     public float maxSpread;
     public int pellets;
-
 
     void Update()
     {
@@ -43,7 +43,7 @@ public class ShotgunScript : MonoBehaviour
         currentAmmoText.gameObject.SetActive(true);
         ammoDivider.gameObject.SetActive(true);
         currentAmmoText.text = CurrentAmmo.ToString();
-        invAmmoText.text = InvAmmo.ToString("00#");
+        invAmmoText.text = ammoManager.ShotgunInvAmmo.ToString("00#");
         weaponName.text = "A1 Shotgun";
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
@@ -66,25 +66,25 @@ public class ShotgunScript : MonoBehaviour
     //check for conditions before shoot to determine how to reload
     void ShootConditions()
     {
-        if (CurrentAmmo > 0 && InvAmmo >1  && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        if (CurrentAmmo > 0 && ammoManager.ShotgunInvAmmo > 1  && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
             ShootMechanics();
             animator.SetTrigger("mouse1");
             CurrentAmmo -=2;
             StartCoroutine(ReloadUI());
         }
-        else if (CurrentAmmo == 0 && InvAmmo > 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        else if (CurrentAmmo == 0 && ammoManager.ShotgunInvAmmo > 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
             StartCoroutine(ReloadUI());
             animator.SetTrigger("rkey");
         }
-        else if (CurrentAmmo == 2 && InvAmmo <= 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
+        else if (CurrentAmmo == 2 && ammoManager.ShotgunInvAmmo <= 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThenReload"))
         {
             ShootMechanics();
             animator.SetTrigger("ShootOnly");
             CurrentAmmo -=2 ;
         }
-        else if (CurrentAmmo ==0 && InvAmmo <= 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThen Reload"))
+        else if (CurrentAmmo ==0 && ammoManager.ShotgunInvAmmo <= 1 && !isPlaying(animator, "Shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "ShootThen Reload"))
         {
             //play *click* sound
             EmptyClick.Play();    
@@ -120,7 +120,7 @@ public class ShotgunScript : MonoBehaviour
         
         yield return new WaitForSeconds(1.27f);
         CurrentAmmo += 2;
-        InvAmmo -= 2;    
+        ammoManager.ShotgunInvAmmo -= 2;    
     }
 
     //check if animtion is playing

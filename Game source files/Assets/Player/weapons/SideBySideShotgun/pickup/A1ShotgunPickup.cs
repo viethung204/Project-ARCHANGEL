@@ -41,6 +41,8 @@ public class A1ShotgunPickup: MonoBehaviour
     {
         if (other.CompareTag("Player") && A1Shotgun.transform.parent != WeaponsHolder)
         {
+            A1shotgunScript.enabled = true;
+            A1ShotgunSpriteRenderer.enabled = true;
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the A1 Shotgun!";
 

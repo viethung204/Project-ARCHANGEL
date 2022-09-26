@@ -41,6 +41,8 @@ public class ShredderPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && Shredder.transform.parent != WeaponsHolder)
         {
+            shredderScript.enabled = true;
+            ShredderSpriteRenderer.enabled = true;
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Shredder!";
 

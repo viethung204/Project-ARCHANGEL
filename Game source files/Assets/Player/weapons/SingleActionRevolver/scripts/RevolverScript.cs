@@ -12,9 +12,9 @@ public class RevolverScript : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float RevolverCurrentAmmo = 6f;
-    public float RevolverInvAmmo = 12f;
-    const float RevolverMaxAmmo = 6f;
+    int RevolverInvAmmo;
+    public int RevolverCurrentAmmo = 6;
+    const int RevolverMaxAmmo = 6;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -30,6 +30,12 @@ public class RevolverScript : MonoBehaviour
     public Sprite crosshair;
     public SC_FPSController speed;
 
+    private void Start()
+    {
+        //find ammo manager
+        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
+        RevolverInvAmmo = ammoManager.RevolverInvAmmo;
+    }
 
 
     void Update()

@@ -12,7 +12,6 @@ public class HFG40K : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public int CoreInvAmmo = 10;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -27,6 +26,7 @@ public class HFG40K : MonoBehaviour
     public Image UICrosshair;
     public Sprite crosshair;
     public SC_FPSController speed;
+    int CoreInvAmmo;
 
     public GameObject ECoreProjectile;
     public GameObject SpawnLocation;
@@ -35,6 +35,11 @@ public class HFG40K : MonoBehaviour
 
     private void Start()
     {
+        //find ammo manager
+        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
+        CoreInvAmmo = ammoManager.CoreInvAmmo;
+
+        //make it so play idle anim
         animator.SetInteger("ammo", CoreInvAmmo);
     }
     void Update()

@@ -12,7 +12,6 @@ public class GrenadeLauncher : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public float GLInvAmmo = 10f;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -27,6 +26,7 @@ public class GrenadeLauncher : MonoBehaviour
     public Image UICrosshair;
     public Sprite crosshair;
     public SC_FPSController speed;
+    int GLInvAmmo;
 
     public GameObject grenadeProjectile;
     public GameObject SpawnLocation;
@@ -36,8 +36,17 @@ public class GrenadeLauncher : MonoBehaviour
 
     public Recoil RecoilScript;
 
+    private void Start()
+    {
+        //find ammo manager
+        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
+        GLInvAmmo = ammoManager.GLInvAmmo;
+    }
+
     void Update()
     {
+
+        
         //display ammo and weapon name and icon in UI
         ammoType.text = "40mm";
         weaponName.text = "MGL";

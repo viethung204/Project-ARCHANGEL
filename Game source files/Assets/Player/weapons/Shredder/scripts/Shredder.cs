@@ -11,8 +11,8 @@ public class Shredder : MonoBehaviour
 {
     public float damage = 5f;
     public float range = 100f;
+    public int ShredderInvAmmo;
     public GameObject RecoilSys;
-    public int ShredderInvAmmo = 100;
     public Text ammoDivider;
     public Animator animator;
     public Text currentAmmoText;
@@ -33,6 +33,13 @@ public class Shredder : MonoBehaviour
     private float NextTimeToShot = 0f;
 
     public Recoil RecoilScript;
+
+    private void Start()
+    {
+        //find ammo manager
+        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
+        ShredderInvAmmo = ammoManager.ShredderInvAmmo;
+    }
 
     void Update()
     {

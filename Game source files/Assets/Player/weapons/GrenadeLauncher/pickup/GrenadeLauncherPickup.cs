@@ -41,7 +41,8 @@ public class GrenadeLauncherPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && GrenadeLauncher.transform.parent != WeaponsHolder)
         {
-
+            GLSpriteRenderer.enabled = true;
+            GLScript.enabled = true;
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Grenade Laucher!";
 

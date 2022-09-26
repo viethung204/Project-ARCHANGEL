@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmmoPickups : MonoBehaviour
 {
-    public float AmmoPU = 5f;
+    public int AmmoPU = 5;
     public ShotgunScript shotgunScript;
     public AudioClip pickupAudio;
     public float AudioVolume = 10f;
@@ -17,8 +17,8 @@ public class AmmoPickups : MonoBehaviour
         if (other.tag == "Player")
         {
             AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
-            shotgunScript.GetComponent<ShotgunScript>();
-            shotgunScript.InvAmmo += AmmoPU;
+            AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
+            ammoManager.ShotgunInvAmmo += AmmoPU;
             Destroy(gameObject);
             
         }

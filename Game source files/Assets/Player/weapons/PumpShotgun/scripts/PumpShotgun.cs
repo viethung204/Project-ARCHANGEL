@@ -22,7 +22,7 @@ public class PumpShotgun : MonoBehaviour
     public Sprite weaponIcon;
     public Image weaponIconRect;
     int animLayer = 0;
-    public ShotgunScript shotgunscript4shells;
+    public AmmoManager ammoManager;
     public AudioSource EmptyClick;
     public Text ammoType;
     public Image UICrosshair;
@@ -32,6 +32,7 @@ public class PumpShotgun : MonoBehaviour
     public float maxSpread;
     public int pellets;
 
+
     void Update()
     {
 
@@ -40,7 +41,7 @@ public class PumpShotgun : MonoBehaviour
         weaponName.text = "Shotgun";
         UIWeaponIcon.gameObject.SetActive(true);
         currentAmmoText.text = CurrentAmmo.ToString();
-        invAmmoText.text = shotgunscript4shells.InvAmmo.ToString("00#");
+        invAmmoText.text = ammoManager.ShotgunInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
@@ -63,25 +64,25 @@ public class PumpShotgun : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void ShootConditions()
     {
-        if (CurrentAmmo > 0 && shotgunscript4shells.InvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
+        if (CurrentAmmo > 0 && ammoManager.ShotgunInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
             Shoot();
             animator.SetTrigger("shoot");
             CurrentAmmo --;
             StartCoroutine(ReloadUI());
         }
-        else if (CurrentAmmo == 0 && shotgunscript4shells.InvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
+        else if (CurrentAmmo == 0 && ammoManager.ShotgunInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
             StartCoroutine(ReloadUI());
             animator.SetTrigger("reloadOnly");
         }
-        else if (CurrentAmmo == 1 && shotgunscript4shells.InvAmmo <= 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
+        else if (CurrentAmmo == 1 && ammoManager.ShotgunInvAmmo <= 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
             Shoot();
             animator.SetTrigger("oneleft");
             CurrentAmmo --;
         }
-        else if (CurrentAmmo == 0 && shotgunscript4shells.InvAmmo <= 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
+        else if (CurrentAmmo == 0 && ammoManager.ShotgunInvAmmo <= 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload") && !isPlaying(animator, "shootonly") && !isPlaying(animator, "reloadOnly"))
         {
             //play *click* sound
             EmptyClick.Play();
@@ -116,7 +117,7 @@ public class PumpShotgun : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         CurrentAmmo += 1;
-        shotgunscript4shells.InvAmmo -= 1;
+        ammoManager.ShotgunInvAmmo -= 1;
     }
 
 
