@@ -7,24 +7,26 @@ using UnityEngine.UI
 ;
 public class WeaponsNotiController : MonoBehaviour
 {
-    public Text WeaponsNoti;
+    private Text WeaponsNoti;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        WeaponsNoti = gameObject.GetComponent<Text>();
     }
 
     private void Update()
     {
-        StartCoroutine(fuckingkillme());
-
+        if(WeaponsNoti.enabled == true)
+        {
+            StartCoroutine(fuckingkillme());
+        }
     }
 
-    IEnumerator fuckingkillme()
-    {
-        yield return new WaitForSeconds(2f);
-        gameObject.SetActive(false);
-    }
+    public IEnumerator fuckingkillme()
+{
+    yield return new WaitForSeconds(3f);
+    WeaponsNoti.enabled = false;
+}
 
 }

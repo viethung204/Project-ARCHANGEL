@@ -32,7 +32,6 @@ public class PumpShotgun : MonoBehaviour
     public float maxSpread;
     public int pellets;
 
-
     void Update()
     {
 

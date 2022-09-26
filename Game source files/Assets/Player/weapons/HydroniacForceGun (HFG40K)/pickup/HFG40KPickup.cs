@@ -6,26 +6,35 @@ using UnityEngine.UI;
 public class HFG40KPickup : MonoBehaviour
 {
     public GameObject HFG40K;
-    public Transform WeaponsHolder;
+    private SpriteRenderer HFGSpriteRenderer;
+    private HFG40K HFGScript;
 
-    public WeaponsNotiController WeaponPickupNoti;
-    public Text WeaponsNoti;
+    private Transform WeaponsHolder;
 
-    public SwitchWeapons switchWeapons;
+    private WeaponsNotiController WeaponPickupNoti;
+    private Text WeaponsNoti;
 
-    public WeaponsOrder weaponsOrder;
+    private SwitchWeapons switchWeapons;
+
+    private WeaponsOrder weaponsOrder;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
-    }
+        switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
 
-    // Update is called once per frame
-    void Update()
-    {
+        weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
 
+        WeaponPickupNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
+
+        WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
+
+        HFG40K = GameObject.Find("HFG40K");
+        HFGSpriteRenderer = (GameObject.Find("HFG40K")).gameObject.GetComponent<SpriteRenderer>();
+        HFGScript = (GameObject.Find("HFG40K")).gameObject.GetComponent<HFG40K>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,7 +42,7 @@ public class HFG40KPickup : MonoBehaviour
         if (other.CompareTag("Player") && HFG40K.transform.parent != WeaponsHolder)
         {
 
-            WeaponsNoti.gameObject.SetActive(true);
+            WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the legendary HFG40K! Hell yeah!";
 
             HFG40K.transform.SetParent(WeaponsHolder);

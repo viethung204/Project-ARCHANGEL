@@ -5,34 +5,44 @@ using UnityEngine.UI;
 
 public class PumpShotgunPickup : MonoBehaviour
 {
-    public GameObject Shotgun;
-    public Transform WeaponsHolder;
+    private GameObject Shotgun;
+    private SpriteRenderer ShotgunSpriteRenderer;
+    private PumpShotgun shotgunScript;
 
-    public WeaponsNotiController WeaponPickupNoti;
-    public Text WeaponsNoti;
+    private Transform WeaponsHolder;
 
-    public SwitchWeapons switchWeapons;
+    private WeaponsNotiController WeaponPickupNoti;
+    private Text WeaponsNoti;
 
-    public WeaponsOrder weaponsOrder;
+    private SwitchWeapons switchWeapons;
+
+    private WeaponsOrder weaponsOrder;
 
     // Start is called before the first frame update
     void Start()
     {
+        WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
-    }
+        switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
 
-    // Update is called once per frame
-    void Update()
-    {
+        weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
 
+        WeaponPickupNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
+
+        WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
+
+        Shotgun = GameObject.Find("PumpShotgun");
+        ShotgunSpriteRenderer = (GameObject.Find("PumpShotgun")).gameObject.GetComponent<SpriteRenderer>();
+        shotgunScript = (GameObject.Find("PumpShotgun")).gameObject.GetComponent<PumpShotgun>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Shotgun.transform.parent != WeaponsHolder)
         {
-
-            WeaponsNoti.gameObject.SetActive(true);
+            shotgunScript.enabled = true;
+            ShotgunSpriteRenderer.enabled = true;
+            WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Shotgun!";
 
             Shotgun.transform.SetParent(WeaponsHolder);

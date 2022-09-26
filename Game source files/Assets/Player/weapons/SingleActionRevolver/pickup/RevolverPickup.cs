@@ -7,33 +7,43 @@ using UnityEngine.UI;
 public class RevolverPickup : MonoBehaviour
 {
     public GameObject Revolver;
-    public Transform WeaponsHolder;
+    private SpriteRenderer RevolverSpriteRenderer;
+    private RevolverScript revolverScript;
 
-    public WeaponsNotiController WeaponPickupNoti;
-    public Text WeaponsNoti;
+    private Transform WeaponsHolder;
 
-    public SwitchWeapons switchWeapons;
 
-    public WeaponsOrder weaponsOrder;
+    private WeaponsNotiController WeaponPickupNoti;
+    private Text WeaponsNoti;
+
+    private SwitchWeapons switchWeapons;
+
+    private WeaponsOrder weaponsOrder;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
+
+        weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
+
+        WeaponPickupNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
+
+        WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
+
+        Revolver = GameObject.Find("Revolver");
+        RevolverSpriteRenderer = (GameObject.Find("Revolver")).gameObject.GetComponent<SpriteRenderer>();
+        revolverScript = (GameObject.Find("Revolver")).gameObject.GetComponent<RevolverScript>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Revolver.transform.parent != WeaponsHolder)
         {
-           
-            WeaponsNoti.gameObject.SetActive(true);
+
+            WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Revolver!";
 
             Revolver.transform.SetParent(WeaponsHolder);

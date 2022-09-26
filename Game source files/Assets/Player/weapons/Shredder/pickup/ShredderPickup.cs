@@ -6,38 +6,46 @@ using UnityEngine.UI;
 public class ShredderPickup : MonoBehaviour
 {
     public GameObject Shredder;
-    public Transform WeaponsHolder;
+    private SpriteRenderer ShredderSpriteRenderer;
+    private Shredder shredderScript;
 
-    public WeaponsNotiController WeaponPickupNoti;
-    public Text WeaponsNoti;
+    private Transform WeaponsHolder;
 
-    public SwitchWeapons switchWeapons;
+    private WeaponsNotiController WeaponPickupNoti;
+    private Text WeaponsNoti;
 
-    public WeaponsOrder weaponsOrder;
+    private SwitchWeapons switchWeapons;
+
+    private WeaponsOrder weaponsOrder;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
-    }
+        switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
 
-    // Update is called once per frame
-    void Update()
-    {
+        weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
 
+        WeaponPickupNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
+
+        WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
+
+        Shredder = GameObject.Find("Shredder");
+        ShredderSpriteRenderer = (GameObject.Find("Shredder")).gameObject.GetComponent<SpriteRenderer>();
+        shredderScript = (GameObject.Find("Shredder")).gameObject.GetComponent<Shredder>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Shredder.transform.parent != WeaponsHolder)
         {
-
-            WeaponsNoti.gameObject.SetActive(true);
+            WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Shredder!";
 
-            Shredder.transform.SetParent(WeaponsHolder);
 
+            Shredder.transform.SetParent(WeaponsHolder);
 
             weaponsOrder.Reoder();
 
@@ -60,4 +68,6 @@ public class ShredderPickup : MonoBehaviour
             return;
         }
     }
+
+
 }
