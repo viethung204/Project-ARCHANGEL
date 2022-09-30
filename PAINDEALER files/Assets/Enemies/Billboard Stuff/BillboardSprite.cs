@@ -4,7 +4,7 @@ using System.Collections;
 public class BillboardSprite : MonoBehaviour
 {
 
-    public Transform MyCameraTransform;
+    private Transform MyCameraTransform;
     private Transform MyTransform;
     public bool alignNotLook = true;
     float lockPos = 0;

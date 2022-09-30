@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GrenadeLauncherPickup : MonoBehaviour
 {
-    public GameObject GrenadeLauncher;
+    private GameObject GrenadeLauncher;
 
 
     private Transform WeaponsHolder;
@@ -17,7 +17,6 @@ public class GrenadeLauncherPickup : MonoBehaviour
 
     private WeaponsOrder weaponsOrder;
 
-    private MeshRenderer tint;
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +34,12 @@ public class GrenadeLauncherPickup : MonoBehaviour
 
         GrenadeLauncher = GameObject.Find("GrenadeLauncher");
 
-        tint = (GameObject.Find("Tint")).gameObject.GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && GrenadeLauncher.transform.parent != WeaponsHolder)
         {
-            tint.enabled = true;
             GrenadeLauncher.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Grenade Laucher!";
@@ -62,7 +59,6 @@ public class GrenadeLauncherPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && GrenadeLauncher.transform.parent == WeaponsHolder)
         {
-            tint.enabled = true;
             ammoManager.GLInvAmmo += 6;
             Destroy(gameObject);
         }

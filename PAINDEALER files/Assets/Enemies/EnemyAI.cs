@@ -8,15 +8,15 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemyAI : MonoBehaviour
 {
     public float RunningSpeed;
-    public Transform TargetTransform;
+    private Transform TargetTransform;
     public float RotationSpeed;
     public float minimumDistance;
     public float maximumDistance;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
     }
 
     //Note bcuz 4 some reason I get confused by this: minimumDistance < currentDistance < maximumDistance

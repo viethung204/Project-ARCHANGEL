@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimatedBillboardShaderSprite : MonoBehaviour {
 
     public int directions = 8;
-    public Camera MainCamera;
+    private Camera MainCamera;
     public bool MirrorLeft = true;
     SpriteRenderer m_SpriteRenderer;
     Animator m_Anim;

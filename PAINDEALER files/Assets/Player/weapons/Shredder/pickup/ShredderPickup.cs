@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShredderPickup : MonoBehaviour
 {
-    public GameObject Shredder;
+    private GameObject Shredder;
 
 
     private Transform WeaponsHolder;
@@ -18,7 +18,6 @@ public class ShredderPickup : MonoBehaviour
 
     private WeaponsOrder weaponsOrder;
 
-    private MeshRenderer tint;
 
 
     // Start is called before the first frame update
@@ -36,14 +35,14 @@ public class ShredderPickup : MonoBehaviour
 
         Shredder = GameObject.Find("Shredder");
 
-        tint = (GameObject.Find("Tint")).gameObject.GetComponent<MeshRenderer>();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Shredder.transform.parent != WeaponsHolder)
         {
-            tint.enabled = true;
+
             Shredder.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Shredder!";
@@ -63,7 +62,7 @@ public class ShredderPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Shredder.transform.parent == WeaponsHolder)
         {
-            tint.enabled = true;
+
             ammoManager.ShredderInvAmmo += 50;
             Destroy(gameObject);
         }

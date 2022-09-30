@@ -17,7 +17,6 @@ public class RevolverPickup : MonoBehaviour
 
     private WeaponsOrder weaponsOrder;
 
-    private MeshRenderer tint;
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +34,13 @@ public class RevolverPickup : MonoBehaviour
 
         Revolver = GameObject.Find("Revolver");
 
-        tint = (GameObject.Find("Tint")).gameObject.GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Revolver.transform.parent != WeaponsHolder)
         {
-            tint.enabled = true;
+
             Revolver.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Revolver!";
@@ -63,7 +61,7 @@ public class RevolverPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Revolver.transform.parent == WeaponsHolder)
         {
-            tint.enabled = true;
+
             ammoManager.RevolverInvAmmo += 12;
             Destroy(gameObject);
         }

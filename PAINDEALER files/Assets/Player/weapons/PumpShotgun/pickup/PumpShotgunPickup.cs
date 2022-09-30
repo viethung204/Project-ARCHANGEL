@@ -17,7 +17,7 @@ public class PumpShotgunPickup : MonoBehaviour
 
     private WeaponsOrder weaponsOrder;
 
-    private MeshRenderer tint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +35,13 @@ public class PumpShotgunPickup : MonoBehaviour
 
         Shotgun = FindInActiveObjectByName("PumpShotgun");
 
-        tint = (GameObject.Find("Tint")).gameObject.GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Shotgun.transform.parent != WeaponsHolder)
         {
-            tint.enabled = true;
+
             Shotgun.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Shotgun!";
@@ -60,7 +59,6 @@ public class PumpShotgunPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Shotgun.transform.parent == WeaponsHolder)
         {
-            tint.enabled = true;
             ammoManager.ShotgunInvAmmo += 10;
             Destroy(gameObject);
         }

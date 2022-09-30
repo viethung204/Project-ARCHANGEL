@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class A1ShotgunPickup: MonoBehaviour
 {
-    public GameObject A1Shotgun;
+    private GameObject A1Shotgun;
 
 
     private Transform WeaponsHolder;
@@ -17,12 +17,10 @@ public class A1ShotgunPickup: MonoBehaviour
 
     private WeaponsOrder weaponsOrder;
 
-    private MeshRenderer tint;
 
     // Start is called before the first frame update
     void Start()
     {
-        tint.enabled = true;
         ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
 
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
@@ -35,15 +33,12 @@ public class A1ShotgunPickup: MonoBehaviour
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
         A1Shotgun = GameObject.Find("DBRShotgun");
-
-        tint = (GameObject.Find("Tint")).gameObject.GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && A1Shotgun.transform.parent != WeaponsHolder)
         {
-            tint.enabled = true;
             A1Shotgun.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the A1 Shotgun!";

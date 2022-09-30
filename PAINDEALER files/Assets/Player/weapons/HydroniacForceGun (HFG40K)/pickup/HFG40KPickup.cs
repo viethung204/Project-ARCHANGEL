@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HFG40KPickup : MonoBehaviour
 {
-    public GameObject HFG40K;
+    private GameObject HFG40K;
 
     private Transform WeaponsHolder;
     private AmmoManager ammoManager;
@@ -16,7 +16,6 @@ public class HFG40KPickup : MonoBehaviour
 
     private WeaponsOrder weaponsOrder;
 
-    private MeshRenderer tint;
 
 
     // Start is called before the first frame update
@@ -34,7 +33,6 @@ public class HFG40KPickup : MonoBehaviour
 
         HFG40K = FindInActiveObjectByName("HFG40K");
 
-        tint = (GameObject.Find("Tint")).gameObject.GetComponent<MeshRenderer>();
 
     }
 
@@ -42,7 +40,6 @@ public class HFG40KPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && HFG40K.transform.parent != WeaponsHolder)
         {
-            tint.enabled = true;
             HFG40K.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the legendary HFG40K! Hell yeah!";
@@ -60,7 +57,6 @@ public class HFG40KPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && HFG40K.transform.parent == WeaponsHolder)
         {
-            tint.enabled = true;
             ammoManager.CoreInvAmmo += 2;
             Destroy(gameObject);
         }

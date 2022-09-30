@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 public class Health : MonoBehaviour
 {
     public float health = 50f;
-    public Animator EnemyAnimator;
-    public Transform Player;
+    private Animator EnemyAnimator;
+    private Transform Player;
     public float deceleration = 1.5f;
     public float travelSpeed = 1.5f;
 
@@ -16,6 +16,12 @@ public class Health : MonoBehaviour
     /*public BoxCollider Collider;
     public float newColliderX;
     public float newColliderY;*/
+
+    private void Start()
+    {
+        EnemyAnimator = this.gameObject.GetComponent<Animator>();
+        Player = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
+    }
 
     public void TakeDamage(float amount)
     {
