@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 6600739415274408205}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0d0e19693e936b145938d0d5a4aa63d4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 148676fb86d5f9b4483c67a861220d33, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -122,8 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions: 8
-  MainCamera: {fileID: 0}
-  MirrorLeft: 0
+  MirrorLeft: 1
 --- !u!114 &1000576412572438997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,9 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 15
   deceleration: 1.5
   travelSpeed: 1.5
+  gibThreshold: -5
 --- !u!65 &1000576412572438999
 BoxCollider:
   m_ObjectHideFlags: 0

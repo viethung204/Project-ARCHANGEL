@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2120649916944733586}
   - component: {fileID: 2120649916944733584}
   - component: {fileID: 2120649916944733587}
+  - component: {fileID: 1522069167}
   m_Layer: 0
   m_Name: Azazel
   m_TagString: Enemy
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28f515422b9ca4949b6581d33e42a2a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ddd8a14bf9b5b744917c0a061a634b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.82, y: 1.07}
+  m_Size: {x: 3.28, y: 4.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 5410587497860812106}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0d0e19693e936b145938d0d5a4aa63d4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 675b670f6be934d45aded24f3d7354a8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -122,8 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions: 8
-  MainCamera: {fileID: 0}
-  MirrorLeft: 0
+  MirrorLeft: 1
 --- !u!114 &2120649916944733586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,9 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 125
   deceleration: 1.5
   travelSpeed: 1.5
+  gibThreshold: -1000
 --- !u!65 &2120649916944733584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5410587497860812106}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -168,3 +169,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &1522069167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410587497860812106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201e85f8facaeba4d942eb969f68009e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

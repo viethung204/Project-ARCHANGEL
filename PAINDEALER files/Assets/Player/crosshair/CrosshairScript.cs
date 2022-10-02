@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class CrosshairScript : MonoBehaviour
 {
     public Image reticle;
+    public Color altReticleColor;
 
 
     private void Start()
@@ -16,7 +17,7 @@ public class CrosshairScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 50f) && hit.transform.gameObject.CompareTag("Enemy"))
         {
-                reticle.color = new Color(1, 0.92f, 0.016f, 1f);   
+            reticle.color = altReticleColor;   
         }
         else
         {

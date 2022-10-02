@@ -1756,7 +1756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9a5317370a7ad47b4a0e66e6c88c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 5
   range: 100
   PlayerCam: {fileID: 963194227}
   CurrentAmmo: 1
@@ -1774,8 +1774,8 @@ MonoBehaviour:
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: a29686fd706f19e41b0b9214aee421ec, type: 3}
   speed: {fileID: 1968169360}
-  maxSpread: 0.1
-  pellets: 12
+  maxSpread: 0.2
+  pellets: 7
 --- !u!82 &734918416
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659fac443a2002745986f9d94118521e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 5
   range: 50
   PlayerCam: {fileID: 963194227}
   CurrentAmmo: 2
@@ -3528,12 +3528,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227944884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e6dab243cff79b41bdb9bea9de2fa41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   reticle: {fileID: 1104065376}
+  altReticleColor: {r: 1, g: 1, b: 0, a: 1}
 --- !u!1 &980811514
 GameObject:
   m_ObjectHideFlags: 0
@@ -4150,7 +4151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a23acc49537e6499561bf4118a0d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 500
   range: 100
   PlayerCam: {fileID: 963194227}
   animator: {fileID: 1166326085}
@@ -4784,7 +4785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c65c6113aa1a494cbbcfac51c2f0b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 7
+  damage: 5
   range: 100
   PlayerCam: {fileID: 963194227}
   RevolverCurrentAmmo: 6
@@ -6745,8 +6746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b37432149e3d5488aba3dce4cf92d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 11
-  runningSpeed: 11.5
+  walkingSpeed: 100
+  runningSpeed: 100
   jumpSpeed: 0
   gravity: 20
   playerCamera: {fileID: 963194227}
@@ -6783,6 +6784,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 800903967}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: gibThreshold
+      value: -1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2309134224403236116, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Mass
       value: 10000
@@ -6801,7 +6806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7509788
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6852,14 +6857,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 557526327}
     m_Modifications:
-    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 800903967}
-    - target: {fileID: 6413818554257791449, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 963194227}
     - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7080,6 +7077,10 @@ PrefabInstance:
     - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: deceleration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: gibThreshold
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: EnemyAnimator

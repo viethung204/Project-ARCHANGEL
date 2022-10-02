@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4fb7e6d2ffb4047a50ee305069ac41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyCameraTransform: {fileID: 0}
   alignNotLook: 1
 --- !u!114 &7492755500718162729
 MonoBehaviour:
@@ -142,8 +141,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 0.907
   audio: {fileID: -4144076407051310591}
-  blastDamage: 100
+  blastDamage: 500
   radius: 50
+  killDelay: 0.7
 --- !u!82 &-4144076407051310591
 AudioSource:
   m_ObjectHideFlags: 0
