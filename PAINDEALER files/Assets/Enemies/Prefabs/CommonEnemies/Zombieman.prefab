@@ -152,6 +152,7 @@ MonoBehaviour:
   deceleration: 1
   travelSpeed: 1.5
   gibThreshold: -1000
+  chanceForHurtAnimation: 10
 --- !u!54 &2309134224403236116
 Rigidbody:
   m_ObjectHideFlags: 0
