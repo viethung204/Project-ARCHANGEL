@@ -43,6 +43,7 @@ public class GrenadeProjectileScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //For BLAST DAMAGE 
     void ExplodeRadius()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
