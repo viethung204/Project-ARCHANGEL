@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class LightInteractable : MonoBehaviour
 {
     public UnityEvent onInteract;
-    new Light light;
+    new GameObject light;
     SpriteRenderer spriteRenderer;
     public Sprite On;
     public Sprite Off;
@@ -16,7 +16,7 @@ public class LightInteractable : MonoBehaviour
 
     private void Start()
     {
-        light = gameObject.GetComponent<Light>();
+        light = gameObject.transform.GetChild(0).gameObject;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -25,16 +25,16 @@ public class LightInteractable : MonoBehaviour
         //cant be if if because you will turn it off than turn it back on immediately when interact, since it executes by order of writing
         //why am i writing this, this is literally the basic lmao
 
-        if(light.enabled == true)
+        if(light.activeSelf == true)
         {
-            light.enabled = false;
+            light.SetActive(false);
             spriteRenderer.sprite = Off;
             AudioSource.PlayClipAtPoint(OffAudio, gameObject.transform.position);
             
         }
-        else if(light.enabled == false)
+        else if(light.activeSelf == false)
         {
-            light.enabled = true;
+            light.SetActive(true);
             spriteRenderer.sprite = On;
             AudioSource.PlayClipAtPoint(OnAudio, gameObject.transform.position);
         }
