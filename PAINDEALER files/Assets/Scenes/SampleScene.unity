@@ -866,7 +866,6 @@ MonoBehaviour:
   EmptyClick: {fileID: 239036384}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: 2fd104c3baea4834b8a1e7c8405c2997, type: 3}
-  speed: {fileID: 1968169360}
   grenadeProjectile: {fileID: 4450485938580408121, guid: bfc8f5f06c5120241bd38789e52b8522, type: 3}
   SpawnLocation: {fileID: 52657161}
   throwForce: 17
@@ -2022,7 +2021,6 @@ MonoBehaviour:
   ammoType: {fileID: 200797088}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: a29686fd706f19e41b0b9214aee421ec, type: 3}
-  speed: {fileID: 1968169360}
   maxSpread: 0.2
   pellets: 7
 --- !u!82 &734918416
@@ -3173,7 +3171,6 @@ MonoBehaviour:
   ammoType: {fileID: 200797088}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: a29686fd706f19e41b0b9214aee421ec, type: 3}
-  speed: {fileID: 1968169360}
   maxSpread: 0.1
   pellets: 24
 --- !u!212 &873368555
@@ -3462,7 +3459,6 @@ MonoBehaviour:
   ammoType: {fileID: 200797088}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: 0d0516f732a9c784c8f4215cbea6cdc9, type: 3}
-  speed: {fileID: 1968169360}
 --- !u!114 &883899734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4372,7 +4368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1166326083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4493,9 +4489,9 @@ MonoBehaviour:
   EmptyClick: {fileID: 1166326092}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: 9e2d7f88eab249f4ab2ad05999f2dd66, type: 3}
-  speed: {fileID: 1968169360}
   ECoreProjectile: {fileID: 7948019718669121248, guid: cde921cbda312704c8fd5e3bbe794a5c, type: 3}
   SpawnLocation: {fileID: 510485584}
+  throwForce: 20
   RecoilScript: {fileID: 2066734074}
 --- !u!82 &1166326089
 AudioSource:
@@ -5318,7 +5314,6 @@ MonoBehaviour:
   EmptyClick: {fileID: 1399607670}
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: 4924db3f233477a4ea481659427c1b28, type: 3}
-  speed: {fileID: 1968169360}
 --- !u!82 &1399607670
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6997,7 +6992,6 @@ MonoBehaviour:
   UICrosshair: {fileID: 1104065376}
   crosshair: {fileID: 21300000, guid: eaf4a1c4a1945dc45a5cc92b26cb5d22, type: 3}
   revvingSound: {fileID: 1938207260}
-  speed: {fileID: 1968169360}
   RecoilScript: {fileID: 2066734074}
 --- !u!82 &1938207256
 AudioSource:
@@ -7458,9 +7452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b37432149e3d5488aba3dce4cf92d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 100
-  runningSpeed: 100
-  jumpSpeed: 0
+  walkingSpeed: 11
+  runningSpeed: 11
+  jumpSpeed: 9
   gravity: 20
   playerCamera: {fileID: 963194227}
   lookSpeed: 2

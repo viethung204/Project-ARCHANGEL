@@ -25,7 +25,6 @@ public class GrenadeLauncher : MonoBehaviour
     public AudioSource EmptyClick;
     public Image UICrosshair;
     public Sprite crosshair;
-    public SC_FPSController speed;
     int GLInvAmmo;
 
     public GameObject grenadeProjectile;
@@ -57,9 +56,6 @@ public class GrenadeLauncher : MonoBehaviour
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(90f, 90f);
-
-        speed.walkingSpeed = 11.5f;
-        speed.runningSpeed = 11.5f;
 
         RecoilScript.RecoilX = -1f;
         RecoilScript.RecoilY = 1f;

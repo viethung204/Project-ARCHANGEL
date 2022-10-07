@@ -25,11 +25,12 @@ public class HFG40K : MonoBehaviour
     public AudioSource EmptyClick;
     public Image UICrosshair;
     public Sprite crosshair;
-    public SC_FPSController speed;
     int CoreInvAmmo;
 
     public GameObject ECoreProjectile;
     public GameObject SpawnLocation;
+
+    public float throwForce;
 
     public Recoil RecoilScript;
 
@@ -55,20 +56,11 @@ public class HFG40K : MonoBehaviour
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
-        speed.walkingSpeed = 7f;
-        speed.runningSpeed = 7f;
-
         RecoilScript.RecoilX = -5f;
         RecoilScript.RecoilY = 0;
         RecoilScript.RecoilZ = .35f;
         RecoilScript.snappiness = 9f;
         RecoilScript.returnSpeed = 4f;
-
-        if (isPlaying(animator, "shoot"))
-        {
-            speed.walkingSpeed = 5f;
-            speed.runningSpeed = 5f;
-        }
 
         animator.SetInteger("ammo", CoreInvAmmo);
 
@@ -104,8 +96,18 @@ public class HFG40K : MonoBehaviour
     //animation first, projectile comes later
     IEnumerator WaitAnim()
     {
-        yield return new WaitForSeconds(0.9f);
-        Instantiate(ECoreProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+        yield return new WaitForSeconds(0.6f);
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(ECoreProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = SpawnLocation.transform.forward * throwForce;
+
+        //apply the force
+        projectileRb.AddForce(force, ForceMode.Impulse);
         CoreInvAmmo -= 1;
         RecoilScript.RecoilFire();
     }

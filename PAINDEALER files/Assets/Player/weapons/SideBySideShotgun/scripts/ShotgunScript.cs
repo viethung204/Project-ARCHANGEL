@@ -29,7 +29,6 @@ public class ShotgunScript : MonoBehaviour
     public Text ammoType;
     public Image UICrosshair;
     public Sprite crosshair;
-    public SC_FPSController speed;
     
 
     public float maxSpread;
@@ -49,9 +48,6 @@ public class ShotgunScript : MonoBehaviour
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(90f, 90f);
-
-        speed.walkingSpeed = 11.5f;
-        speed.runningSpeed = 11.5f;
 
 
         if (Input.GetButtonDown("Fire1"))

@@ -28,7 +28,6 @@ public class Shredder : MonoBehaviour
     public Image UICrosshair;
     public Sprite crosshair;
     public AudioSource revvingSound;
-    public SC_FPSController speed;
 
     private float NextTimeToShot = 0f;
 
@@ -54,24 +53,12 @@ public class Shredder : MonoBehaviour
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
-        RecoilScript.RecoilX = -10f;
-        RecoilScript.RecoilY = 10f;
+        RecoilScript.RecoilX = -5f;
+        RecoilScript.RecoilY = 5f;
         RecoilScript.RecoilZ = .35f;
         RecoilScript.snappiness = 6f;
         RecoilScript.returnSpeed = 2f;
 
-        if(Input.GetButton("Fire1") && ShredderInvAmmo > 0)
-        {
-            speed.walkingSpeed = 5f;
-            speed.runningSpeed = 5f;
-            speed.lookSpeed = 0.5f;
-        }
-        else
-        {
-            speed.walkingSpeed = 7f;
-            speed.runningSpeed = 7f;
-            speed.lookSpeed = 2f;
-        }
 
         if (Input.GetButton("Fire1") &&  Time.time > NextTimeToShot)
         {
