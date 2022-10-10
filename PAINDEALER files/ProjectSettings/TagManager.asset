@@ -6,18 +6,19 @@ TagManager:
   tags:
   - Enemy
   - Environment
+  - esad
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
-  - 
+  - esad
   - 
   - interactable
-  - 
-  - 
+  - toxicGlow
+  - noGlow
   - 
   - 
   - 

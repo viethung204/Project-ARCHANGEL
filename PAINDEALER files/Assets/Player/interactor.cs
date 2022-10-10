@@ -12,7 +12,7 @@ public class interactor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             RaycastHit raycasthit;
             if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out raycasthit, interactRange, interactable))
@@ -20,6 +20,21 @@ public class interactor : MonoBehaviour
                 if(raycasthit.collider.GetComponent<LightInteractable>() != null)
                 {
                     onInteract = raycasthit.collider.GetComponent<LightInteractable>().onInteract;
+                    onInteract.Invoke();
+                }
+                if(raycasthit.collider.GetComponent<multiSwitchInteractable>() != null)
+                {
+                    onInteract = raycasthit.collider.GetComponent<multiSwitchInteractable>().onInteract;
+                    onInteract.Invoke();
+                }
+                if (raycasthit.collider.GetComponent<singularSwitchInteractable>() != null)
+                {
+                    onInteract = raycasthit.collider.GetComponent<singularSwitchInteractable>().onInteract;
+                    onInteract.Invoke();
+                }
+                if (raycasthit.collider.GetComponent<ManualDoorBehaviour>() != null)
+                {
+                    onInteract = raycasthit.collider.GetComponent<ManualDoorBehaviour>().onInteract;
                     onInteract.Invoke();
                 }
             }
