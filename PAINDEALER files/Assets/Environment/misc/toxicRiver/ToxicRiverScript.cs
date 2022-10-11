@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ToxicRiverScript : MonoBehaviour
 {
-     playerHealth healthScript;
+    playerHealth healthScript;
     public Collider playerCollider;
     float collideTimer = 0; // timer, starts when the player first collides with the river
-    int timeDMG = 3; //the amount of time player can stay on river b4 take damage;
+    int timeDMG = 2; //the amount of time player can stay on river b4 take damage;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class ToxicRiverScript : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.collider == playerCollider)
+        if (collision.collider == playerCollider && healthScript.BioSuit == false)
         {
             if(collideTimer < timeDMG)
             {

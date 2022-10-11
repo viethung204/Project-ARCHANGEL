@@ -6,34 +6,48 @@ using UnityEngine.UI;
 public class playerHealth : MonoBehaviour
 {
     public float Health = 100f;
-    //float Armor = 100;
-    //Text armorText;
+    public float Armor = 100f;
+    Text armorText;
     Text healthText;
-    Animator playerAnimator;
+    public Animator playerAnimator;
     Image HealthIndicator;
     Image ArmorIndicator;
+    public bool BioSuit = false;
+
+    DieNDeadScript dieScript;
 
     // Start is called before the first frame update
     void Start()
     {
         healthText = GameObject.Find("healthText").GetComponent<Text>();
-        playerAnimator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+        armorText = GameObject.Find("ArmorText").GetComponent<Text>();
+        ArmorIndicator = GameObject.Find("ArmorIndicator").GetComponent<Image>();
         HealthIndicator = GameObject.Find("healthIndicator").GetComponent<Image>();
+        dieScript = gameObject.GetComponent<DieNDeadScript>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (BioSuit == true)
+        {
+            StartCoroutine(Dissolve());
+        }
+
         healthText.text = Health.ToString();
         HealthIndicator.fillAmount = Health/100;
-        if (Health < 0)
+        armorText.text = Armor.ToString();
+        ArmorIndicator.fillAmount = Armor / 100;
+        if (Health <= 0)
         {
             Health = 0;
-            Die();
+            dieScript.Dead();
         }
         if(Health > 100)
         {
             Health = 100;
+            
         }
         if(Health <= 50)
         {
@@ -43,11 +57,16 @@ public class playerHealth : MonoBehaviour
         {
             healthText.color = Color.red;
         }
+        if (Health > 50)
+        {
+            healthText.color = Color.white;
+        }
         
     }
 
-    void Die()
+    IEnumerator Dissolve()
     {
-        playerAnimator.SetBool("dead", true);
+        yield return new WaitForSeconds(30f);
+        BioSuit = false;
     }
 }
