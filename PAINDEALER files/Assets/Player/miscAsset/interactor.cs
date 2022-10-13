@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class interactor : MonoBehaviour
 {
     public LayerMask interactable;
     UnityEvent onInteract;
     private float interactRange = 2;
+    public bool redKey = false;
+    public bool blueKey = false;
+    public bool greenKey = false;
+    public bool yellowKey = false;
+
+    private WeaponsNotiController WeaponsNoti;
+
+    private void Start()
+    {
+        WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -42,4 +54,6 @@ public class interactor : MonoBehaviour
 
 
     }
+
+
 }

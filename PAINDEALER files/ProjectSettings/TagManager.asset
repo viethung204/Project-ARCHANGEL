@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Environment
   - esad
+  - pickup
   layers:
   - Default
   - TransparentFX

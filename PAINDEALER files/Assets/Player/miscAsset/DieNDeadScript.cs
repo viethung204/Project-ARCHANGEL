@@ -12,8 +12,10 @@ public class DieNDeadScript : MonoBehaviour
     private Transform RespawnPoint;
 
     public GameObject dieFilter;
+    public GameObject UI;
 
     playerHealth playerhealth;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class DieNDeadScript : MonoBehaviour
         RespawnPoint = GameObject.Find("respawnPoint").GetComponent<Transform>();
         player = GameObject.Find("FPSPlayer").GetComponent<Transform>();
         playerhealth = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<playerHealth>();
+        UI = GameObject.Find("Canvas");
 
     }
 
@@ -35,29 +38,25 @@ public class DieNDeadScript : MonoBehaviour
 
     public void Dead()
     {
+        UI.SetActive(false);
         controller.canMove = false;
         playerAnimator.SetBool("dead", true);
         WeaponsHolder.SetActive(false);
-        StartCoroutine(RespawnDelay());
-        Respawn();
+        StartCoroutine(Respawn());
+        
         
     }
 
-    void Respawn()
-    { 
-       
-        controller.canMove = true;
-
-        WeaponsHolder.SetActive(true);
-        dieFilter.SetActive(false);
-    }
-
-    IEnumerator RespawnDelay()
+    IEnumerator Respawn()
     {
         yield return new WaitForSeconds(5f);
         playerAnimator.SetBool("dead", false);
+        playerAnimator.SetBool("live", true);
         player.transform.position = RespawnPoint.transform.position;
         Physics.SyncTransforms();
         playerhealth.Health = 100;
+        controller.canMove = true;
+        WeaponsHolder.SetActive(true);
+        UI.SetActive(true);
     }
 }

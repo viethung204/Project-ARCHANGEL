@@ -12,7 +12,7 @@ public class PumpShotgunPickup : MonoBehaviour
     private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
-
+    private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
@@ -30,7 +30,7 @@ public class PumpShotgunPickup : MonoBehaviour
 
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
 
-
+        notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
         Shotgun = FindInActiveObjectByName("PumpShotgun");
@@ -45,7 +45,7 @@ public class PumpShotgunPickup : MonoBehaviour
             Shotgun.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Shotgun!";
-
+            notification.textTimer = 0;
             Shotgun.transform.SetParent(WeaponsHolder);
             weaponsOrder.Reoder();
 

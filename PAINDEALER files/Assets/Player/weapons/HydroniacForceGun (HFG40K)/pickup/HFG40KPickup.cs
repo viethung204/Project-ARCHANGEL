@@ -11,7 +11,7 @@ public class HFG40KPickup : MonoBehaviour
     private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
-
+    private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
@@ -28,7 +28,7 @@ public class HFG40KPickup : MonoBehaviour
         switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
 
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
-
+        notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
         HFG40K = FindInActiveObjectByName("HFG40K");
@@ -43,7 +43,7 @@ public class HFG40KPickup : MonoBehaviour
             HFG40K.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the legendary HFG40K! Hell yeah!";
-
+            notification.textTimer = 0;
             HFG40K.transform.SetParent(WeaponsHolder);
 
             weaponsOrder.Reoder();

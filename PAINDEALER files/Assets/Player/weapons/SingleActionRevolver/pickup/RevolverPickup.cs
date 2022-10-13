@@ -12,7 +12,7 @@ public class RevolverPickup : MonoBehaviour
     private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
-
+    private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
@@ -29,7 +29,7 @@ public class RevolverPickup : MonoBehaviour
 
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
 
-
+        notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
         Revolver = GameObject.Find("Revolver");
@@ -44,7 +44,7 @@ public class RevolverPickup : MonoBehaviour
             Revolver.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Revolver!";
-
+            notification.textTimer = 0;
             Revolver.transform.SetParent(WeaponsHolder);
 
 

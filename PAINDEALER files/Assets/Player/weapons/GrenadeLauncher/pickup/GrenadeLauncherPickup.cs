@@ -12,7 +12,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
     private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
-
+    private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
@@ -29,7 +29,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
 
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
 
-
+        notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
         GrenadeLauncher = GameObject.Find("GrenadeLauncher");
@@ -43,7 +43,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
             GrenadeLauncher.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Grenade Laucher!";
-
+            notification.textTimer = 0;
             GrenadeLauncher.transform.SetParent(WeaponsHolder);
 
 

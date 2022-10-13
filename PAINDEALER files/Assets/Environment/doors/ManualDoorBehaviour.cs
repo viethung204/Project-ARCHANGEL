@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ManualDoorBehaviour : MonoBehaviour
 {
@@ -9,10 +10,15 @@ public class ManualDoorBehaviour : MonoBehaviour
     public Animator animator;
     int animLayer = 0;
 
+    interactor keyCheck;
+    private Text WeaponsNoti;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        keyCheck = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<interactor>();
+        WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
     }
 
     public void OpenDoor()
@@ -20,9 +26,89 @@ public class ManualDoorBehaviour : MonoBehaviour
         if (gameObject.layer == LayerMask.NameToLayer("interactable"))
         {
             animator.SetTrigger("on");
-            //AudioSource.PlayClipAtPoint(SwitchAudio, gameObject.transform.position);
             gameObject.layer = LayerMask.NameToLayer("Default");
 
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            return;
+        }
+
+    }
+
+    public void REDOpenDoor()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.redKey == true)
+        {
+            animator.SetTrigger("on");
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.redKey == false)
+        {
+            WeaponsNoti.enabled = true;
+            WeaponsNoti.text = "You need the RED key";
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            return;
+        }
+
+    }
+
+    public void BLUEOpenDoor()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.blueKey == true)
+        {
+            animator.SetTrigger("on");
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.blueKey == false)
+        {
+            WeaponsNoti.enabled = true;
+            WeaponsNoti.text = "You need the BLUE key";
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            return;
+        }
+
+    }
+
+    public void GREENOpenDoor()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.greenKey == true)
+        {
+            WeaponsNoti.enabled = true;
+            animator.SetTrigger("on");
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.greenKey == false)
+        {
+            WeaponsNoti.enabled = true;
+            WeaponsNoti.text = "You need the GREEN key";
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            return;
+        }
+
+    }
+
+    public void YELLOWOpenDoor()
+    {
+        if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.yellowKey == true)
+        {
+            WeaponsNoti.enabled = true;
+            animator.SetTrigger("on");
+            gameObject.layer = LayerMask.NameToLayer("Default");
+
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.yellowKey == false)
+        {
+            WeaponsNoti.text = "You need the YELLOW key";
         }
         else if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
