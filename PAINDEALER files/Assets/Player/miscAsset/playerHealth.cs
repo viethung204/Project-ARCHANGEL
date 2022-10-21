@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class playerHealth : MonoBehaviour
 {
     public float Health = 100f;
+    private float m_Health;
     public float Armor = 100f;
     Text armorText;
     Text healthText;
@@ -15,6 +16,7 @@ public class playerHealth : MonoBehaviour
     public bool BioSuit = false;
 
     DieNDeadScript dieScript;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,18 @@ public class playerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_Health = Health;
+
+        if (m_Health < Health)
+        {
+            Debug.Log("decrease");
+        }
+
+        if(m_Health > Health)
+        {
+            Debug.Log("Increase");
+        }
+
         if (BioSuit == true)
         {
             StartCoroutine(Dissolve());

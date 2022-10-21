@@ -11,7 +11,7 @@ public class BioSuitScript : MonoBehaviour
 
     private void Start()
     {
-        BioSuitCheck = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<playerHealth>();
+        BioSuitCheck = GameObject.Find("Capsule").GetComponent<playerHealth>();
         notiText = GameObject.Find("weaponsNoti").GetComponent<Text>();
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
     }

@@ -11,7 +11,6 @@ public class DieNDeadScript : MonoBehaviour
     private Transform player;
     private Transform RespawnPoint;
 
-    public GameObject dieFilter;
     public GameObject UI;
 
     playerHealth playerhealth;
@@ -22,10 +21,10 @@ public class DieNDeadScript : MonoBehaviour
     {
         controller = GameObject.Find("FPSPlayer").GetComponent<SC_FPSController>();
         WeaponsHolder = GameObject.Find("Weapons Holder");
-        playerAnimator = gameObject.GetComponent<Animator>();
+        playerAnimator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
         RespawnPoint = GameObject.Find("respawnPoint").GetComponent<Transform>();
         player = GameObject.Find("FPSPlayer").GetComponent<Transform>();
-        playerhealth = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<playerHealth>();
+        playerhealth = GameObject.Find("Capsule").GetComponent<playerHealth>();
         UI = GameObject.Find("Canvas");
 
     }

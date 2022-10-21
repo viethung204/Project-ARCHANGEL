@@ -27,17 +27,17 @@ AnimationClip:
       value: {fileID: 21300000, guid: 15159b6d75e7ab4468738fcf17bf3f8a, type: 3}
     - time: 0.23333333
       value: {fileID: 21300000, guid: 1682194df0a3ee24fb0120d5d2e40ac4, type: 3}
-    - time: 0.33333334
+    - time: 0.31666666
       value: {fileID: 21300000, guid: 094e2e860ecd869439e638479d29869e, type: 3}
-    - time: 0.45
+    - time: 0.43333334
       value: {fileID: 21300000, guid: 1759e0ffce44c8f408add8db4edbc531, type: 3}
-    - time: 0.56666666
+    - time: 0.55
       value: {fileID: 21300000, guid: 62524569d7585e8499387b3e8da41c62, type: 3}
-    - time: 0.68333334
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 1759e0ffce44c8f408add8db4edbc531, type: 3}
-    - time: 0.8
+    - time: 0.78333336
       value: {fileID: 21300000, guid: 82f5e2d0ff395c64bac36dfa0e0ba20d, type: 3}
-    - time: 0.9166667
+    - time: 0.9
       value: {fileID: 21300000, guid: 1682194df0a3ee24fb0120d5d2e40ac4, type: 3}
     attribute: m_Sprite
     path: 
@@ -73,7 +73,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.93333334
+    m_StopTime: 0.9166666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -100,7 +100,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.31666666
     functionName: ReloadAudio
     data: 
     objectReferenceParameter: {fileID: 0}

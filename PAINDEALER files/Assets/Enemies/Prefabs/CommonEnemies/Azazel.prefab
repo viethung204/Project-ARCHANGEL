@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2120649916944733584}
   - component: {fileID: 2120649916944733587}
   - component: {fileID: 1522069167}
+  - component: {fileID: 9047217414803461387}
   m_Layer: 0
   m_Name: Azazel
   m_TagString: Enemy
@@ -140,6 +141,7 @@ MonoBehaviour:
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
+  chanceForHurtAnimation: 0
 --- !u!65 &2120649916944733584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -181,3 +183,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201e85f8facaeba4d942eb969f68009e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9047217414803461387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410587497860812106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 40
+  angle: 135
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 1911
+  canSeePlayer: 0

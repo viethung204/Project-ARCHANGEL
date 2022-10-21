@@ -43,6 +43,7 @@ public class Fist : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !isPlaying(animator, "punching") & !isPlaying(animator,"punching2"))
         {
+            chosenNumber = Random.Range(1, 10);
             Shoot();
         }
 
@@ -55,8 +56,6 @@ public class Fist : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        chosenNumber = Random.Range(1, 10);
-
         RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
             {

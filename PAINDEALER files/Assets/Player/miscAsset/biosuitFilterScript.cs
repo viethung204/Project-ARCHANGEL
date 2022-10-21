@@ -9,7 +9,7 @@ public class biosuitFilterScript : MonoBehaviour
 
     private void Start()
     {
-        filterCheck = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<playerHealth>();
+        filterCheck = GameObject.Find("Capsule").GetComponent<playerHealth>();
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
     }
 

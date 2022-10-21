@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5250003270232296585}
   - component: {fileID: 5250003270232296587}
   - component: {fileID: 5250003270232296584}
+  - component: {fileID: 5830320762014735103}
   m_Layer: 0
   m_Name: DuneWarrior
   m_TagString: Enemy
@@ -139,6 +140,7 @@ MonoBehaviour:
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: 5
+  chanceForHurtAnimation: 0
 --- !u!65 &5250003270232296587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,3 +170,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &5830320762014735103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207759271034082385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 40
+  angle: 135
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 1911
+  canSeePlayer: 0

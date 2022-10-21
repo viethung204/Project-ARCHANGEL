@@ -13,7 +13,7 @@ public class healthPickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<playerHealth>();
+        healthScript = GameObject.Find("Capsule").GetComponent<playerHealth>();
         PlayerCamera = Camera.main;
     }
 
@@ -24,7 +24,7 @@ public class healthPickup : MonoBehaviour
             if (healthScript.Health < 100)
             {
                 AudioSource.PlayClipAtPoint(healthPickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
-                healthScript.Health += HealthPU;
+                healthScript.Health += 30;
                 Destroy(gameObject);
             }
             else

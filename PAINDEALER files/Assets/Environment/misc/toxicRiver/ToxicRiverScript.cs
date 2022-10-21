@@ -11,7 +11,7 @@ public class ToxicRiverScript : MonoBehaviour
 
     private void Start()
     {
-        healthScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<playerHealth>();
+        healthScript = GameObject.Find("Capsule").GetComponent<playerHealth>();
     }
 
     private void OnCollisionEnter(Collision collision)
