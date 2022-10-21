@@ -52,6 +52,7 @@ public class RevolverScript : MonoBehaviour
         UICrosshair.GetComponent<Image>().sprite = crosshair;
         UICrosshair.rectTransform.sizeDelta = new Vector2(100f, 100f);
 
+        
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -72,6 +73,7 @@ public class RevolverScript : MonoBehaviour
     {
         if (RevolverCurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
         {
+            ShootSound();
             RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
             {
@@ -80,6 +82,8 @@ public class RevolverScript : MonoBehaviour
                 {
                     health.TakeDamage(damage);
                 }
+
+
             }
             animator.SetTrigger("shoot");
             RevolverCurrentAmmo--;
@@ -146,6 +150,19 @@ public class RevolverScript : MonoBehaviour
         {
             RevolverCurrentAmmo = RevolverCurrentAmmo + RevolverInvAmmo;
             RevolverInvAmmo = 0;
+        }
+    }
+
+    public void ShootSound()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider NearbyObjects in colliders)
+        {
+            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
+            if (hearScript != null && hearScript.enabled == true)
+            {
+                hearScript.shotfired = true;
+            }
         }
     }
 

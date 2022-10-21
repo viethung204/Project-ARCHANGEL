@@ -27,6 +27,8 @@ public class MCGZEnemyAI : MonoBehaviour
     public GetPoint getpoint;
     int animLayer = 0;
 
+    hearing hearing;
+
     // Update is called once per frame
     void Start()
     {
@@ -35,11 +37,15 @@ public class MCGZEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
+        hearing = GetComponent<hearing>();
     }
 
     private void Update()
-    {   if(isPlaying(eAnimator,"Hurt Blend Tree"))
+    {
+        hearing.Alert();
+        if(isPlaying(eAnimator,"Hurt Blend Tree"))
         {
+            RunningSpeed = 0;
             RotationSpeed = 0;
             agent.isStopped = true;
             agent.acceleration = 0;
@@ -47,6 +53,7 @@ public class MCGZEnemyAI : MonoBehaviour
         }
         else
         {
+            RunningSpeed = 5;
             RotationSpeed = 8;
             agent.isStopped = false;
             agent.acceleration = 10;
@@ -77,17 +84,19 @@ public class MCGZEnemyAI : MonoBehaviour
         //enemy activated if player get too close
         if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
         {
-            fovScript.canSeePlayer = true;
+            fovScript.angle = 360f;
         }
 
         if(isPlaying(eAnimator, "AttackingBlendTree"))
         {
+            RotationSpeed = 3;
             agent.isStopped = true;
             agent.acceleration = 0;
             agent.speed = 0;
         }
         else
         {
+            RotationSpeed = 8;
             agent.isStopped = false;
             agent.acceleration = 10;
             agent.speed = 3;

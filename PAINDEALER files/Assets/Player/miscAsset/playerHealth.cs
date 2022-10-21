@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class playerHealth : MonoBehaviour
 {
     public float Health = 100f;
-    private float m_Health;
+    private float m_Health = 100f;
     public float Armor = 100f;
     Text armorText;
     Text healthText;
@@ -17,6 +17,7 @@ public class playerHealth : MonoBehaviour
 
     DieNDeadScript dieScript;
 
+    GameObject hitFilter;
 
     // Start is called before the first frame update
     void Start()
@@ -26,29 +27,28 @@ public class playerHealth : MonoBehaviour
         ArmorIndicator = GameObject.Find("ArmorIndicator").GetComponent<Image>();
         HealthIndicator = GameObject.Find("healthIndicator").GetComponent<Image>();
         dieScript = gameObject.GetComponent<DieNDeadScript>();
-
+        hitFilter = GameObject.Find("hitFilter");
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_Health = Health;
 
-        if (m_Health < Health)
+        if (Health < m_Health)
         {
-            Debug.Log("decrease");
+            GotHurt();
+            m_Health = Health;
         }
-
-        if(m_Health > Health)
+        else if(Health > m_Health)
         {
-            Debug.Log("Increase");
+
+           m_Health = Health;
         }
 
         if (BioSuit == true)
         {
             StartCoroutine(Dissolve());
         }
-
         healthText.text = Health.ToString();
         HealthIndicator.fillAmount = Health/100;
         armorText.text = Armor.ToString();
@@ -63,7 +63,15 @@ public class playerHealth : MonoBehaviour
             Health = 100;
             
         }
-        if(Health <= 50)
+
+        //have to set a cap because if you have like, say 90 health, and you picked up a health pack that add 30, then Health would be 130 -> m_Health = 130 then Health go down to 100 while
+        //m_Health is still 130, which then trigger the Health < m_Health event before m_Health go down to 100
+        if (m_Health > 100)
+        {
+            m_Health = 100;
+
+        }
+        if (Health <= 50)
         {
             healthText.color = Color.yellow;
         }
@@ -82,5 +90,12 @@ public class playerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(30f);
         BioSuit = false;
+    }
+
+    void GotHurt()
+    {
+        var color = hitFilter.GetComponent<Image>().color;
+        color.a = 0.6f;
+        hitFilter.GetComponent<Image>().color = color;
     }
 }
