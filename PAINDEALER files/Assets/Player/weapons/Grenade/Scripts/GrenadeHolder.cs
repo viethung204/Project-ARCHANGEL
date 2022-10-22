@@ -60,14 +60,14 @@ public class GrenadeHolder : MonoBehaviour
     {
         weaponsHolder.SetActive(false);
         grenadeHolder.SetActive(true);
-        yield return new WaitForSeconds(1.940f);
+        yield return new WaitForSeconds(1.3f);
         grenadeHolder.SetActive(false);
         weaponsHolder.SetActive(true);
     }
 
     IEnumerator throwingGrenade()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         ThrowGrenade();
     }
 

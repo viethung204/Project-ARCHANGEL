@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -321,7 +321,7 @@ Transform:
   - {fileID: 992536882}
   - {fileID: 1211006670}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &52657161
 GameObject:
@@ -1178,7 +1178,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 393154022034833072, guid: fa8387934c15d3145a1df1b20f2c624e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 393154022034833072, guid: fa8387934c15d3145a1df1b20f2c624e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,7 +1376,7 @@ GameObject:
   m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &194456230
 MeshCollider:
@@ -1455,7 +1455,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200797086
 GameObject:
@@ -1619,7 +1619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &216291722
 PrefabInstance:
@@ -4428,18 +4428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 557526327}
     m_Modifications:
-    - target: {fileID: -1891882223363682214, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 800903967}
-    - target: {fileID: 1510575326, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6413818554257791449, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
-      propertyPath: MainCamera
-      value: 
-      objectReference: {fileID: 963194227}
     - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4487,6 +4475,10 @@ PrefabInstance:
     - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Name
       value: 'Zombieman '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
@@ -5066,6 +5058,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
+--- !u!1001 &478581882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -43.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.817
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791451, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_Name
+      value: Zombieman
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
 --- !u!4 &489105037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4441134068070651748, guid: 7addffb34838ad0498d25a578327f3c4, type: 3}
@@ -5826,7 +5875,7 @@ Transform:
   - {fileID: 747172184}
   - {fileID: 413983163}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &559245768 stripped
 Transform:
@@ -6995,6 +7044,87 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683157266}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &703544061
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1596962304, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596962304, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_BaseOffset
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596962304, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596962304, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596962304, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596962306, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 1968169358}
+    - target: {fileID: 2207759271034082385, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_Name
+      value: DuneWarrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -51.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.008744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207759271034082391, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b05c62862014e14b94bf2827de43644, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7745,6 +7875,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1688259587, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6413818554257791449, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: MainCamera
       value: 
@@ -7796,6 +7930,10 @@ PrefabInstance:
     - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Name
       value: 'Zombieman '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
@@ -7897,7 +8035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4790907182469842397, guid: 7cc2a855af8d20a45b0480275e88dd9a, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4790907182469842397, guid: 7cc2a855af8d20a45b0480275e88dd9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10183,7 +10321,7 @@ Transform:
   - {fileID: 1764795158}
   - {fileID: 245675959}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &914473321
 GameObject:
@@ -11311,7 +11449,7 @@ RectTransform:
   - {fileID: 307995976}
   - {fileID: 1878825761}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12674,7 +12812,7 @@ Transform:
   - {fileID: 1718805128}
   - {fileID: 1254069320}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1127885059
 PrefabInstance:
@@ -12962,7 +13100,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1141153223}
-  - component: {fileID: 1141153222}
   m_Layer: 0
   m_Name: NavMeshManager
   m_TagString: Untagged
@@ -12970,35 +13107,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1141153222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141153221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 383
-  m_UseGeometry: 1
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 405659f2e9186334f9eda3356bd283ed, type: 2}
 --- !u!4 &1141153223
 Transform:
   m_ObjectHideFlags: 0
@@ -13012,7 +13120,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1141368590 stripped
 Transform:
@@ -13073,6 +13181,10 @@ PrefabInstance:
     - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Name
       value: 'Zombieman '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
@@ -18261,7 +18373,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1263234327
 PrefabInstance:
@@ -18479,7 +18591,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29378
+  m_Name: pb_Mesh29386
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19930,7 +20042,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: be9581baa64133e4fbb54e29fb076204, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20026,7 +20138,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cd67ae60a1831f14098ade825d6d525b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20122,7 +20234,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 93d3fbda16fc4bd4a8f53d1829439fa2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20218,7 +20330,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6c24feeb35d8d1841b63ad7bda68f2a5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20314,7 +20426,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 567af6c29118d354dbd35e345399972b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -21213,7 +21325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1522574673 stripped
 Transform:
@@ -22144,7 +22256,7 @@ PrefabInstance:
       objectReference: {fileID: 588989214}
     - target: {fileID: 6063301752237684805, guid: 8dc9030de4b1a6447b5ec1bd124125a1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6063301752237684805, guid: 8dc9030de4b1a6447b5ec1bd124125a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22367,7 +22479,7 @@ GameObject:
   m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1611835027
 MeshCollider:
@@ -22446,7 +22558,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616129104
 GameObject:
@@ -23213,7 +23325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1683585662
 MonoBehaviour:
@@ -23848,7 +23960,7 @@ Transform:
   - {fileID: 1326636143664231763}
   - {fileID: 4119693761016837399}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1728287911
 MonoBehaviour:
@@ -26198,7 +26310,7 @@ Transform:
   - {fileID: 800903967}
   - {fileID: 2066734073}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1968169360
 MonoBehaviour:
@@ -26355,6 +26467,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1688259587, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2309134224403236116, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Mass
       value: 10000
@@ -26414,6 +26530,10 @@ PrefabInstance:
     - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Name
       value: Zombieman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
@@ -26937,6 +27057,10 @@ PrefabInstance:
     - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: m_Name
       value: Zombieman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
@@ -27550,7 +27674,7 @@ Transform:
   - {fileID: 987638511}
   - {fileID: 836080704}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &2082186360
 MonoBehaviour:
@@ -28165,7 +28289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6063301752237684805, guid: 8dc9030de4b1a6447b5ec1bd124125a1, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6063301752237684805, guid: 8dc9030de4b1a6447b5ec1bd124125a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28319,7 +28443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6796894721299941132, guid: 015ff50646bb772468d5b6e911a758f4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6796894721299941132, guid: 015ff50646bb772468d5b6e911a758f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28667,7 +28791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4216366576460265292, guid: 804bf8461d877724b9eea545e18c63f5, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4216366576460265292, guid: 804bf8461d877724b9eea545e18c63f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28833,7 +28957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4294732683745316919, guid: f4341487b98c43e41a81e5750e07d8ed, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4294732683745316919, guid: f4341487b98c43e41a81e5750e07d8ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28987,7 +29111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5591926924026965820, guid: 4fbf98dd9faff0c4ba3bbdcafb3d4032, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5591926924026965820, guid: 4fbf98dd9faff0c4ba3bbdcafb3d4032, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29377,6 +29501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombieman
       objectReference: {fileID: 0}
+    - target: {fileID: 6413818554257791453, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6662713351310076805, guid: 2d0aca70d99a85446b275f6060501107, type: 3}
       propertyPath: playerRef
       value: 
@@ -29506,7 +29634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7475732903095678218, guid: 93c7b5d682448f84ea4f6b0e866cce11, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7475732903095678218, guid: 93c7b5d682448f84ea4f6b0e866cce11, type: 3}
       propertyPath: m_AnchorMax.x

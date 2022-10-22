@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
         if (health <= 0f && health > gibThreshold)
         {
             hear.enabled = false;
-            agent.enabled = false;
+            //agent.enabled = false;
             EnemyAnimator.SetBool("died", true);
             gameObject.tag = "Untagged";
             transform.position = Vector3.MoveTowards(transform.position, transform.position += Player.forward, travelSpeed * Time.deltaTime);
@@ -63,7 +63,7 @@ public class Health : MonoBehaviour
         else if (health <= gibThreshold )
         {
             hear.enabled = false;
-            agent.enabled = false;
+           // agent.enabled = false;
             EnemyAnimator.SetBool("gibbed", true);
             gameObject.tag = "Untagged";
             transform.position = Vector3.MoveTowards(transform.position, transform.position += Player.forward, travelSpeed * Time.deltaTime);

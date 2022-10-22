@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class MCGZAudio : MonoBehaviour
 {
-    public AudioSource ShootAudio;
-    public AudioSource ShootAudio1;
-    public AudioSource ShootAudio2;
-    public AudioSource ShootAudio3;
-    public AudioSource DieAudio;
-    public AudioSource HurtAudio;
+    public AudioClip ShootAudio;
+    public AudioClip ShootAudio1;
+    public AudioClip ShootAudio2;
+    public AudioClip ShootAudio3;
+    public AudioClip DieAudio;
+    public AudioClip HurtAudio;
 
     void PlayShootAudio()
     {
-        ShootAudio.Play();
+        AudioSource.PlayClipAtPoint(ShootAudio, transform.position, 100f);
     }
 
     void PlayShootAudio1()
     {
-        ShootAudio1.Play();
+        AudioSource.PlayClipAtPoint(ShootAudio1, transform.position, 100f);
     }
 
     void PlayShootAudio2()
     {
-        ShootAudio2.Play();
+        AudioSource.PlayClipAtPoint(ShootAudio2, transform.position, 100f);
     }
 
     void PlayShootAudio3()
     {
-        ShootAudio3.Play();
+        AudioSource.PlayClipAtPoint(ShootAudio3, transform.position, 100f);
     }
 
     void PlayDieAudio()
     {
-        DieAudio.Play();
+        AudioSource.PlayClipAtPoint(DieAudio, transform.position, 20f);
     }
 
     void PlayHurtAudio()
     {
-        HurtAudio.Play();
+        AudioSource.PlayClipAtPoint(HurtAudio, transform.position, 100f);
     }
 }

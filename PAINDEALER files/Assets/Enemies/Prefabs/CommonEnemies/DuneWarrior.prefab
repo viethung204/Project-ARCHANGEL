@@ -15,7 +15,10 @@ GameObject:
   - component: {fileID: 5250003270232296585}
   - component: {fileID: 5250003270232296587}
   - component: {fileID: 5250003270232296584}
-  - component: {fileID: 5830320762014735103}
+  - component: {fileID: 1596962304}
+  - component: {fileID: 1596962306}
+  - component: {fileID: 732502878667579806}
+  - component: {fileID: 8651495313351384617}
   m_Layer: 0
   m_Name: DuneWarrior
   m_TagString: Enemy
@@ -139,7 +142,7 @@ MonoBehaviour:
   health: 50
   deceleration: 1.5
   travelSpeed: 1.5
-  gibThreshold: 5
+  gibThreshold: -5
   chanceForHurtAnimation: 0
 --- !u!65 &5250003270232296587
 BoxCollider:
@@ -152,7 +155,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5555556, y: 2.074074, z: 0.2}
+  m_Size: {x: 2.1, y: 2.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5250003270232296584
 Rigidbody:
@@ -162,7 +165,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2207759271034082385}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -170,7 +173,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &5830320762014735103
+--- !u!195 &1596962304
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207759271034082385}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.05
+  m_Speed: 3
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 8
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2.8
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1596962306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,3 +217,38 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1911
   canSeePlayer: 0
+--- !u!114 &732502878667579806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207759271034082385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0759fb26015bb69429293c748d6c9897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunningSpeed: 5
+  RotationSpeed: 5
+  minimumDistance: 8
+  maximumDistance: 30
+  Damage: 5
+  attacked: 0
+  range: 500
+  radius: 17
+  getpoint: {fileID: 0}
+--- !u!114 &8651495313351384617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207759271034082385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 100
+  shotfired: 0
