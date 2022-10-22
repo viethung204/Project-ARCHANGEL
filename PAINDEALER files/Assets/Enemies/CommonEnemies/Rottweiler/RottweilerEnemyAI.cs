@@ -8,13 +8,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class RottweilerEnemyAI : MonoBehaviour
 {
-    public float RunningSpeed;
+    public float agentSpeed;
     private Transform TargetTransform;
-    public float RotationSpeed;
+    public float RotationSpeed = 8;
     public float minimumDistance;
     public float maximumDistance;
     NavMeshAgent agent;
-    public float Damage = 5;
+    public float Damage = 3;
     public bool attacked = false;
     public float range = 500f;
 
@@ -51,7 +51,7 @@ public class RottweilerEnemyAI : MonoBehaviour
             ChaseAfterPlayer();
         }
 
-        if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true && attacked == false) 
+        if (Vector3.Distance(transform.position, TargetTransform.position) <= 1.25f) 
         {
             FacingPlayer();
             AttackPlayerPose();
@@ -71,17 +71,15 @@ public class RottweilerEnemyAI : MonoBehaviour
 
         if(isPlaying(eAnimator, "Atk Blend Tree"))
         { 
-            RotationSpeed = 3;
             agent.isStopped = true;
             agent.acceleration = 0;
             agent.speed = 0;
         }
         else
-        {
-            RotationSpeed = 8;
+        { 
             agent.isStopped = false;
             agent.acceleration = 10;
-            agent.speed = 10;
+            agent.speed = agentSpeed;
         }
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
     }
@@ -127,7 +125,6 @@ public class RottweilerEnemyAI : MonoBehaviour
         agent.acceleration = 0;
         agent.speed = 0;
         FacingPlayer();
-        agent.isStopped = true;
     }
 
     void AttackPlayer()

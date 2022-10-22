@@ -15,6 +15,11 @@ GameObject:
   - component: {fileID: 2230169055893013911}
   - component: {fileID: 2230169055893013909}
   - component: {fileID: 2230169055893013910}
+  - component: {fileID: 555185869}
+  - component: {fileID: 1609803687}
+  - component: {fileID: 1609803688}
+  - component: {fileID: 1609803696}
+  - component: {fileID: 7381665264411715616}
   m_Layer: 0
   m_Name: Rottweiler
   m_TagString: Enemy
@@ -169,3 +174,97 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!114 &555185869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227392207031917903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 70
+  angle: 180
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 887
+  canSeePlayer: 0
+--- !u!114 &1609803687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227392207031917903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa65d0617e33fc1498a6c368be5e4125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentSpeed: 11
+  RotationSpeed: 200
+  minimumDistance: 0
+  maximumDistance: 0
+  Damage: 5
+  attacked: 0
+  range: 500
+--- !u!195 &1609803688
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227392207031917903}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 2
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.1142857
+  m_BaseOffset: 0.55714285
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1609803696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227392207031917903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 200
+  shotfired: 0
+--- !u!114 &7381665264411715616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227392207031917903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8ab7301921680418a0992b8a698268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BarkAudio: {fileID: 8300000, guid: 5f0cd20682c557347b0681e851669342, type: 3}
+  BarkAudio1: {fileID: 8300000, guid: 94292ac0945fde947a0209c332aac66f, type: 3}
+  BarkAudio2: {fileID: 0}
+  DieAudio: {fileID: 8300000, guid: 517fcee37b68be94ca32eb87886ed2ee, type: 3}
+  HurtAudio: {fileID: 0}
