@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 6666653078692538281}
   - component: {fileID: 6666653078692538282}
   - component: {fileID: -2687655304385618625}
+  - component: {fileID: 1675397254}
+  - component: {fileID: 1675397253}
+  - component: {fileID: 1675397263}
   m_Layer: 0
   m_Name: Satyr
   m_TagString: Enemy
@@ -136,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 125
+  health: 100
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
@@ -182,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 40
+  radius: 70
   angle: 135
   playerRef: {fileID: 0}
   targetMask:
@@ -192,3 +195,58 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1911
   canSeePlayer: 0
+--- !u!114 &1675397254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791787820332203891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67aafac602fca140b064645c0c762f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentSpeed: 9
+  RotationSpeed: 8
+  minimumDistance: 10
+  maximumDistance: 70
+  Damage: 3
+  attacked: 0
+  range: 500
+--- !u!114 &1675397253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791787820332203891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 50
+  shotfired: 0
+--- !u!195 &1675397263
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791787820332203891}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.640625
+  m_Speed: 3.5
+  m_Acceleration: 999
+  avoidancePriority: 50
+  m_AngularSpeed: 999
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.3125
+  m_BaseOffset: 1.15625
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

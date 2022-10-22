@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.Rendering;
 using static UnityEngine.GraphicsBuffer;
 
-public class RottweilerEnemyAI : MonoBehaviour
+public class SatyrEnemyAI : MonoBehaviour
 {
     public float agentSpeed;
     private Transform TargetTransform;
@@ -19,29 +19,35 @@ public class RottweilerEnemyAI : MonoBehaviour
     public float range = 500f;
 
     FieldOfView fovScript;
+    Rigidbody rb;
 
     Animator eAnimator;
     Health health;
 
     hearing hearing;
+    Transform thisGuy;
 
     int animLayer = 0;
 
     // Update is called once per frame
     void Start()
     {
+        //agent.updateRotation = false;
+        rb = gameObject.GetComponent<Rigidbody>();
         fovScript = GetComponent<FieldOfView>();
         eAnimator = GetComponent<Animator>();
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = GetComponent<hearing>();
+        hearing = gameObject.GetComponent<hearing>();
     }
-
     private void Update()
     {
-        agent.speed = agentSpeed;
         hearing.Alert();
+        if(isPlaying(eAnimator,"Hurt Blend Tree"))
+        {
+            agent.velocity = Vector3.zero;
+        }
         if(health.health <= 0)
         {
             this.enabled = false;
@@ -52,11 +58,10 @@ public class RottweilerEnemyAI : MonoBehaviour
             ChaseAfterPlayer();
         }
 
-        if (Vector3.Distance(transform.position, TargetTransform.position) <= 1.25f) 
+        if (Vector3.Distance(transform.position, TargetTransform.position) <= 2f) 
         {
             FacingPlayer();
             AttackPlayerPose();
-            //eAnimator.SetBool("isAttacking", true);
         }
         else
         {
@@ -71,8 +76,15 @@ public class RottweilerEnemyAI : MonoBehaviour
         }
 
         if(isPlaying(eAnimator, "Atk Blend Tree"))
-        {
-            agent.velocity = Vector3.zero;
+        { 
+            agent.isStopped = true;
+            agent.acceleration = 0;
+            agent.speed = 0;
+        }
+        else
+        { 
+            agent.isStopped = false;
+            agent.speed = agentSpeed;
         }
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
     }
@@ -83,11 +95,10 @@ public class RottweilerEnemyAI : MonoBehaviour
     {
         if(!isPlaying(eAnimator, "Atk Blend Tree"))
         {
-            if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance)
+            if (Vector3.Distance(transform.position, TargetTransform.position) < maximumDistance && !isPlaying(eAnimator, "Hurt Blend Tree"))
             {
                 eAnimator.SetBool("isAttacking", false);
                 FacingPlayer();
-                agent.acceleration = 10;
                 agent.SetDestination(TargetTransform.position);
             }
             else

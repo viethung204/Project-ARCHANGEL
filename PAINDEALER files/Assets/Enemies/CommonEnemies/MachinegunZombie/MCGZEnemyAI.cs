@@ -42,34 +42,24 @@ public class MCGZEnemyAI : MonoBehaviour
 
     private void Update()
     {
+        agent.acceleration = 999;
         hearing.Alert();
         if(isPlaying(eAnimator,"Hurt Blend Tree"))
         {
-            RunningSpeed = 0;
-            RotationSpeed = 0;
-            agent.isStopped = true;
-            agent.acceleration = 0;
-            agent.speed = 0;
-        }
-        else
-        {
-            RunningSpeed = 5;
-            RotationSpeed = 8;
-            agent.isStopped = false;
-            agent.acceleration = 10;
-            agent.speed = 3;
+            
+            agent.velocity = Vector3.zero;
         }
         if(health.health <= 0)
         {
             this.enabled = false;
         }
-        if (fovScript.canSeePlayer == true )
+        if (fovScript.canSeePlayer == true && !isPlaying(eAnimator, "Hurt Blend Tree"))
         {
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
 
-        if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true && attacked == false) 
+        if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true && attacked == false && isPlaying(eAnimator, "Hurt Blend Tree")) 
         {
             FacingPlayer();
             AttackPlayerPose();
@@ -89,18 +79,9 @@ public class MCGZEnemyAI : MonoBehaviour
 
         if(isPlaying(eAnimator, "AttackingBlendTree"))
         {
-            RotationSpeed = 3;
-            agent.isStopped = true;
-            agent.acceleration = 0;
-            agent.speed = 0;
+            agent.velocity = Vector3.zero;
         }
-        else
-        {
-            RotationSpeed = 8;
-            agent.isStopped = false;
-            agent.acceleration = 10;
-            agent.speed = 3;
-        }
+
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
     }
     //Note bcuz 4 some reason I get confused by this: minimumDistance < currentDistance < maximumDistance
@@ -110,11 +91,10 @@ public class MCGZEnemyAI : MonoBehaviour
     {
         if(!isPlaying(eAnimator, "AttackingBlendTree"))
         {
-            if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance)
+            if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance && !isPlaying(eAnimator, "Hurt Blend Tree"))
             {
                 eAnimator.SetBool("isAttacking", false);
                 FacingPlayer();
-                agent.acceleration = 10;
                 agent.SetDestination(TargetTransform.position);
             }
             else
@@ -135,7 +115,6 @@ public class MCGZEnemyAI : MonoBehaviour
                 eAnimator.SetBool("isAttacking", false);
                 fovScript.canSeePlayer = true;
                 // transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, -RunningSpeed * Time.deltaTime);
-                agent.acceleration = 10;
 
             }
             else
@@ -176,7 +155,7 @@ public class MCGZEnemyAI : MonoBehaviour
             playerHealth target = Hit.transform.GetComponent<playerHealth>();
             if (target != null)
             {
-                target.Health -= 3f;
+                target.Health -= Damage;
             }
             if (target = null)
             {

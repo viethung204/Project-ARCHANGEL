@@ -216,7 +216,7 @@ MonoBehaviour:
   RotationSpeed: 5
   minimumDistance: 8
   maximumDistance: 30
-  Damage: 5
+  Damage: 3
   attacked: 0
   range: 500
   radius: 17

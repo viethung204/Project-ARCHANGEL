@@ -43,19 +43,8 @@ public class DuneWarriorEnemyAI : MonoBehaviour
         hearing.Alert();
         if(isPlaying(eAnimator,"Hurt Blend Tree"))
         {
-            RunningSpeed = 0;
-            RotationSpeed = 0;
             agent.isStopped = true;
-            agent.acceleration = 0;
-            agent.speed = 0;
-        }
-        else
-        {
-            RunningSpeed = 7;
-            RotationSpeed = 8;
-            agent.isStopped = false;
-            agent.acceleration = 10;
-            agent.speed = 5;
+            agent.velocity = Vector3.zero;
         }
         if(health.health <= 0)
         {
@@ -109,7 +98,7 @@ public class DuneWarriorEnemyAI : MonoBehaviour
     {
         if(!isPlaying(eAnimator, "Atk Blend Tree"))
         {
-            if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance)
+            if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance && !isPlaying(eAnimator, "Hurt Blend Tree"))
             {
                 eAnimator.SetBool("isAttacking", false);
                 FacingPlayer();
