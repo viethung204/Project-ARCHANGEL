@@ -23,8 +23,6 @@ public class DuneWarriorEnemyAI : MonoBehaviour
     Animator eAnimator;
     Health health;
 
-    public float radius = 5;
-    public GetPoint getpoint;
     int animLayer = 0;
 
     hearing hearing;
@@ -35,9 +33,9 @@ public class DuneWarriorEnemyAI : MonoBehaviour
         fovScript = GetComponent<FieldOfView>();
         eAnimator = GetComponent<Animator>();
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
-        agent = GetComponent<NavMeshAgent>();
-        health = GetComponent<Health>();
-        hearing = GetComponent<hearing>();
+        health = gameObject.GetComponent<Health>();
+        hearing = gameObject.GetComponent<hearing>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -61,6 +59,7 @@ public class DuneWarriorEnemyAI : MonoBehaviour
         }
         if(health.health <= 0)
         {
+            agent.enabled = true;
             this.enabled = false;
         }
         if (fovScript.canSeePlayer == true )
@@ -87,7 +86,7 @@ public class DuneWarriorEnemyAI : MonoBehaviour
             fovScript.angle = 360f;
         }
 
-        if(isPlaying(eAnimator, "AttackingBlendTree"))
+        if(isPlaying(eAnimator, "Atk Blend Tree"))
         {
             RotationSpeed = 0;
             agent.isStopped = true;
@@ -108,7 +107,7 @@ public class DuneWarriorEnemyAI : MonoBehaviour
     //ChasingScript: If distance from this bot to player is greater than maximumDistance, then chase after the Player
     void ChaseAfterPlayer()
     {
-        if(!isPlaying(eAnimator, "AttackingBlendTree"))
+        if(!isPlaying(eAnimator, "Atk Blend Tree"))
         {
             if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance)
             {
@@ -128,7 +127,7 @@ public class DuneWarriorEnemyAI : MonoBehaviour
     //ReatreatScript: If distance from this bot to player is smaller than the minimum distance, start retreating
     void ReatreatFromPlayer()
     {
-        if (!isPlaying(eAnimator, "AttackingBlendTree"))
+        if (!isPlaying(eAnimator, "Atk Blend Tree"))
         {
             if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
             {
@@ -176,7 +175,7 @@ public class DuneWarriorEnemyAI : MonoBehaviour
             playerHealth target = Hit.transform.GetComponent<playerHealth>();
             if (target != null)
             {
-                target.Health -= 5f;
+                target.Health -= Damage;
             }
             if (target = null)
             {
