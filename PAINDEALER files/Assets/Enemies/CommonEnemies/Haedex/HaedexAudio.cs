@@ -5,11 +5,11 @@ using UnityEngine;
 public class HaedexAudio : MonoBehaviour
 {
     public AudioClip ShootAudio;
-    public AudioClip GrowlAudio;
+    public AudioClip RoamAudio;
     public AudioClip DieAudio;
     public AudioClip HurtAudio;
 
-    private float randomGrowl;
+    private float randomRoam;
     FieldOfView fovScript;
 
     private void Start()
@@ -22,12 +22,12 @@ public class HaedexAudio : MonoBehaviour
         AudioSource.PlayClipAtPoint(ShootAudio, transform.position, 100f);
     }
 
-    void PlayGrowlAudio()
+    void PlayRoamAudio()
     {
-        randomGrowl = Random.Range(0f, 10f);
-        if (randomGrowl <= 3 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
+        randomRoam = Random.Range(0f, 10f);
+        if (randomRoam <= 3 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
         {
-            AudioSource.PlayClipAtPoint(GrowlAudio, transform.position, 100f);
+            AudioSource.PlayClipAtPoint(RoamAudio, transform.position, 100f);
         }
         else
         {
