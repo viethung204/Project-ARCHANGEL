@@ -55,12 +55,12 @@ public class HaedexEnemyAI : MonoBehaviour
         if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= rangeDistance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
         {
             time += Time.deltaTime;
-            if (time < 4 && time >= 1.201f)
+            if (time < 2 && time >= 1.018f)
             {
                 eAnimator.SetBool("isAttacking", false);
                 ChaseAfterPlayer();
             }
-            if (time >= 4)
+            if (time >= 2)
             {
                 AttackPlayerPose();
                 time = 0;

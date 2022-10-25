@@ -9,10 +9,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class HierophantEnemyAI : MonoBehaviour
 {
+    
     public float agentSpeed;
     private Transform TargetTransform;
     public float RotationSpeed = 8;
-    public float rangeDistance;
+    public float atk1Distance;
+    public float atk2Distance;
     public float chaseDistance;
     public float detectDistance;
     public float closeDistance;
@@ -43,38 +45,73 @@ public class HierophantEnemyAI : MonoBehaviour
     }
     private void Update()
     {
+        
         agent.speed = agentSpeed;
         hearing.Alert();
         
-        if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
+        if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance && Vector3.Distance(transform.position, TargetTransform.position) > atk2Distance)
         {
+            Debug.Log("chase");
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
 
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= rangeDistance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
+        //attack1
+        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= atk1Distance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
         {
+            eAnimator.SetBool("isAttacking2", false);
+            Debug.Log("true1");
             time += Time.deltaTime;
+            if (time < 1.201f)
+            {
+                Attack1PlayerPose();
+            }
             if (time < 4 && time >= 1.201f)
             {
-                eAnimator.SetBool("isAttacking", false);
+                eAnimator.SetBool("isAttacking1", false);
                 ChaseAfterPlayer();
             }
             if (time >= 4)
             {
-                AttackPlayerPose();
                 time = 0;
-            }  
+            }
         }
         else
         {
             time = 0;
         }
 
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= closeDistance)
+        //attack2
+        if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= atk2Distance && Vector3.Distance(transform.position, TargetTransform.position) > atk1Distance && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
         {
+            eAnimator.SetBool("isAttacking1", false);
+            Debug.Log("true2");
+            time += Time.deltaTime;
+            if(time < 2.351f)
+            {
+                Attack2PlayerPose();
+            }
+            if (time < 5 && time >= 2.351f)
+            {
+                eAnimator.SetBool("isAttacking2", false);
+                ChaseAfterPlayer();
+            }
+            if (time >= 5)
+            {
+                
+                time = 0;
+            }
+        }
+        else
+        {
+            time = 0;
+        }
+
+        if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= closeDistance)
+        {
+            Debug.Log("true");
             FacingPlayer();
-            AttackPlayerPose();
+            Attack1PlayerPose();   
         }
 
         //enemy activated if player get too close
@@ -99,7 +136,7 @@ public class HierophantEnemyAI : MonoBehaviour
             this.enabled = false;
         }
 
-        if (isPlaying(eAnimator, "Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree"))
+        if (isPlaying(eAnimator, "Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree") || isPlaying(eAnimator, "Atk2 Blend Tree"))
         {
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
@@ -113,8 +150,9 @@ public class HierophantEnemyAI : MonoBehaviour
     //ChasingScript: If distance from this bot to player is greater than maximumDistance, then chase after the Player
     void ChaseAfterPlayer()
     {
-
-        if(!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree"))
+        eAnimator.SetBool("isAttacking2", false);
+        eAnimator.SetBool("isAttacking1", false);
+        if (!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree") && !isPlaying(eAnimator, "Atk2 Blend Tree"))
         {
             agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
@@ -125,7 +163,6 @@ public class HierophantEnemyAI : MonoBehaviour
         }
         
     }
-
 
     //Look at player with lerp to control the rotation speed
     void FacingPlayer()
@@ -139,11 +176,19 @@ public class HierophantEnemyAI : MonoBehaviour
             * RotationSpeed);
     }
 
-    void AttackPlayerPose()
+    void Attack1PlayerPose()
     {
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
-        eAnimator.SetBool("isAttacking", true);
+        eAnimator.SetBool("isAttacking1", true);
+        FacingPlayer();
+    }
+
+    void Attack2PlayerPose()
+    {
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
+        eAnimator.SetBool("isAttacking2", true);
         FacingPlayer();
     }
 
