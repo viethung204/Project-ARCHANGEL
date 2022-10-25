@@ -19,6 +19,10 @@ public class AzazelEnemyAI : MonoBehaviour
     public float meleeDamage = 5;
     public float range = 500f;
 
+    public GameObject APprojectile;
+    public GameObject SpawnLocation;
+    public float throwForce = 20;
+
     FieldOfView fovScript;
     Rigidbody rb;
 
@@ -171,6 +175,21 @@ public class AzazelEnemyAI : MonoBehaviour
                 target.Health -= meleeDamage;
             }
         }
+    }
+
+    void ProjectileAttack()
+    {
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(APprojectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = transform.forward * throwForce;
+
+        //apply the force
+        projectileRb.AddForce(force, ForceMode.Impulse);
     }
 
     //check if animtion is playing

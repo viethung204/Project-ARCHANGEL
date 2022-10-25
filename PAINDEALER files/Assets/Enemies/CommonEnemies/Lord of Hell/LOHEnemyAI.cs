@@ -21,6 +21,10 @@ public class LOHEnemyAI : MonoBehaviour
     FieldOfView fovScript;
     Rigidbody rb;
 
+    public GameObject LOHprojectile;
+    public GameObject SpawnLocation;
+    public float throwForce = 20;
+
     Animator eAnimator;
     Health health;
 
@@ -46,22 +50,25 @@ public class LOHEnemyAI : MonoBehaviour
         agent.speed = agentSpeed;
         hearing.Alert();
         
-        if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
+        /*if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
         {
             fovScript.angle = 360f;
-            ChaseAfterPlayer();
-        }
+        }*/
 
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= rangeDistance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
+        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= chaseDistance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
         {
+            fovScript.angle = 360f;
+            FacingPlayer();
             time += Time.deltaTime;
-            if (time < 4 && time >= 1.201f)
+            if (time < 2f && time >= 1.018f)
             {
+                agent.isStopped = false;
                 eAnimator.SetBool("isAttacking", false);
                 ChaseAfterPlayer();
             }
-            if (time >= 4)
+            if (time >= 2f)
             {
+                agent.isStopped = true;
                 AttackPlayerPose();
                 time = 0;
             }  
@@ -114,8 +121,8 @@ public class LOHEnemyAI : MonoBehaviour
     //ChasingScript: If distance from this bot to player is greater than maximumDistance, then chase after the Player
     void ChaseAfterPlayer()
     {
-
-        if(!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree"))
+        
+        if (!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree"))
         {
             agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
@@ -146,6 +153,21 @@ public class LOHEnemyAI : MonoBehaviour
         agent.isStopped = true;
         eAnimator.SetBool("isAttacking", true);
         FacingPlayer();
+    }
+
+    void ProjectileAttack()
+    {
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(LOHprojectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = transform.forward * throwForce;
+
+        //apply the force
+        projectileRb.AddForce(force, ForceMode.Impulse);
     }
 
     //check if animtion is playing
