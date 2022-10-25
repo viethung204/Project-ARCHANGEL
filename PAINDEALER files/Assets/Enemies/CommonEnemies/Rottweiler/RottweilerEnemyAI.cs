@@ -26,6 +26,7 @@ public class RottweilerEnemyAI : MonoBehaviour
     hearing hearing;
 
     int animLayer = 0;
+    public bool seen = false;
 
     // Update is called once per frame
     void Start()
@@ -48,10 +49,14 @@ public class RottweilerEnemyAI : MonoBehaviour
         }
         if (fovScript.canSeePlayer == true )
         {
+            seen = true;
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
-
+        if (seen == true && fovScript.canSeePlayer == false)
+        {
+            ChaseAfterPlayer();
+        }
         if (Vector3.Distance(transform.position, TargetTransform.position) <= 1.25f) 
         {
             FacingPlayer();
@@ -128,7 +133,7 @@ public class RottweilerEnemyAI : MonoBehaviour
             playerHealth target = Hit.transform.GetComponent<playerHealth>();
             if (target != null)
             {
-                target.Health -= 3f;
+                target.Health -= Damage;
             }
             if (target = null)
             {

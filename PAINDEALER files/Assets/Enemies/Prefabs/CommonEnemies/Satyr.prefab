@@ -19,13 +19,14 @@ GameObject:
   - component: {fileID: 1675397254}
   - component: {fileID: 1675397253}
   - component: {fileID: 1675397263}
+  - component: {fileID: 3825215528660993238}
   m_Layer: 0
   m_Name: Satyr
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &791787820332203893
 Transform:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
-  chanceForHurtAnimation: 5
+  chanceForHurtAnimation: 7
 --- !u!65 &6666653078692538281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -207,13 +208,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67aafac602fca140b064645c0c762f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentSpeed: 9
+  agentSpeed: 7
   RotationSpeed: 8
   minimumDistance: 10
   maximumDistance: 70
   Damage: 3
   attacked: 0
   range: 500
+  seen: 0
 --- !u!114 &1675397253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +252,21 @@ NavMeshAgent:
   m_BaseOffset: 1.15625
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3825215528660993238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791787820332203891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873aac4c12e27fd4c94e1b4775a39c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeAudio: {fileID: 8300000, guid: cc81acd24d930f14bb97125618de7cb4, type: 3}
+  WalkAudio: {fileID: 8300000, guid: c50c23b694275a447a191c090db62fb6, type: 3}
+  WalkAudio1: {fileID: 8300000, guid: c5e5abe1a93b9de44b74c485d1f638ca, type: 3}
+  WalkAudio2: {fileID: 8300000, guid: 956e07c32dd66aa498c336a10a0aa7f7, type: 3}
+  DieAudio: {fileID: 8300000, guid: 10e65e06bc2bc23428b7071c8826d2bf, type: 3}
+  HurtAudio: {fileID: 8300000, guid: 8ccb9756e1b240746abd51fefef9d4c0, type: 3}

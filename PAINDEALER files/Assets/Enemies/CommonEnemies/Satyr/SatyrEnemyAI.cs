@@ -28,7 +28,7 @@ public class SatyrEnemyAI : MonoBehaviour
     Transform thisGuy;
 
     int animLayer = 0;
-
+    public bool seen = false;
     // Update is called once per frame
     void Start()
     {
@@ -43,8 +43,9 @@ public class SatyrEnemyAI : MonoBehaviour
     }
     private void Update()
     {
+        agent.speed = agentSpeed;
         hearing.Alert();
-        if(isPlaying(eAnimator,"Hurt Blend Tree"))
+        if(isPlaying(eAnimator,"Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree"))
         {
             agent.velocity = Vector3.zero;
         }
@@ -54,10 +55,14 @@ public class SatyrEnemyAI : MonoBehaviour
         }
         if (fovScript.canSeePlayer == true )
         {
+            seen = true;
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
-
+        if (seen == true && fovScript.canSeePlayer == false)
+        {
+            ChaseAfterPlayer();
+        }
         if (Vector3.Distance(transform.position, TargetTransform.position) <= 2f) 
         {
             FacingPlayer();
@@ -73,19 +78,7 @@ public class SatyrEnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
         {
             fovScript.angle = 360f;
-        }
-
-        if(isPlaying(eAnimator, "Atk Blend Tree"))
-        { 
-            agent.isStopped = true;
-            agent.acceleration = 0;
-            agent.speed = 0;
-        }
-        else
-        { 
-            agent.isStopped = false;
-            agent.speed = agentSpeed;
-        }
+        }   
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
     }
     //Note bcuz 4 some reason I get confused by this: minimumDistance < currentDistance < maximumDistance
@@ -124,10 +117,9 @@ public class SatyrEnemyAI : MonoBehaviour
     void AttackPlayerPose()
     {
         eAnimator.SetBool("isAttacking", true);
-        agent.velocity = Vector3.zero;
         agent.isStopped = true;
-        agent.acceleration = 0;
-        agent.speed = 0;
+        //agent.acceleration = 0;
+        //agent.speed = 0;
         FacingPlayer();
     }
 

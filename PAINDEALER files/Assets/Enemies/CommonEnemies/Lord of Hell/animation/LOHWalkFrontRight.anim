@@ -21,19 +21,19 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 8507baec4579c2244ae0efbad71e965b, type: 3}
-    - time: 0.25
+    - time: 0.2
       value: {fileID: 21300000, guid: c76a5296dedf66547bcc1b558f6ddfd8, type: 3}
-    - time: 0.5
+    - time: 0.4
       value: {fileID: 21300000, guid: 4b29115cc3b6d0a4fa72a928a69d2bc3, type: 3}
-    - time: 0.75
+    - time: 0.6
       value: {fileID: 21300000, guid: 64251c10f1f93dc49937421da620bcd2, type: 3}
-    - time: 0.975
+    - time: 0.78
       value: {fileID: 21300000, guid: 64251c10f1f93dc49937421da620bcd2, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 40
+  m_SampleRate: 50
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -58,7 +58,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.79999995
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -77,4 +77,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.34
+    functionName: PlayGrowlAudio
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

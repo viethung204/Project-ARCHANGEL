@@ -16,6 +16,10 @@ GameObject:
   - component: {fileID: 3022002709248515284}
   - component: {fileID: 3022002709248515285}
   - component: {fileID: 3568850572726898842}
+  - component: {fileID: 25782070012001938}
+  - component: {fileID: 6743641152313543542}
+  - component: {fileID: 529326512}
+  - component: {fileID: 529326513}
   m_Layer: 0
   m_Name: Lord of Hell
   m_TagString: Enemy
@@ -140,7 +144,7 @@ MonoBehaviour:
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -10
-  chanceForHurtAnimation: 3
+  chanceForHurtAnimation: 1
 --- !u!54 &3022002709248515284
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,8 +172,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4117646, y: 4.2941175, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.4117646, y: 4.0231986, z: 0.2}
+  m_Center: {x: 0, y: 0.13545918, z: 0}
 --- !u!114 &3568850572726898842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,13 +186,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 40
+  radius: 60
   angle: 135
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 887
   canSeePlayer: 0
+--- !u!114 &25782070012001938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207843813831762533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22198596c0dd23418c89bc22b0af5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootAudio: {fileID: 8300000, guid: edddaed9e46030c479c149787668c1cf, type: 3}
+  GrowlAudio: {fileID: 8300000, guid: c9fa7c8fc5f3d4840a6311672a1e3229, type: 3}
+  DieAudio: {fileID: 8300000, guid: e7b2ec9510bce3143b1dcc4650ed579c, type: 3}
+  HurtAudio: {fileID: 0}
+--- !u!114 &6743641152313543542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207843813831762533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571c7bd8b7c49e047b73a48eb99e7e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentSpeed: 8
+  RotationSpeed: 8
+  rangeDistance: 50
+  chaseDistance: 100
+  detectDistance: 30
+  closeDistance: 20
+  seen: 0
+--- !u!195 &529326512
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207843813831762533}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.2058823
+  m_Speed: 3.5
+  m_Acceleration: 999
+  avoidancePriority: 50
+  m_AngularSpeed: 999
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 4.2941175
+  m_BaseOffset: 2.1470587
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &529326513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207843813831762533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 50
+  shotfired: 0

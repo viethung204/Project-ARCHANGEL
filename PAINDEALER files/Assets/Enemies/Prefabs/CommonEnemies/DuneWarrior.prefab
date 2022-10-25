@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4677329638661340623}
   - component: {fileID: 3603552848999538936}
   - component: {fileID: 3603552848999538939}
+  - component: {fileID: 1048191460}
   m_Layer: 0
   m_Name: DuneWarrior
   m_TagString: Enemy
@@ -156,7 +157,7 @@ MonoBehaviour:
   deceleration: 1
   travelSpeed: 1.5
   gibThreshold: -1000
-  chanceForHurtAnimation: 10
+  chanceForHurtAnimation: 7
 --- !u!54 &6981291707864439470
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 40
+  radius: 70
   angle: 135
   playerRef: {fileID: 0}
   targetMask:
@@ -206,10 +207,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 3.5
-  m_Acceleration: 10
+  m_Acceleration: 999
   avoidancePriority: 50
-  m_AngularSpeed: 10
-  m_StoppingDistance: 8
+  m_AngularSpeed: 999
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -243,10 +244,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0759fb26015bb69429293c748d6c9897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunningSpeed: 3
+  agentSpeed: 7
   RotationSpeed: 8
-  minimumDistance: 8
-  maximumDistance: 20
+  minimumDistance: 20
+  maximumDistance: 70
   Damage: 5
-  attacked: 0
   range: 500
+  seen: 0
+--- !u!114 &1048191460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867660654840317543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f869cff435c5994499f54774af920cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootAudio: {fileID: 8300000, guid: 994236960bb9ec347acaff110bfc5119, type: 3}
+  ShootAudio1: {fileID: 0}
+  ShootAudio2: {fileID: 0}
+  ShootAudio3: {fileID: 0}
+  DieAudio: {fileID: 8300000, guid: c2c3ced61ba7c7043a756dba33635898, type: 3}
+  HurtAudio: {fileID: 8300000, guid: 7f6bcae2f1f740348972b230f5021a2f, type: 3}

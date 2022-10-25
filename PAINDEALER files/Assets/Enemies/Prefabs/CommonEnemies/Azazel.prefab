@@ -17,6 +17,10 @@ GameObject:
   - component: {fileID: 2120649916944733587}
   - component: {fileID: 1522069167}
   - component: {fileID: 9047217414803461387}
+  - component: {fileID: 421136206}
+  - component: {fileID: 421136207}
+  - component: {fileID: 421136208}
+  - component: {fileID: 2909192065367623255}
   m_Layer: 0
   m_Name: Azazel
   m_TagString: Enemy
@@ -141,7 +145,7 @@ MonoBehaviour:
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
-  chanceForHurtAnimation: 0
+  chanceForHurtAnimation: 5
 --- !u!65 &2120649916944733584
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,7 +157,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.28, y: 4.28, z: 0.2}
+  m_Size: {x: 3.5652175, y: 4.652174, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2120649916944733587
 Rigidbody:
@@ -195,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 40
+  radius: 70
   angle: 135
   playerRef: {fileID: 0}
   targetMask:
@@ -205,3 +209,77 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1911
   canSeePlayer: 0
+--- !u!114 &421136206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410587497860812106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 100
+  shotfired: 0
+--- !u!195 &421136207
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410587497860812106}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.7826087
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 4.652174
+  m_BaseOffset: 2.326087
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &421136208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410587497860812106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a34f7bcf0603414d891c38acc1460fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentSpeed: 10
+  RotationSpeed: 8
+  meleeDistance: 10
+  rangeDistance: 50
+  chaseDistance: 70
+  closeDistance: 10
+  meleeDamage: 5
+  range: 500
+--- !u!114 &2909192065367623255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5410587497860812106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5304a861ddb8a7341bf325b442de85b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeleeAudio: {fileID: 8300000, guid: 610dbd7fe2dedda4f93cf1b23b28ae27, type: 3}
+  WalkAudio: {fileID: 8300000, guid: 8f06c047fa46b004780d42150cb6e4b1, type: 3}
+  WalkAudio1: {fileID: 8300000, guid: 51c7f1e84f663954199e7081246d2dd0, type: 3}
+  WalkAudio2: {fileID: 8300000, guid: fdc5408924be6f946afc404c95fbd9eb, type: 3}
+  DieAudio: {fileID: 8300000, guid: 570fa37859be4d14094a8381c36137f3, type: 3}
+  HurtAudio: {fileID: 8300000, guid: 9c4728902d3a05d4586186ba5ebde886, type: 3}

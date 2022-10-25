@@ -8,14 +8,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class DuneWarriorEnemyAI : MonoBehaviour
 {
-    public float RunningSpeed;
+    public float agentSpeed;
     private Transform TargetTransform;
     public float RotationSpeed;
     public float minimumDistance;
     public float maximumDistance;
     NavMeshAgent agent;
     public float Damage = 5;
-    public bool attacked = false;
     public float range = 500f;
 
     FieldOfView fovScript;
@@ -27,6 +26,8 @@ public class DuneWarriorEnemyAI : MonoBehaviour
 
     hearing hearing;
 
+    public bool seen = false;
+    
     // Update is called once per frame
     void Start()
     {
@@ -40,54 +41,43 @@ public class DuneWarriorEnemyAI : MonoBehaviour
 
     private void Update()
     {
+        agent.speed = agentSpeed;
         hearing.Alert();
-        if(isPlaying(eAnimator,"Hurt Blend Tree"))
+        if(isPlaying(eAnimator,"Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree"))
         {
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
         }
+
         if(health.health <= 0)
         {
-            agent.enabled = true;
             this.enabled = false;
         }
         if (fovScript.canSeePlayer == true )
         {
+            seen = true;
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
+        if (seen == true && fovScript.canSeePlayer == false)
+        {
+            ChaseAfterPlayer();
+        }
 
-        if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true && attacked == false) 
-        {
-            FacingPlayer();
-            AttackPlayerPose();
-            //eAnimator.SetBool("isAttacking", true);
-        }
-        else
-        {
-            eAnimator.SetBool("isAttacking", false);
-            agent.isStopped = false;
-        }
+         if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true) 
+         {
+             FacingPlayer();
+             AttackPlayerPose();
+         }
+         else
+         {
+             eAnimator.SetBool("isAttacking", false);
+         }
 
         //enemy activated if player get too close
         if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
         {
             fovScript.angle = 360f;
-        }
-
-        if(isPlaying(eAnimator, "Atk Blend Tree"))
-        {
-            RotationSpeed = 0;
-            agent.isStopped = true;
-            agent.acceleration = 0;
-            agent.speed = 0;
-        }
-        else
-        {
-            RotationSpeed = 8;
-            agent.isStopped = false;
-            agent.acceleration = 10;
-            agent.speed = 5;
         }
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
     }
@@ -98,11 +88,11 @@ public class DuneWarriorEnemyAI : MonoBehaviour
     {
         if(!isPlaying(eAnimator, "Atk Blend Tree"))
         {
+            agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance && !isPlaying(eAnimator, "Hurt Blend Tree"))
             {
                 eAnimator.SetBool("isAttacking", false);
                 FacingPlayer();
-                agent.acceleration = 10;
                 agent.SetDestination(TargetTransform.position);
             }
             else
@@ -111,26 +101,6 @@ public class DuneWarriorEnemyAI : MonoBehaviour
             }
         }
         
-    }
-
-    //ReatreatScript: If distance from this bot to player is smaller than the minimum distance, start retreating
-    void ReatreatFromPlayer()
-    {
-        if (!isPlaying(eAnimator, "Atk Blend Tree"))
-        {
-            if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
-            {
-                eAnimator.SetBool("isAttacking", false);
-                fovScript.canSeePlayer = true;
-                // transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, -RunningSpeed * Time.deltaTime);
-                agent.acceleration = 10;
-
-            }
-            else
-            {
-                FacingPlayer();
-            }
-        }
     }
 
     //Look at player with lerp to control the rotation speed
@@ -147,13 +117,9 @@ public class DuneWarriorEnemyAI : MonoBehaviour
 
     void AttackPlayerPose()
     {
+        agent.isStopped = true;
         eAnimator.SetBool("isAttacking", true);
-        agent.velocity = Vector3.zero;
-        agent.isStopped = true;
-        agent.acceleration = 0;
-        agent.speed = 0;
         FacingPlayer();
-        agent.isStopped = true;
     }
 
     void AttackPlayer()
@@ -165,10 +131,6 @@ public class DuneWarriorEnemyAI : MonoBehaviour
             if (target != null)
             {
                 target.Health -= Damage;
-            }
-            if (target = null)
-            {
-                ChaseAfterPlayer();
             }
         }
     }

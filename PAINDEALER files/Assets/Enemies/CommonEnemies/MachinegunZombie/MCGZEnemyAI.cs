@@ -8,14 +8,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class MCGZEnemyAI : MonoBehaviour
 {
-    public float RunningSpeed;
+    public float agentSpeed;
     private Transform TargetTransform;
     public float RotationSpeed;
     public float minimumDistance;
     public float maximumDistance;
     NavMeshAgent agent;
     public float Damage = 5;
-    public bool attacked = false;
     public float range = 500f;
 
     FieldOfView fovScript;
@@ -29,6 +28,7 @@ public class MCGZEnemyAI : MonoBehaviour
 
     hearing hearing;
 
+    public bool seen = false;
     // Update is called once per frame
     void Start()
     {
@@ -42,44 +42,43 @@ public class MCGZEnemyAI : MonoBehaviour
 
     private void Update()
     {
+        agent.speed = agentSpeed;
         agent.acceleration = 999;
         hearing.Alert();
-        if(isPlaying(eAnimator,"Hurt Blend Tree"))
+        if(isPlaying(eAnimator,"Hurt Blend Tree") || isPlaying(eAnimator, "AttackingBlendTree"))
         {
-            
+            agent.isStopped = true;
             agent.velocity = Vector3.zero;
         }
         if(health.health <= 0)
         {
             this.enabled = false;
         }
-        if (fovScript.canSeePlayer == true && !isPlaying(eAnimator, "Hurt Blend Tree"))
+        if (fovScript.canSeePlayer == true)
         {
+            seen = true;
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
+        if(seen == true && fovScript.canSeePlayer == false)
+        {
+            ChaseAfterPlayer();
+        }
 
-        if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true && attacked == false && isPlaying(eAnimator, "Hurt Blend Tree")) 
+        if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true) 
         {
             FacingPlayer();
             AttackPlayerPose();
-            //eAnimator.SetBool("isAttacking", true);
         }
         else
         {
             eAnimator.SetBool("isAttacking", false);
-            agent.isStopped = false;
         }
 
         //enemy activated if player get too close
         if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
         {
             fovScript.angle = 360f;
-        }
-
-        if(isPlaying(eAnimator, "AttackingBlendTree"))
-        {
-            agent.velocity = Vector3.zero;
         }
 
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
@@ -91,6 +90,7 @@ public class MCGZEnemyAI : MonoBehaviour
     {
         if(!isPlaying(eAnimator, "AttackingBlendTree"))
         {
+            agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance && !isPlaying(eAnimator, "Hurt Blend Tree"))
             {
                 eAnimator.SetBool("isAttacking", false);
@@ -103,25 +103,6 @@ public class MCGZEnemyAI : MonoBehaviour
             }
         }
         
-    }
-
-    //ReatreatScript: If distance from this bot to player is smaller than the minimum distance, start retreating
-    void ReatreatFromPlayer()
-    {
-        if (!isPlaying(eAnimator, "AttackingBlendTree"))
-        {
-            if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
-            {
-                eAnimator.SetBool("isAttacking", false);
-                fovScript.canSeePlayer = true;
-                // transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, -RunningSpeed * Time.deltaTime);
-
-            }
-            else
-            {
-                FacingPlayer();
-            }
-        }
     }
 
     //Look at player with lerp to control the rotation speed
@@ -138,13 +119,9 @@ public class MCGZEnemyAI : MonoBehaviour
 
     void AttackPlayerPose()
     {
+        agent.isStopped = true;
         eAnimator.SetBool("isAttacking", true);
-        agent.velocity = Vector3.zero;
-        agent.isStopped = true;
-        agent.acceleration = 0;
-        agent.speed = 0;
         FacingPlayer();
-        agent.isStopped = true;
     }
 
     void AttackPlayer()
@@ -157,23 +134,7 @@ public class MCGZEnemyAI : MonoBehaviour
             {
                 target.Health -= Damage;
             }
-            if (target = null)
-            {
-                ChaseAfterPlayer();
-            }
         }
-    }
-
-    void RandomMovement()
-    {
-        eAnimator.SetBool("isAttacking", false);
-        agent.SetDestination(getpoint.GetRandomPoint(transform, radius));
-        /* eAnimator.SetBool("isAttacking", false);
-         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
-         movementDirection = new Vector3(Random.Range(-1f, 1), 0, Random.Range(-1f, 1));
-         movementPerSecond = movementDirection * characterVelocity;
-         transform.position = new Vector3(transform.position.x + (movementPerSecond.x * Time.deltaTime),transform.position.y, transform.position.z + (movementPerSecond.z * Time.deltaTime));
-         attacked = false;*/
     }
 
     //check if animtion is playing
