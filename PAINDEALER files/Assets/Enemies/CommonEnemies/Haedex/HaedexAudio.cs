@@ -25,7 +25,7 @@ public class HaedexAudio : MonoBehaviour
     void PlayRoamAudio()
     {
         randomRoam = Random.Range(0f, 10f);
-        if (randomRoam <= 3 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
+        if (randomRoam <= 5 && (fovScript.canSeePlayer == true || fovScript.angle == 360f))
         {
             AudioSource.PlayClipAtPoint(RoamAudio, transform.position, 100f);
         }

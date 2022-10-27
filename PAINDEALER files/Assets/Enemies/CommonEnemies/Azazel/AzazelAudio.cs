@@ -5,6 +5,7 @@ using UnityEngine;
 public class AzazelAudio : MonoBehaviour
 {
     public AudioClip MeleeAudio;
+    public AudioClip RangeAudio;
     public AudioClip WalkAudio;
     public AudioClip WalkAudio1;
     public AudioClip WalkAudio2;
@@ -27,22 +28,19 @@ public class AzazelAudio : MonoBehaviour
     void PlayWalkAudio()
     {
         randomGrowl = Random.Range(0f, 10f);
-        if (randomGrowl <= 3 && randomGrowl > 0 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
+        if (randomGrowl <= 5  && (fovScript.canSeePlayer == true || fovScript.angle == 360f))
         {
             AudioSource.PlayClipAtPoint(WalkAudio, transform.position, 100f);
-        }
-        if (randomGrowl <= 6 && randomGrowl > 3 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
-        {
-            AudioSource.PlayClipAtPoint(WalkAudio1, transform.position, 100f);
-        }
-        if (randomGrowl <= 9 && randomGrowl > 6 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
-        {
-            AudioSource.PlayClipAtPoint(WalkAudio2, transform.position, 100f);
         }
         else
         {
             return;
         }
+    }
+
+    void RangeAtkAudio()
+    {
+        AudioSource.PlayClipAtPoint(RangeAudio, transform.position, 100f);
     }
 
     void PlayDieAudio()

@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MeleeAudio: {fileID: 8300000, guid: 610dbd7fe2dedda4f93cf1b23b28ae27, type: 3}
+  RangeAudio: {fileID: 8300000, guid: 9596ed5baaffc4143b1bcaa988177d9b, type: 3}
   WalkAudio: {fileID: 8300000, guid: 8f06c047fa46b004780d42150cb6e4b1, type: 3}
   WalkAudio1: {fileID: 8300000, guid: 51c7f1e84f663954199e7081246d2dd0, type: 3}
   WalkAudio2: {fileID: 8300000, guid: fdc5408924be6f946afc404c95fbd9eb, type: 3}

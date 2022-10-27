@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1468154828624633512}
   - component: {fileID: 1449985033275714430}
   - component: {fileID: 1468154828624633513}
-  - component: {fileID: 8436707472965388186}
   - component: {fileID: 9127269186397391844}
+  - component: {fileID: 977992687}
   m_Layer: 0
   m_Name: AzazelExplosion
   m_TagString: Untagged
@@ -123,7 +123,7 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!65 &1449985033275714430
@@ -152,23 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alignNotLook: 1
---- !u!114 &8436707472965388186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920974550447964121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0488520a4c605b649a0ee600edc44222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifespan: 0.711
-  audio: {fileID: 9127269186397391844}
-  blastDamage: 100
-  radius: 50
-  killDelay: 0.7
 --- !u!82 &9127269186397391844
 AudioSource:
   m_ObjectHideFlags: 0
@@ -180,8 +163,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 36d22574651d6cd45a2eeb4129bb2844, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -265,3 +248,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &977992687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920974550447964121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bb95e31d4973a4b985f95c0e34e329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 0.571
+  audio: {fileID: 9127269186397391844}
+  blastDamage: 3
+  radius: 5
+  killDelay: 0

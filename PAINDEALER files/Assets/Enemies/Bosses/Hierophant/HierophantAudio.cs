@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HierophantAudio : MonoBehaviour
 {
-    public AudioClip ShootAudio;
+    public AudioClip ShootAudio1;
+    public AudioClip ShootAudio2;
     public AudioClip RoamAudio;
     public AudioClip DieAudio;
     public AudioClip HurtAudio;
@@ -17,15 +18,20 @@ public class HierophantAudio : MonoBehaviour
         fovScript = gameObject.GetComponent<FieldOfView>();
     }
 
-    void PlayShootAudio()
+    void PlayShootAudio1()
     {
-        AudioSource.PlayClipAtPoint(ShootAudio, transform.position, 100f);
+        AudioSource.PlayClipAtPoint(ShootAudio1, transform.position, 100f);
+    }
+
+    void PlayShootAudio2()
+    {
+        AudioSource.PlayClipAtPoint(ShootAudio2, transform.position, 100f);
     }
 
     void PlayRoamAudio()
     {
         randomRoam = Random.Range(0f, 10f);
-        if (randomRoam <= 3 && fovScript.canSeePlayer == true || fovScript.angle == 360f)
+        if (randomRoam <= 3 && (fovScript.canSeePlayer == true || fovScript.angle == 360f))
         {
             AudioSource.PlayClipAtPoint(RoamAudio, transform.position, 100f);
         }

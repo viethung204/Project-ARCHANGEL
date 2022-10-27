@@ -8,6 +8,7 @@ TagManager:
   - Environment
   - esad
   - pickup
+  - projectile
   layers:
   - Default
   - TransparentFX

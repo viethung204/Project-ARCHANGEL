@@ -18,12 +18,6 @@ public class HCoreExplosion : MonoBehaviour
         Destroy(gameObject, lifespan);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void ExplodeRadius()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);

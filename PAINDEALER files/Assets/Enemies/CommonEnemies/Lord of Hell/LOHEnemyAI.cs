@@ -11,11 +11,10 @@ public class LOHEnemyAI : MonoBehaviour
 {
     public float agentSpeed;
     private Transform TargetTransform;
-    public float RotationSpeed = 8;
+    public float RotationSpeed = 9999;
     public float rangeDistance;
     public float chaseDistance;
     public float detectDistance;
-    public float closeDistance;
     NavMeshAgent agent;
 
     FieldOfView fovScript;
@@ -23,7 +22,7 @@ public class LOHEnemyAI : MonoBehaviour
 
     public GameObject LOHprojectile;
     public GameObject SpawnLocation;
-    public float throwForce = 20;
+    public float throwForce = 30;
 
     Animator eAnimator;
     Health health;
@@ -50,38 +49,26 @@ public class LOHEnemyAI : MonoBehaviour
         agent.speed = agentSpeed;
         hearing.Alert();
         
-        /*if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
-        {
-            fovScript.angle = 360f;
-        }*/
 
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= chaseDistance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
+        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= chaseDistance)
         {
-            fovScript.angle = 360f;
-            FacingPlayer();
             time += Time.deltaTime;
-            if (time < 2f && time >= 1.018f)
+            if (time >= 1.201f && time <1.5f)
             {
-                agent.isStopped = false;
                 eAnimator.SetBool("isAttacking", false);
                 ChaseAfterPlayer();
+                FacingPlayer();
             }
-            if (time >= 2f)
+            if (time >= 1.5f)
             {
-                agent.isStopped = true;
                 AttackPlayerPose();
                 time = 0;
-            }  
+                FacingPlayer();
+            }
         }
         else
         {
             time = 0;
-        }
-
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= closeDistance)
-        {
-            FacingPlayer();
-            AttackPlayerPose();
         }
 
         //enemy activated if player get too close
@@ -92,13 +79,14 @@ public class LOHEnemyAI : MonoBehaviour
 
         if (fovScript.canSeePlayer == true)
         {
-            
+            FacingPlayer();
             seen = true;
             fovScript.angle = 360f;
         }
 
         if (seen == true && fovScript.canSeePlayer == false)
         {
+
             ChaseAfterPlayer();
         }
 
@@ -121,10 +109,11 @@ public class LOHEnemyAI : MonoBehaviour
     //ChasingScript: If distance from this bot to player is greater than maximumDistance, then chase after the Player
     void ChaseAfterPlayer()
     {
-        
+
+        agent.isStopped = false;
         if (!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree"))
         {
-            agent.isStopped = false;
+            //agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
             {
                 FacingPlayer();
@@ -180,5 +169,10 @@ public class LOHEnemyAI : MonoBehaviour
             return false;
     }
    
+    void desperation()
+    {
+            time = 1.201f;
+            eAnimator.SetBool("isAttacking", false);
+    }
 
 }

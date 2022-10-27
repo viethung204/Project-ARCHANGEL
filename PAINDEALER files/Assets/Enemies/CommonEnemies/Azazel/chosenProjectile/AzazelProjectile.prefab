@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5353300377522810020}
   - component: {fileID: 5968012932756540884}
   - component: {fileID: 5949864895848527874}
-  - component: {fileID: 5968012932756540885}
+  - component: {fileID: 425550823}
   m_Layer: 0
   m_Name: AzazelProjectile
   m_TagString: Untagged
@@ -152,7 +152,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.15, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5968012932756540885
+--- !u!114 &425550823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5353300377522810021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa09bbdb544d8a349aa3494bb4d4b476, type: 3}
+  m_Script: {fileID: 11500000, guid: 29876abc5679ed34db95f193bb2aff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 10

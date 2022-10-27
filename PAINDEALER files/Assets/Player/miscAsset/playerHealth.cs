@@ -8,6 +8,7 @@ public class playerHealth : MonoBehaviour
     public float Health = 100f;
     private float m_Health = 100f;
     public float Armor = 100f;
+    private float damageTaken;
     Text armorText;
     Text healthText;
     public Animator playerAnimator;
@@ -37,7 +38,17 @@ public class playerHealth : MonoBehaviour
         if (Health < m_Health)
         {
             GotHurt();
-            m_Health = Health;
+            if(Armor > 0)
+            {
+                damageTaken = m_Health - Health;
+                Health = m_Health - (damageTaken * 1/3);
+                Armor = Armor - (damageTaken * 2/3);
+                m_Health = Health;
+            }
+            else
+            {
+                m_Health = Health;
+            }
         }
         else if(Health > m_Health)
         {
@@ -49,9 +60,9 @@ public class playerHealth : MonoBehaviour
         {
             StartCoroutine(Dissolve());
         }
-        healthText.text = Health.ToString();
+        healthText.text = Mathf.Round(Health).ToString();
         HealthIndicator.fillAmount = Health/100;
-        armorText.text = Armor.ToString();
+        armorText.text = Mathf.Round(Armor).ToString();
         ArmorIndicator.fillAmount = Armor / 100;
         if (Health <= 0)
         {

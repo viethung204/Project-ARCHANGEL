@@ -18,6 +18,12 @@ public class HaedexEnemyAI : MonoBehaviour
     public float closeDistance;
     NavMeshAgent agent;
 
+    public GameObject HDP1projectile;
+    public GameObject HDP1SpawnLocation;
+    public GameObject HDP2projectile;
+    public GameObject HDP2SpawnLocation;
+    public float throwForce = 30;
+
     FieldOfView fovScript;
     Rigidbody rb;
 
@@ -45,36 +51,26 @@ public class HaedexEnemyAI : MonoBehaviour
     {
         agent.speed = agentSpeed;
         hearing.Alert();
-        
-        if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
-        {
-            fovScript.angle = 360f;
-            ChaseAfterPlayer();
-        }
+       
 
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= rangeDistance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
+        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= chaseDistance)
         {
             time += Time.deltaTime;
-            if (time < 2 && time >= 1.018f)
+            if (time < 1.5f && time >= 1.018f)
             {
                 eAnimator.SetBool("isAttacking", false);
                 ChaseAfterPlayer();
             }
-            if (time >= 2)
+            if (time >= 1.5f)
             {
                 AttackPlayerPose();
                 time = 0;
+                FacingPlayer();
             }  
         }
         else
         {
             time = 0;
-        }
-
-        if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= closeDistance)
-        {
-            FacingPlayer();
-            AttackPlayerPose();
         }
 
         //enemy activated if player get too close
@@ -113,8 +109,8 @@ public class HaedexEnemyAI : MonoBehaviour
     //ChasingScript: If distance from this bot to player is greater than maximumDistance, then chase after the Player
     void ChaseAfterPlayer()
     {
-
-        if(!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree"))
+        agent.isStopped = false;
+        if (!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree"))
         {
             agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
@@ -126,6 +122,35 @@ public class HaedexEnemyAI : MonoBehaviour
         
     }
 
+    void Projectile1Attack()
+    {
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(HDP1projectile, HDP1SpawnLocation.transform.position, HDP1SpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = HDP1SpawnLocation.transform.forward * throwForce;
+
+        //apply the force
+        projectileRb.AddForce(force, ForceMode.Impulse);
+    }
+
+    void Projectile2Attack()
+    {
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(HDP2projectile, HDP2SpawnLocation.transform.position, HDP2SpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = HDP2SpawnLocation.transform.forward * throwForce;
+
+        //apply the force
+       projectileRb.AddForce(force, ForceMode.Impulse);
+    }
 
     //Look at player with lerp to control the rotation speed
     void FacingPlayer()
@@ -156,6 +181,11 @@ public class HaedexEnemyAI : MonoBehaviour
         else
             return false;
     }
-   
+    
+    void desperation()
+    {
+        time = 1.018f;
+        eAnimator.SetBool("isAttacking", false);
+    }
 
 }

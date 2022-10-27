@@ -37,6 +37,6 @@ public class ToxicRiverScript : MonoBehaviour
     
     void DeadDelay()
     {
-        healthScript.Health -= 5;
+        healthScript.Health -= 10;
     }
 }

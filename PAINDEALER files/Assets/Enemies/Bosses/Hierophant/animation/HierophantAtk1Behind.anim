@@ -21,17 +21,17 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: bb12752d62dad5f40bcea379c6c47f9f, type: 3}
-    - time: 0.8333333
+    - time: 0.84
       value: {fileID: 21300000, guid: 6532fce8a058b5a47b91f78d8affb853, type: 3}
-    - time: 0.96666664
+    - time: 1
       value: {fileID: 21300000, guid: 6dbd35e661e3249449ab966c5dac13b0, type: 3}
-    - time: 1.1666666
+    - time: 1.16
       value: {fileID: 21300000, guid: 6dbd35e661e3249449ab966c5dac13b0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 30
+  m_SampleRate: 25
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -74,4 +74,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: PlayShootAudio1
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

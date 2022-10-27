@@ -20,6 +20,12 @@ public class HierophantEnemyAI : MonoBehaviour
     public float closeDistance;
     NavMeshAgent agent;
 
+    public GameObject H1projectile;
+    public GameObject H2projectile;
+    public GameObject HSpawnLocation;
+    public float throwForce1;
+    public float throwForce2;
+
     FieldOfView fovScript;
     Rigidbody rb;
 
@@ -51,7 +57,7 @@ public class HierophantEnemyAI : MonoBehaviour
         
         if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance && Vector3.Distance(transform.position, TargetTransform.position) > atk2Distance)
         {
-            Debug.Log("chase");
+            
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
@@ -60,7 +66,7 @@ public class HierophantEnemyAI : MonoBehaviour
         if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= atk1Distance && Vector3.Distance(transform.position, TargetTransform.position) > closeDistance)
         {
             eAnimator.SetBool("isAttacking2", false);
-            Debug.Log("true1");
+          
             time += Time.deltaTime;
             if (time < 1.201f)
             {
@@ -85,7 +91,7 @@ public class HierophantEnemyAI : MonoBehaviour
         if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= atk2Distance && Vector3.Distance(transform.position, TargetTransform.position) > atk1Distance && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)
         {
             eAnimator.SetBool("isAttacking1", false);
-            Debug.Log("true2");
+            
             time += Time.deltaTime;
             if(time < 2.351f)
             {
@@ -109,7 +115,7 @@ public class HierophantEnemyAI : MonoBehaviour
 
         if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= closeDistance)
         {
-            Debug.Log("true");
+            
             FacingPlayer();
             Attack1PlayerPose();   
         }
@@ -190,6 +196,36 @@ public class HierophantEnemyAI : MonoBehaviour
         agent.isStopped = true;
         eAnimator.SetBool("isAttacking2", true);
         FacingPlayer();
+    }
+
+    void ProjectileAttack1()
+    {
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(H1projectile, HSpawnLocation.transform.position, HSpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = HSpawnLocation.transform.forward * throwForce1;
+
+        //apply the force
+        projectileRb.AddForce(force, ForceMode.Impulse);
+    }
+
+    void ProjectileAttack2()
+    {
+        //Create a new gameObject out of the newly spawn projectile
+        GameObject grenade = Instantiate(H2projectile, HSpawnLocation.transform.position, HSpawnLocation.transform.rotation);
+
+        //get its rigidbody
+        Rigidbody projectileRb = grenade.GetComponent<Rigidbody>();
+
+        //calculate force 
+        Vector3 force = HSpawnLocation.transform.forward * throwForce2;
+
+        //apply the force
+        projectileRb.AddForce(force, ForceMode.Impulse);
     }
 
     //check if animtion is playing

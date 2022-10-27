@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898000671}
+  - component: {fileID: 820157597}
   m_Layer: 0
   m_Name: LOHSpawnPoint
   m_TagString: Untagged
@@ -24,13 +25,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898000670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.25, z: 0.56}
+  m_LocalPosition: {x: 0.047, y: -0.057, z: 1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3207843813831762531}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &820157597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898000670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b428d5ead1f5285439680f41d8573cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 9999
 --- !u!1 &3207843813831762533
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +190,7 @@ MonoBehaviour:
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -10
-  chanceForHurtAnimation: 1
+  chanceForHurtAnimation: 0.5
 --- !u!54 &3022002709248515284
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,7 +205,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!65 &3022002709248515285
 BoxCollider:
@@ -218,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ebf6644c26d624e9ae77a4eeddd327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 60
+  radius: 100
   angle: 135
   playerRef: {fileID: 0}
   targetMask:
@@ -226,7 +240,7 @@ MonoBehaviour:
     m_Bits: 8
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 887
+    m_Bits: 823
   canSeePlayer: 0
 --- !u!114 &25782070012001938
 MonoBehaviour:
@@ -256,15 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571c7bd8b7c49e047b73a48eb99e7e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentSpeed: 8
+  agentSpeed: 5
   RotationSpeed: 8
-  rangeDistance: 50
+  rangeDistance: 70
   chaseDistance: 100
   detectDistance: 30
-  closeDistance: 20
-  LOHprojectile: {fileID: 0}
+  LOHprojectile: {fileID: 5972815818726578678, guid: aed0ed9ba9f05ff46a18fa1c433b6b2f, type: 3}
   SpawnLocation: {fileID: 1898000670}
-  throwForce: 20
+  throwForce: 30
   seen: 0
 --- !u!195 &529326512
 NavMeshAgent:
@@ -282,7 +295,7 @@ NavMeshAgent:
   m_AngularSpeed: 999
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 4.2941175
   m_BaseOffset: 2.1470587
