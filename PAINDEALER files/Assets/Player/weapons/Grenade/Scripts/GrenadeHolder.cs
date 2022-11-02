@@ -25,6 +25,7 @@ public class GrenadeHolder : MonoBehaviour
     private void Start()
     {
         ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
+        grenadeCountUI = GameObject.Find("grenadeCount").GetComponent<Text>();
     }
 
 

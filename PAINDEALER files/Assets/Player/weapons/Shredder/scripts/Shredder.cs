@@ -82,6 +82,7 @@ public class Shredder : MonoBehaviour
     {
         if (ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "revving down"))
         {
+            ShootSound();
             RaycastHit HitInfo;
             if (Physics.Raycast(RecoilSys.transform.position, RecoilSys.transform.forward, out HitInfo, range))
             {
@@ -107,7 +108,18 @@ public class Shredder : MonoBehaviour
         }
     }
 
-
+    public void ShootSound()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider NearbyObjects in colliders)
+        {
+            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
+            if (hearScript != null && hearScript.enabled == true)
+            {
+                hearScript.shotfired = true;
+            }
+        }
+    }
 
 
     //check if animtion is playing

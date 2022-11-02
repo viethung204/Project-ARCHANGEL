@@ -9,6 +9,7 @@ public class CrosshairScript : MonoBehaviour
 
     private void Start()
     {
+        reticle = GameObject.Find("crosshair").GetComponent<Image>();
         reticle.color = new Color(1, 1, 1, 0.75f);
     }
 

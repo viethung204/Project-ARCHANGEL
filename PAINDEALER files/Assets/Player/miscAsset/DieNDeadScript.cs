@@ -22,7 +22,7 @@ public class DieNDeadScript : MonoBehaviour
         controller = GameObject.Find("FPSPlayer").GetComponent<SC_FPSController>();
         WeaponsHolder = GameObject.Find("Weapons Holder");
         playerAnimator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
-        RespawnPoint = GameObject.Find("respawnPoint").GetComponent<Transform>();
+        //RespawnPoint = GameObject.Find("respawnPoint").GetComponent<Transform>();
         player = GameObject.Find("FPSPlayer").GetComponent<Transform>();
         playerhealth = GameObject.Find("Capsule").GetComponent<playerHealth>();
         UI = GameObject.Find("Canvas");

@@ -88,8 +88,8 @@ public class PumpShotgun : MonoBehaviour
 
     void Shoot()
     {
-
-            RaycastHit HitInfo;
+        ShootSound();
+        RaycastHit HitInfo;
         for (int i = 0; i < pellets; i++)
         {
             var direction = PlayerCam.transform.forward + new Vector3(Random.Range(-maxSpread, maxSpread), Random.Range(-maxSpread, maxSpread), 0f);
@@ -116,6 +116,18 @@ public class PumpShotgun : MonoBehaviour
         ammoManager.ShotgunInvAmmo -= 1;
     }
 
+    public void ShootSound()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider NearbyObjects in colliders)
+        {
+            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
+            if (hearScript != null && hearScript.enabled == true)
+            {
+                hearScript.shotfired = true;
+            }
+        }
+    }
 
     //check if animtion is playing
     bool isPlaying(Animator anim, string stateName)

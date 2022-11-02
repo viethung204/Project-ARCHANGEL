@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 5514063686641793549}
   - component: {fileID: 5514063686641793545}
   - component: {fileID: 9206321976030575180}
-  - component: {fileID: 1108597055}
   - component: {fileID: 1108597056}
+  - component: {fileID: 406979910}
+  - component: {fileID: 406979909}
+  - component: {fileID: 406979908}
   m_Layer: 0
   m_Name: OilBarrel
   m_TagString: Untagged
@@ -157,23 +159,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1108597055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514063686641793550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2
-  deceleration: 0
-  travelSpeed: 0
-  gibThreshold: -1000
-  chanceForHurtAnimation: 0
 --- !u!114 &1108597056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +174,56 @@ MonoBehaviour:
   blastDamage: 30
   radius: 5
   Xplosion: {fileID: 8300000, guid: a30f7d8fde533fc468b1c45f475a4f9d, type: 3}
+--- !u!114 &406979910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514063686641793550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  deceleration: 1.5
+  travelSpeed: 1.5
+  gibThreshold: -5
+  chanceForHurtAnimation: 0
+--- !u!195 &406979909
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514063686641793550}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.00001
+  m_Speed: 0
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 0
+  m_AutoRepath: 0
+  m_Height: 0.00001
+  m_BaseOffset: 0.70454544
+  m_WalkableMask: 0
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &406979908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514063686641793550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 0
+  shotfired: 0

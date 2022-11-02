@@ -79,6 +79,7 @@ public class HFG40K : MonoBehaviour
     {
         if (CoreInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
+            ShootSound();
             StartCoroutine(WaitAnim());
             //StartCoroutine(Recoil());
             animator.SetTrigger("shoot");
@@ -113,11 +114,24 @@ public class HFG40K : MonoBehaviour
     }
 
     //Recoil
-   /* IEnumerator Recoil()
+    /* IEnumerator Recoil()
+     {
+         yield return new WaitForSeconds(0.9f);
+         RecoilScript.RecoilFire();
+     } */
+
+    public void ShootSound()
     {
-        yield return new WaitForSeconds(0.9f);
-        RecoilScript.RecoilFire();
-    } */
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider NearbyObjects in colliders)
+        {
+            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
+            if (hearScript != null && hearScript.enabled == true)
+            {
+                hearScript.shotfired = true;
+            }
+        }
+    }
 
     //check if animtion is playing
     bool isPlaying(Animator anim, string stateName)

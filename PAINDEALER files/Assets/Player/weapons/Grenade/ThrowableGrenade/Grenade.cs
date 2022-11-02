@@ -33,7 +33,7 @@ public class Grenade : MonoBehaviour
     {
         
 
-        if (collision.gameObject.tag == "Environment")
+        if (collision.gameObject.tag == "Environment" || collision.gameObject.tag == "Untagged")
         {
             bounce.Play();
             GAnimator.SetBool("idle", true);
@@ -44,6 +44,7 @@ public class Grenade : MonoBehaviour
 
     IEnumerator Explode()
     {
+        ShootSound();
         yield return new WaitForSeconds(lifespan - 0.10f);
         Instantiate(Explosion, gameObject.transform.position, Quaternion.identity);
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
@@ -53,6 +54,19 @@ public class Grenade : MonoBehaviour
             if (health != null)
             {
                 health.TakeDamage(blastDamage);
+            }
+        }
+    }
+
+    public void ShootSound()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider NearbyObjects in colliders)
+        {
+            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
+            if (hearScript != null && hearScript.enabled == true)
+            {
+                hearScript.shotfired = true;
             }
         }
     }

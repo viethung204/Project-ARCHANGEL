@@ -76,8 +76,10 @@ public class GrenadeLauncher : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
+
         if (GLInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
+            ShootSound();
             //Create a new gameObject out of the newly spawn projectile
             GameObject grenade =  Instantiate(grenadeProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
 
@@ -102,6 +104,18 @@ public class GrenadeLauncher : MonoBehaviour
         }
 
 
+    }
+    public void ShootSound()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
+        foreach (Collider NearbyObjects in colliders)
+        {
+            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
+            if (hearScript != null && hearScript.enabled == true)
+            {
+                hearScript.shotfired = true;
+            }
+        }
     }
 
     //check if animtion is playing

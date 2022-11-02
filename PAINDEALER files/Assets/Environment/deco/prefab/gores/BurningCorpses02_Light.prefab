@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7336884591518699841}
   - component: {fileID: 7336884591518699854}
   - component: {fileID: 7336884591518699855}
+  - component: {fileID: 1255583961372619892}
   m_Layer: 0
   m_Name: BurningCorpses02_Light
   m_TagString: Untagged
@@ -235,3 +236,23 @@ MonoBehaviour:
   intensity2: 1.5
   intensity3: 1.25
   intensity4: 0
+--- !u!114 &1255583961372619892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336884591518699847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
