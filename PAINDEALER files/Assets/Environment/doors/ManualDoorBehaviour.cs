@@ -80,7 +80,6 @@ public class ManualDoorBehaviour : MonoBehaviour
     {
         if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.greenKey == true)
         {
-            WeaponsNoti.enabled = true;
             animator.SetTrigger("on");
             gameObject.layer = LayerMask.NameToLayer("Default");
 
@@ -101,13 +100,13 @@ public class ManualDoorBehaviour : MonoBehaviour
     {
         if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.yellowKey == true)
         {
-            WeaponsNoti.enabled = true;
             animator.SetTrigger("on");
             gameObject.layer = LayerMask.NameToLayer("Default");
 
         }
         else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.yellowKey == false)
         {
+            WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You need the YELLOW key";
         }
         else if (gameObject.layer == LayerMask.NameToLayer("Default"))

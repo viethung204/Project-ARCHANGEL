@@ -20,7 +20,7 @@ public class multiSwitchInteractable : MonoBehaviour
 
     public void Switching()
     {
-           if(gameObject.layer == LayerMask.NameToLayer("interactable"))
+       if(gameObject.layer == LayerMask.NameToLayer("interactable"))
         {
             spriteRenderer.sprite = On;
             gameObject.layer = LayerMask.NameToLayer("Default");

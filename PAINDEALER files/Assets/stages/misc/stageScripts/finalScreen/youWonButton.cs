@@ -15,6 +15,6 @@ public class youWonButton : MonoBehaviour
     IEnumerator ButtonDelay()
     {
         yield return new WaitForSeconds(secondsWait);
-        finalButton.active = true;
+        finalButton.SetActive(true);
     }
 }

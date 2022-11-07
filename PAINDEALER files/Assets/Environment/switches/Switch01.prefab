@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2273191935016113904}
   - component: {fileID: 2273191935016113911}
-  - component: {fileID: 2273191935016113905}
   - component: {fileID: 2273191935016113906}
   m_Layer: 8
   m_Name: Switch01
@@ -86,37 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2273191935016113905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2273191935016113910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9784e5c583ff54c41b9031425434ebfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2273191935016113905}
-        m_TargetAssemblyTypeName: SwitchInteractable, Assembly-CSharp
-        m_MethodName: Switching
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  On: {fileID: 21300000, guid: d7e9432eb0f530d48bb95b8a3207c078, type: 3}
-  Off: {fileID: 0}
-  SwitchAudio: {fileID: 8300000, guid: 907bd1f6aee9e9643a7d82ebea8f4af7, type: 3}
-  doorAnimator: {fileID: 0}
 --- !u!65 &2273191935016113906
 BoxCollider:
   m_ObjectHideFlags: 0
