@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class RevolverPickup : MonoBehaviour
 {
-    private GameObject Revolver;
+    public GameObject Revolver;
 
     private Transform WeaponsHolder;
-    private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
     private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
+    private LoadoutManager loadout;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
+        loadout = (GameObject.Find("LoadoutManager")).gameObject.GetComponent<LoadoutManager>();
 
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
@@ -31,8 +31,6 @@ public class RevolverPickup : MonoBehaviour
 
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
-
-        Revolver = GameObject.Find("Revolver");
 
     }
 
@@ -46,9 +44,10 @@ public class RevolverPickup : MonoBehaviour
             WeaponsNoti.text = "You picked up the Revolver!";
             notification.textTimer = 0;
             Revolver.transform.SetParent(WeaponsHolder);
+            loadout.revolverState = 1;
 
 
-            weaponsOrder.Reoder();
+            weaponsOrder.Reorder();
 
             int currentPlace = Revolver.transform.GetSiblingIndex();
 
@@ -62,7 +61,7 @@ public class RevolverPickup : MonoBehaviour
         else if (other.CompareTag("Player") && Revolver.transform.parent == WeaponsHolder)
         {
 
-            ammoManager.RevolverInvAmmo += 12;
+            AmmoManager.RevolverInvAmmo += 12;
             Destroy(gameObject);
         }
 

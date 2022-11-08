@@ -20,7 +20,7 @@ public class AmmoPickups : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
-            ammoManager.ShotgunInvAmmo += AmmoPU;
+            AmmoManager.ShotgunInvAmmo += AmmoPU;
             Destroy(gameObject);
             
         }

@@ -25,7 +25,6 @@ public class HFG40K : MonoBehaviour
     public AudioSource EmptyClick;
     public Image UICrosshair;
     public Sprite crosshair;
-    int CoreInvAmmo;
 
     public GameObject ECoreProjectile;
     public GameObject SpawnLocation;
@@ -36,12 +35,8 @@ public class HFG40K : MonoBehaviour
 
     private void Start()
     {
-        //find ammo manager
-        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
-        CoreInvAmmo = ammoManager.CoreInvAmmo;
-
         //make it so play idle anim
-        animator.SetInteger("ammo", CoreInvAmmo);
+        animator.SetInteger("ammo", AmmoManager.CoreInvAmmo);
     }
     void Update()
     {
@@ -49,7 +44,7 @@ public class HFG40K : MonoBehaviour
         ammoType.text = "h-core";
         weaponName.text = "HFG40K";
         UIWeaponIcon.gameObject.SetActive(true);
-        currentAmmoText.text = CoreInvAmmo.ToString("00#");
+        currentAmmoText.text = AmmoManager.CoreInvAmmo.ToString("00#");
         invAmmoText.text = "XXX";
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
@@ -62,7 +57,7 @@ public class HFG40K : MonoBehaviour
         RecoilScript.snappiness = 9f;
         RecoilScript.returnSpeed = 4f;
 
-        animator.SetInteger("ammo", CoreInvAmmo);
+        animator.SetInteger("ammo", AmmoManager.CoreInvAmmo);
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -77,7 +72,7 @@ public class HFG40K : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (CoreInvAmmo > 0 && !isPlaying(animator, "shoot"))
+        if (AmmoManager.CoreInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
             ShootSound();
             StartCoroutine(WaitAnim());
@@ -85,7 +80,7 @@ public class HFG40K : MonoBehaviour
             animator.SetTrigger("shoot");
 
         }
-        else if (CoreInvAmmo == 0)
+        else if (AmmoManager.CoreInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();
@@ -109,7 +104,7 @@ public class HFG40K : MonoBehaviour
 
         //apply the force
         projectileRb.AddForce(force, ForceMode.Impulse);
-        CoreInvAmmo -= 1;
+        AmmoManager.CoreInvAmmo -= 1;
         RecoilScript.RecoilFire();
     }
 

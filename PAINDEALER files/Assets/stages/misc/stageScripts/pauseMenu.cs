@@ -16,18 +16,23 @@ public class pauseMenu : MonoBehaviour
     public Animator fadeAnimator;
     public int mainMenuIndexNumber;
 
+    private void Start()
+    {
+        GameIsPaused = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (!GameIsPaused)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
+        if (GameIsPaused)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -35,11 +40,6 @@ public class pauseMenu : MonoBehaviour
             if (!GameIsPaused)
             {
                 Pause();
-
-            }
-            else
-            {
-                return;
             }
         }
     }

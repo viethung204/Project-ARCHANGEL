@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 1203498428763265583}
   - component: {fileID: 2798469522061860299}
   - component: {fileID: 2798469522061860307}
+  - component: {fileID: 595781382}
+  - component: {fileID: 595781392}
+  - component: {fileID: 595781393}
   m_Layer: 0
   m_Name: AcidBarrel
   m_TagString: Untagged
@@ -252,3 +255,59 @@ MonoBehaviour:
   blastDamage: 50
   radius: 5
   Xplosion: {fileID: 8300000, guid: a30f7d8fde533fc468b1c45f475a4f9d, type: 3}
+--- !u!114 &595781382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203498428763265569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &595781392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203498428763265569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearingDistance: 0
+  shotfired: 0
+--- !u!195 &595781393
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203498428763265569}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.52272725
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.4545455
+  m_BaseOffset: 0.72727275
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

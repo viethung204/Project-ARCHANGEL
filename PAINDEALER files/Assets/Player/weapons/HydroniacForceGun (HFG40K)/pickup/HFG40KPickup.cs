@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class HFG40KPickup : MonoBehaviour
 {
-    private GameObject HFG40K;
+    public GameObject HFG40K;
 
     private Transform WeaponsHolder;
-    private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
     private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
+    private LoadoutManager loadout;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
+        loadout = (GameObject.Find("LoadoutManager")).gameObject.GetComponent<LoadoutManager>();
 
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
@@ -30,8 +30,6 @@ public class HFG40KPickup : MonoBehaviour
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
-
-        HFG40K = FindInActiveObjectByName("HFG40K");
 
 
     }
@@ -45,8 +43,8 @@ public class HFG40KPickup : MonoBehaviour
             WeaponsNoti.text = "You picked up the legendary HFG40K! Hell yeah!";
             notification.textTimer = 0;
             HFG40K.transform.SetParent(WeaponsHolder);
-
-            weaponsOrder.Reoder();
+            loadout.hfgState = 1;
+            weaponsOrder.Reorder();
 
             int currentPlace = HFG40K.transform.GetSiblingIndex();
 
@@ -57,7 +55,7 @@ public class HFG40KPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && HFG40K.transform.parent == WeaponsHolder)
         {
-            ammoManager.CoreInvAmmo += 2;
+            AmmoManager.CoreInvAmmo += 2;
             Destroy(gameObject);
         }
 

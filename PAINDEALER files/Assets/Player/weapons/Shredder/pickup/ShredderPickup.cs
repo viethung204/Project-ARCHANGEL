@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class ShredderPickup : MonoBehaviour
 {
-    private GameObject Shredder;
+    public GameObject Shredder;
 
 
     private Transform WeaponsHolder;
-    private AmmoManager ammoManager;
 
 
     private Text WeaponsNoti;
@@ -17,13 +16,14 @@ public class ShredderPickup : MonoBehaviour
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
+    private LoadoutManager loadout;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
+        loadout = (GameObject.Find("LoadoutManager")).gameObject.GetComponent<LoadoutManager>();
 
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
@@ -33,7 +33,6 @@ public class ShredderPickup : MonoBehaviour
 
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
-        Shredder = GameObject.Find("Shredder");
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
 
     }
@@ -49,8 +48,8 @@ public class ShredderPickup : MonoBehaviour
             notification.textTimer = 0;
 
             Shredder.transform.SetParent(WeaponsHolder);
-
-            weaponsOrder.Reoder();
+            loadout.shredderState = 1;
+            weaponsOrder.Reorder();
 
             int currentPlace = Shredder.transform.GetSiblingIndex();
 
@@ -63,7 +62,7 @@ public class ShredderPickup : MonoBehaviour
         else if (other.CompareTag("Player") && Shredder.transform.parent == WeaponsHolder)
         {
 
-            ammoManager.ShredderInvAmmo += 50;
+            AmmoManager.ShredderInvAmmo += 50;
             Destroy(gameObject);
         }
 

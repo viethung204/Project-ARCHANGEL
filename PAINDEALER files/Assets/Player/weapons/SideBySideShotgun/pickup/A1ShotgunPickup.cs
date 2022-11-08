@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class A1ShotgunPickup: MonoBehaviour
 {
-    private GameObject A1Shotgun;
+    public GameObject A1Shotgun;
 
 
     private Transform WeaponsHolder;
-    private AmmoManager ammoManager;
 
     private Text WeaponsNoti;
     private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
+    private LoadoutManager loadout;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
+        loadout = (GameObject.Find("LoadoutManager")).gameObject.GetComponent<LoadoutManager>();
 
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
 
@@ -31,8 +31,6 @@ public class A1ShotgunPickup: MonoBehaviour
 
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
-
-        A1Shotgun = GameObject.Find("DBRShotgun");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,9 +42,9 @@ public class A1ShotgunPickup: MonoBehaviour
             WeaponsNoti.text = "You picked up the A1 Shotgun!";
             notification.textTimer = 0;
             A1Shotgun.transform.SetParent(WeaponsHolder);
+            loadout.dbShotgunState = 1;
 
-
-            weaponsOrder.Reoder();
+            weaponsOrder.Reorder();
 
             int currentPlace = A1Shotgun.transform.GetSiblingIndex();
 
@@ -58,7 +56,7 @@ public class A1ShotgunPickup: MonoBehaviour
         }
         else if (other.CompareTag("Player") && A1Shotgun.transform.parent == WeaponsHolder)
         {
-            ammoManager.ShotgunInvAmmo += 10;
+            AmmoManager.ShotgunInvAmmo += 10;
             Destroy(gameObject);
         }
 

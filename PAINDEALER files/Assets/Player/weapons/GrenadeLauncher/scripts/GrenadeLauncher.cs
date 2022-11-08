@@ -35,12 +35,6 @@ public class GrenadeLauncher : MonoBehaviour
 
     public Recoil RecoilScript;
 
-    private void Start()
-    {
-        //find ammo manager
-        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
-        GLInvAmmo = ammoManager.GLInvAmmo;
-    }
 
     void Update()
     {

@@ -11,7 +11,6 @@ public class Shredder : MonoBehaviour
 {
     public float damage = 5f;
     public float range = 100f;
-    public int ShredderInvAmmo;
     public GameObject RecoilSys;
     public Text ammoDivider;
     public Animator animator;
@@ -33,12 +32,6 @@ public class Shredder : MonoBehaviour
 
     public Recoil RecoilScript;
 
-    private void Start()
-    {
-        //find ammo manager
-        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
-        ShredderInvAmmo = ammoManager.ShredderInvAmmo;
-    }
 
     void Update()
     {
@@ -46,7 +39,7 @@ public class Shredder : MonoBehaviour
         ammoType.text = ".50bmg";
         weaponName.text = "Shredder";
         UIWeaponIcon.gameObject.SetActive(true);
-        currentAmmoText.text = ShredderInvAmmo.ToString("00#");
+        currentAmmoText.text = AmmoManager.ShredderInvAmmo.ToString("00#");
         invAmmoText.text = "XXX";
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
@@ -80,7 +73,7 @@ public class Shredder : MonoBehaviour
     //note: if 2 trigger set at once, you can set the priority in the Animator
     void Shoot()
     {
-        if (ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "revving down"))
+        if (AmmoManager.ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "revving down"))
         {
             ShootSound();
             RaycastHit HitInfo;
@@ -95,13 +88,13 @@ public class Shredder : MonoBehaviour
             animator.SetBool("shoot", true);
             RecoilScript.RecoilFire();
         }
-        if (ShredderInvAmmo <= 0)
+        if (AmmoManager.ShredderInvAmmo <= 0)
         {
             revvingSound.Stop();
             animator.SetBool("shoot", false);
             animator.SetTrigger("revout");
         }
-        else if (ShredderInvAmmo == 0)
+        else if (AmmoManager.ShredderInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();

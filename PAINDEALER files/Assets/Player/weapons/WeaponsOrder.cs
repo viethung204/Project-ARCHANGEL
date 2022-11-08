@@ -11,7 +11,7 @@ public class WeaponsOrder : MonoBehaviour
     public GameObject Shredder;
     public GameObject HFG40K;
 
-    public void Reoder()
+    public void Reorder()
     {
         Revolver.transform.SetSiblingIndex(1);
         PumpShotgun.transform.SetSiblingIndex(2);

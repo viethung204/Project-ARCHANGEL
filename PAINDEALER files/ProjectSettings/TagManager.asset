@@ -9,6 +9,8 @@ TagManager:
   - esad
   - pickup
   - projectile
+  - activeLoadout
+  - idleLoadout
   layers:
   - Default
   - TransparentFX

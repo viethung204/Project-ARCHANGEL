@@ -12,7 +12,6 @@ public class RevolverScript : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    int RevolverInvAmmo;
     public int RevolverCurrentAmmo = 6;
     const int RevolverMaxAmmo = 6;
     public Animator animator;
@@ -29,13 +28,6 @@ public class RevolverScript : MonoBehaviour
     public Image UICrosshair;
     public Sprite crosshair;
 
-    private void Start()
-    {
-        //find ammo manager
-        AmmoManager ammoManager = (GameObject.Find("Weapons Holder")).GetComponent<AmmoManager>();
-        RevolverInvAmmo = ammoManager.RevolverInvAmmo;
-    }
-
 
     void Update()
     {
@@ -46,7 +38,7 @@ public class RevolverScript : MonoBehaviour
         ammoDivider.gameObject.SetActive(true);
         weaponName.text = "Revolver";
         currentAmmoText.text = RevolverCurrentAmmo.ToString();
-        invAmmoText.text = RevolverInvAmmo.ToString("00#");
+        invAmmoText.text = AmmoManager.RevolverInvAmmo.ToString("00#");
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(100f, 100f);
         UICrosshair.GetComponent<Image>().sprite = crosshair;
@@ -87,19 +79,19 @@ public class RevolverScript : MonoBehaviour
             }
             animator.SetTrigger("shoot");
             RevolverCurrentAmmo--;
-            if (RevolverCurrentAmmo == 0 && RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
+            if (RevolverCurrentAmmo == 0 && AmmoManager.RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
             {
                 Reload();
             }
             
         }
-        else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo == 0)
+        else if (RevolverCurrentAmmo == 0 && AmmoManager.RevolverInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();
 
         }
-        else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
+        else if (RevolverCurrentAmmo == 0 && AmmoManager.RevolverInvAmmo > 0 && !isPlaying(animator, "reload"))
         {
             Reload();
 
@@ -111,17 +103,17 @@ public class RevolverScript : MonoBehaviour
     //Reload
     void Reload()
     {
-        if (RevolverInvAmmo >= RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo)
+        if (AmmoManager.RevolverInvAmmo >= RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo)
         {
             animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
-        else if (RevolverInvAmmo < RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo && RevolverInvAmmo != 0)
+        else if (AmmoManager.RevolverInvAmmo < RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo && AmmoManager.RevolverInvAmmo != 0)
         {
             animator.SetTrigger("rkey");
             StartCoroutine(ReloadUI());
         }
-        else if (RevolverInvAmmo == 0)
+        else if (AmmoManager.RevolverInvAmmo == 0)
         {
             return;
         }
@@ -129,7 +121,7 @@ public class RevolverScript : MonoBehaviour
         {
             return;
         }
-        else if (RevolverCurrentAmmo == 0 && RevolverInvAmmo == 0)
+        else if (RevolverCurrentAmmo == 0 && AmmoManager.RevolverInvAmmo == 0)
         {
             return;
         }
@@ -139,17 +131,17 @@ public class RevolverScript : MonoBehaviour
     IEnumerator ReloadUI()
     {
         yield return new WaitForSeconds(1.27f);
-        if (RevolverInvAmmo >= RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo)
+        if (AmmoManager.RevolverInvAmmo >= RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo)
         {
             //Update InvAmmo first be4 update CurrentAmmo (if you let CA update first it will be InvAmmo = InvAmmo - n + n because now CA and MA are the same)
-            RevolverInvAmmo = RevolverInvAmmo - RevolverMaxAmmo + RevolverCurrentAmmo;
+            AmmoManager.RevolverInvAmmo = AmmoManager.RevolverInvAmmo - RevolverMaxAmmo + RevolverCurrentAmmo;
             RevolverCurrentAmmo = RevolverMaxAmmo;
 
         }
-        else if (RevolverInvAmmo < RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo && RevolverInvAmmo != 0)
+        else if (AmmoManager.RevolverInvAmmo < RevolverMaxAmmo && RevolverCurrentAmmo != RevolverMaxAmmo && AmmoManager.RevolverInvAmmo != 0)
         {
-            RevolverCurrentAmmo = RevolverCurrentAmmo + RevolverInvAmmo;
-            RevolverInvAmmo = 0;
+            RevolverCurrentAmmo = RevolverCurrentAmmo + AmmoManager.RevolverInvAmmo;
+            AmmoManager.RevolverInvAmmo = 0;
         }
     }
 

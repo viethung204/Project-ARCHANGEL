@@ -10,7 +10,6 @@ public class GrenadeHolder : MonoBehaviour
     public GameObject weaponsHolder;
     public GameObject grenadeHolder;
 
-    public AmmoManager ammoManager;
     public Text grenadeCountUI;
 
     public GameObject Grenade;
@@ -24,23 +23,22 @@ public class GrenadeHolder : MonoBehaviour
 
     private void Start()
     {
-        ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
         grenadeCountUI = GameObject.Find("grenadeCount").GetComponent<Text>();
     }
 
 
     void Update()
     {
-        grenadeCountUI.text = ammoManager.grenadeCount.ToString("0#");
+        grenadeCountUI.text = AmmoManager.grenadeCount.ToString("0#");
         if (Input.GetMouseButtonDown(2) )
         {
-            if (ammoManager.grenadeCount > 0 && !isPlaying(animator, "throwGrenade"))
+            if (AmmoManager.grenadeCount > 0 && !isPlaying(animator, "throwGrenade"))
             {
                 StartCoroutine(throwingGrenade());
                 StartCoroutine(switchingWeapons());
-                ammoManager.grenadeCount -= 1;
+                AmmoManager.grenadeCount -= 1;
             }
-            else if (ammoManager.grenadeCount == 0)
+            else if (AmmoManager.grenadeCount == 0)
             {
                 return;
             }

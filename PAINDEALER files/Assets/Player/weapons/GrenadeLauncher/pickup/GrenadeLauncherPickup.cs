@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GrenadeLauncherPickup : MonoBehaviour
 {
-    private GameObject GrenadeLauncher;
+    public GameObject GrenadeLauncher;
 
 
     private Transform WeaponsHolder;
@@ -16,11 +16,13 @@ public class GrenadeLauncherPickup : MonoBehaviour
     private SwitchWeapons switchWeapons;
 
     private WeaponsOrder weaponsOrder;
+    private LoadoutManager loadout;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        loadout = (GameObject.Find("LoadoutManager")).gameObject.GetComponent<LoadoutManager>();
         ammoManager = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<AmmoManager>();
 
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
@@ -31,8 +33,6 @@ public class GrenadeLauncherPickup : MonoBehaviour
 
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
-
-        GrenadeLauncher = GameObject.Find("GrenadeLauncher");
 
     }
 
@@ -46,8 +46,8 @@ public class GrenadeLauncherPickup : MonoBehaviour
             notification.textTimer = 0;
             GrenadeLauncher.transform.SetParent(WeaponsHolder);
 
-
-            weaponsOrder.Reoder();
+            loadout.grenadeLauncherState = 1;
+            weaponsOrder.Reorder();
 
             int currentPlace = GrenadeLauncher.transform.GetSiblingIndex();
 
@@ -59,7 +59,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && GrenadeLauncher.transform.parent == WeaponsHolder)
         {
-            ammoManager.GLInvAmmo += 6;
+            AmmoManager.GLInvAmmo += 6;
             Destroy(gameObject);
         }
 

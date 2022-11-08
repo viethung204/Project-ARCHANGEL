@@ -12,10 +12,10 @@ public class endCredits : MonoBehaviour
 
     public void end()
     {
-        CreditsHolder.active = false;
-        MainHolder.active = true;
-        project.active = true;
-        Archangel.active = true;
-        logo.active = true;
+        CreditsHolder.SetActive(false);
+        MainHolder.SetActive(true);
+        project.SetActive(true);
+        Archangel.SetActive(true);
+        logo.SetActive(true);
     }
 }
