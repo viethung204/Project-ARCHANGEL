@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/stages/winScreen/youWinScreen.unity
     guid: 701073662ea98cb4084ddbaaff083aa5
+  - enabled: 1
+    path: Assets/stages/winScreen/opening.unity
+    guid: 9d628c98db616294c83cfa948d08cbfe
   m_configObjects: {}

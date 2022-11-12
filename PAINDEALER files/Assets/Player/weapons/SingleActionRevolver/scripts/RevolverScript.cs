@@ -9,10 +9,10 @@ using Image = UnityEngine.UI.Image;
 
 public class RevolverScript : MonoBehaviour
 {
-    public float damage = 10f;
+    public static float damage = 10f;
     public float range = 100f;
     public Camera PlayerCam;
-    public int RevolverCurrentAmmo = 6;
+    public static int RevolverCurrentAmmo = 6;
     const int RevolverMaxAmmo = 6;
     public Animator animator;
     public Text currentAmmoText;
@@ -65,7 +65,6 @@ public class RevolverScript : MonoBehaviour
     {
         if (RevolverCurrentAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "reload"))
         {
-            ShootSound();
             RaycastHit HitInfo;
             if (Physics.Raycast(PlayerCam.transform.position, PlayerCam.transform.forward, out HitInfo, range))
             {
@@ -142,19 +141,6 @@ public class RevolverScript : MonoBehaviour
         {
             RevolverCurrentAmmo = RevolverCurrentAmmo + AmmoManager.RevolverInvAmmo;
             AmmoManager.RevolverInvAmmo = 0;
-        }
-    }
-
-    public void ShootSound()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
-        foreach (Collider NearbyObjects in colliders)
-        {
-            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
-            if (hearScript != null && hearScript.enabled == true)
-            {
-                hearScript.shotfired = true;
-            }
         }
     }
 

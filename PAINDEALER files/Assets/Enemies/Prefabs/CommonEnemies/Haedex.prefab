@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16199f3f4b654fc498e340d0e591d273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &1855868122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16199f3f4b654fc498e340d0e591d273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &1855868126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +133,6 @@ GameObject:
   - component: {fileID: 215020172775985456}
   - component: {fileID: -3417962640088010902}
   - component: {fileID: 1855868119}
-  - component: {fileID: 1855868120}
   - component: {fileID: 1855868121}
   - component: {fileID: 1855868130}
   - component: {fileID: 1855868131}
@@ -257,10 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 400
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
+  diedYet: 0
   chanceForHurtAnimation: 0.5
 --- !u!65 &215020172775985459
 BoxCollider:
@@ -289,7 +291,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 58
   m_CollisionDetection: 2
 --- !u!114 &-3417962640088010902
 MonoBehaviour:
@@ -304,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 80
-  angle: 180
+  angle: 360
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -335,20 +337,6 @@ NavMeshAgent:
   m_BaseOffset: 2.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1855868120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6089901069108840937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hearingDistance: 80
-  shotfired: 0
 --- !u!114 &1855868121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +359,7 @@ MonoBehaviour:
   HDP1SpawnLocation: {fileID: 598361907}
   HDP2projectile: {fileID: 6361303968266623336, guid: 33608c421fd0ca4489d5fad5c1b66b4b, type: 3}
   HDP2SpawnLocation: {fileID: 549896364}
-  throwForce: 40
+  throwForce: 30
   seen: 0
 --- !u!114 &1855868130
 MonoBehaviour:

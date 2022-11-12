@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 public class Shredder : MonoBehaviour
 {
-    public float damage = 5f;
+    public static float damage = 5f;
     public float range = 100f;
     public GameObject RecoilSys;
     public Text ammoDivider;
@@ -75,7 +75,6 @@ public class Shredder : MonoBehaviour
     {
         if (AmmoManager.ShredderInvAmmo > 0 && !isPlaying(animator, "shoot") && !isPlaying(animator, "revving down"))
         {
-            ShootSound();
             RaycastHit HitInfo;
             if (Physics.Raycast(RecoilSys.transform.position, RecoilSys.transform.forward, out HitInfo, range))
             {
@@ -98,19 +97,6 @@ public class Shredder : MonoBehaviour
         {
             //play *click* sound
             EmptyClick.Play();
-        }
-    }
-
-    public void ShootSound()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
-        foreach (Collider NearbyObjects in colliders)
-        {
-            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
-            if (hearScript != null && hearScript.enabled == true)
-            {
-                hearScript.shotfired = true;
-            }
         }
     }
 

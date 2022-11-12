@@ -16,15 +16,13 @@ public class DuneWarriorEnemyAI : MonoBehaviour
     NavMeshAgent agent;
     public float Damage = 5;
     public float range = 500f;
-
+    yaxisrotation rotate;
     FieldOfView fovScript;
 
     Animator eAnimator;
     Health health;
 
     int animLayer = 0;
-
-    hearing hearing;
 
     public bool seen = false;
     
@@ -35,14 +33,13 @@ public class DuneWarriorEnemyAI : MonoBehaviour
         eAnimator = GetComponent<Animator>();
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         health = gameObject.GetComponent<Health>();
-        hearing = gameObject.GetComponent<hearing>();
         agent = gameObject.GetComponent<NavMeshAgent>();
+        rotate = gameObject.GetComponent<yaxisrotation>();
     }
 
     private void Update()
     {
         agent.speed = agentSpeed;
-        hearing.Alert();
         if(isPlaying(eAnimator,"Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree"))
         {
             agent.isStopped = true;
@@ -66,11 +63,13 @@ public class DuneWarriorEnemyAI : MonoBehaviour
 
          if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true) 
          {
+            rotate.enabled = true;
              FacingPlayer();
              AttackPlayerPose();
          }
          else
          {
+            rotate.enabled = false;
              eAnimator.SetBool("isAttacking", false);
          }
 

@@ -14,8 +14,8 @@ public class Health : MonoBehaviour
     public float deceleration = 1.5f;
     public float travelSpeed = 1.5f;
     public float gibThreshold = -5f;
+    public bool diedYet = false;
     NavMeshAgent agent;
-    hearing hear;
 
     [Tooltip("0 has the lowest chance, 10 has the highest chance")]
     [Range(0.0f, 10f)]
@@ -28,7 +28,6 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        hear = GetComponent<hearing>();
         EnemyAnimator = this.gameObject.GetComponent<Animator>();
         Player = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
@@ -50,10 +49,9 @@ public class Health : MonoBehaviour
     {
         if (health <= 0f && health > gibThreshold)
         {
-            hear.enabled = false;
             agent.enabled = false;
             EnemyAnimator.SetBool("died", true);
-            gameObject.tag = "Untagged";
+            gameObject.tag = "died";
             transform.position = Vector3.MoveTowards(transform.position, transform.position += Player.forward, travelSpeed * Time.deltaTime);
             if ((travelSpeed -= deceleration * Time.deltaTime) <= 0)
             {
@@ -62,10 +60,9 @@ public class Health : MonoBehaviour
         }
         else if (health <= gibThreshold )
         {
-            hear.enabled = false;
             agent.enabled = false;
             EnemyAnimator.SetBool("gibbed", true);
-            gameObject.tag = "Untagged";
+            gameObject.tag = "died";
             transform.position = Vector3.MoveTowards(transform.position, transform.position += Player.forward, travelSpeed * Time.deltaTime);
             if ((travelSpeed -= deceleration * Time.deltaTime) <= 0)
             {

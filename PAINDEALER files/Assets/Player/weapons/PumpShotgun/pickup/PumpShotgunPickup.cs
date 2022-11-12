@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class PumpShotgunPickup : MonoBehaviour
 {
     public GameObject Shotgun;
-
-
+    public AudioClip pickupAudio;
+    public float AudioVolume = 10f;
+    private Camera PlayerCamera;
     private Transform WeaponsHolder;
 
     private Text WeaponsNoti;
@@ -32,20 +33,20 @@ public class PumpShotgunPickup : MonoBehaviour
 
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
-
+        PlayerCamera = Camera.main;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && Shotgun.transform.parent != WeaponsHolder)
         {
-
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             Shotgun.SetActive(true);
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You got the Shotgun!";
             notification.textTimer = 0;
             Shotgun.transform.SetParent(WeaponsHolder);
-            loadout.pumpShotgunState = 1;
+            LoadoutManager.pumpShotgunState = 1;
             weaponsOrder.Reorder();
 
             int currentPlace = Shotgun.transform.GetSiblingIndex();
@@ -58,6 +59,7 @@ public class PumpShotgunPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Shotgun.transform.parent == WeaponsHolder)
         {
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager.ShotgunInvAmmo += 10;
             Destroy(gameObject);
         }

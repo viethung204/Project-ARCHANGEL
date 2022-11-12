@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class A1ShotgunPickup: MonoBehaviour
 {
     public GameObject A1Shotgun;
-
-
+    public AudioClip pickupAudio;
+    public float AudioVolume = 10f;
+    private Camera PlayerCamera;
     private Transform WeaponsHolder;
 
     private Text WeaponsNoti;
@@ -28,7 +29,7 @@ public class A1ShotgunPickup: MonoBehaviour
         switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
 
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
-
+        PlayerCamera = Camera.main;
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
     }
@@ -42,8 +43,8 @@ public class A1ShotgunPickup: MonoBehaviour
             WeaponsNoti.text = "You picked up the A1 Shotgun!";
             notification.textTimer = 0;
             A1Shotgun.transform.SetParent(WeaponsHolder);
-            loadout.dbShotgunState = 1;
-
+            LoadoutManager.dbShotgunState = 1;
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             weaponsOrder.Reorder();
 
             int currentPlace = A1Shotgun.transform.GetSiblingIndex();
@@ -56,6 +57,7 @@ public class A1ShotgunPickup: MonoBehaviour
         }
         else if (other.CompareTag("Player") && A1Shotgun.transform.parent == WeaponsHolder)
         {
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager.ShotgunInvAmmo += 10;
             Destroy(gameObject);
         }

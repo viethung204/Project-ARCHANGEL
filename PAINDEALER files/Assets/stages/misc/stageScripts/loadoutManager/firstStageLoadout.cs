@@ -5,7 +5,6 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 public class firstStageLoadout : MonoBehaviour
 {
-    private LoadoutManager loadout;
     private Transform idleWeapons;
 
     public GameObject revolver;
@@ -17,7 +16,6 @@ public class firstStageLoadout : MonoBehaviour
 
     void Start()
     {
-        loadout = (GameObject.Find("LoadoutManager")).gameObject.GetComponent<LoadoutManager>();
         idleWeapons = (GameObject.Find("IdleWeapons")).gameObject.GetComponent<Transform>();
         revolver.transform.SetParent(idleWeapons);
         pumpShotgun.transform.SetParent(idleWeapons);
@@ -26,11 +24,11 @@ public class firstStageLoadout : MonoBehaviour
         shredder.transform.SetParent(idleWeapons);
         hfg.transform.SetParent(idleWeapons);
 
-        loadout.revolverState = 0;
-        loadout.dbShotgunState = 0;
-        loadout.pumpShotgunState = 0;
-        loadout.grenadeLauncherState = 0;
-        loadout.shredderState = 0;
-        loadout.hfgState = 0;
+        LoadoutManager.revolverState = 0;
+        LoadoutManager.dbShotgunState = 0;
+        LoadoutManager.pumpShotgunState = 0;
+        LoadoutManager.grenadeLauncherState = 0;
+        LoadoutManager.shredderState = 0;
+        LoadoutManager.hfgState = 0;
     }
 }

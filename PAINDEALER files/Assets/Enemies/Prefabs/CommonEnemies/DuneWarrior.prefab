@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 6981291707864439470}
   - component: {fileID: 2062508957837407295}
   - component: {fileID: 4677329638661340623}
-  - component: {fileID: 3603552848999538936}
   - component: {fileID: 3603552848999538939}
   - component: {fileID: 1048191460}
+  - component: {fileID: 4006624627699144314}
   m_Layer: 0
   m_Name: DuneWarrior
   m_TagString: Enemy
@@ -157,6 +157,7 @@ MonoBehaviour:
   deceleration: 1
   travelSpeed: 1.5
   gibThreshold: -1000
+  diedYet: 0
   chanceForHurtAnimation: 7
 --- !u!54 &6981291707864439470
 Rigidbody:
@@ -172,8 +173,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 58
+  m_CollisionDetection: 2
 --- !u!114 &2062508957837407295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,20 +219,6 @@ NavMeshAgent:
   m_BaseOffset: 1.4
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!114 &3603552848999538936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867660654840317543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hearingDistance: 50
-  shotfired: 0
 --- !u!114 &3603552848999538939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,3 +256,16 @@ MonoBehaviour:
   ShootAudio3: {fileID: 0}
   DieAudio: {fileID: 8300000, guid: c2c3ced61ba7c7043a756dba33635898, type: 3}
   HurtAudio: {fileID: 8300000, guid: 7f6bcae2f1f740348972b230f5021a2f, type: 3}
+--- !u!114 &4006624627699144314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867660654840317543}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16199f3f4b654fc498e340d0e591d273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

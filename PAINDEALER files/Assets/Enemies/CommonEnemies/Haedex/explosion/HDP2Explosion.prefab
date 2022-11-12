@@ -262,6 +262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 0.917
   audio: {fileID: -6499871296779214254}
-  blastDamage: 6
+  blastDamage: 20
   radius: 5
   killDelay: 0

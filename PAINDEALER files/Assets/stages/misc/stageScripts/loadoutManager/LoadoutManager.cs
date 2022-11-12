@@ -11,12 +11,12 @@ public class LoadoutManager : MonoBehaviour
     public GameObject shredder;
     public GameObject hfg;
 
-    public int revolverState;
-    public int pumpShotgunState;
-    public int dbShotgunState;
-    public int grenadeLauncherState;
-    public int shredderState;
-    public int hfgState;
+    public static int revolverState;
+    public static int pumpShotgunState;
+    public static int dbShotgunState;
+    public static int grenadeLauncherState;
+    public static int shredderState;
+    public static int hfgState;
 
     private Transform WeaponsHolder;
     private Transform idleWeapons;
@@ -26,12 +26,7 @@ public class LoadoutManager : MonoBehaviour
         idleWeapons = (GameObject.Find("IdleWeapons")).gameObject.GetComponent<Transform>();
         WeaponsHolder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<Transform>();
         
-        revolverState = PlayerPrefs.GetInt("revolverKey");
-        pumpShotgunState = PlayerPrefs.GetInt("pumpShotgunKey");
-        dbShotgunState = PlayerPrefs.GetInt("DoubleBarrelShotgunKey");
-        grenadeLauncherState = PlayerPrefs.GetInt("GrenadeLauncherKey");
-        shredderState = PlayerPrefs.GetInt("ShredderKey");
-        hfgState = PlayerPrefs.GetInt("HFGKey");
+
         
         //REVOLVER
         if (revolverState == 1)
@@ -89,15 +84,5 @@ public class LoadoutManager : MonoBehaviour
         {
             hfg.transform.SetParent(idleWeapons);
         }
-    }
-
-    public void UpdateWeapon()
-    {
-        PlayerPrefs.SetInt("revolverKey", revolverState);
-        PlayerPrefs.SetInt("pumpShotgunKey", pumpShotgunState);
-        PlayerPrefs.SetInt("DoubleBarrelShotgunKey", dbShotgunState);
-        PlayerPrefs.SetInt("GrenadeLauncherKey", grenadeLauncherState);
-        PlayerPrefs.SetInt("ShredderKey", shredderState);
-        PlayerPrefs.SetInt("HFGKey", hfgState);
     }
 }

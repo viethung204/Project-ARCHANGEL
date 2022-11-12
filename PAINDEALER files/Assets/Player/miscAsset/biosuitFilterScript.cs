@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class biosuitFilterScript : MonoBehaviour
 {
-    playerHealth filterCheck;
-    MeshRenderer meshRenderer;
+    Image greenImage;
 
     private void Start()
     {
-        filterCheck = GameObject.Find("Capsule").GetComponent<playerHealth>();
-        meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        greenImage = gameObject.GetComponent<Image>();
     }
 
     private void Update()
     {
-        if (filterCheck.BioSuit == true)
+        if (playerHealth.BioSuit == true)
         {
-            meshRenderer.enabled = true;
+            greenImage.enabled = true;
         }
         else
         {
-            meshRenderer.enabled = false;
+            greenImage.enabled = false;
         }
     }
 }

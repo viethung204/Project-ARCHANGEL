@@ -27,8 +27,6 @@ public class LOHEnemyAI : MonoBehaviour
     Animator eAnimator;
     Health health;
 
-    hearing hearing;
-
     int animLayer = 0;
 
     float time = 0;
@@ -42,12 +40,10 @@ public class LOHEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = gameObject.GetComponent<hearing>();
     }
     private void Update()
     {
         agent.speed = agentSpeed;
-        hearing.Alert();
         
 
         if(fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) <= chaseDistance)
@@ -69,12 +65,6 @@ public class LOHEnemyAI : MonoBehaviour
         else
         {
             time = 0;
-        }
-
-        //enemy activated if player get too close
-        if (Vector3.Distance(transform.position, TargetTransform.position) < detectDistance)
-        {
-            fovScript.angle = 360f;
         }
 
         if (fovScript.canSeePlayer == true)

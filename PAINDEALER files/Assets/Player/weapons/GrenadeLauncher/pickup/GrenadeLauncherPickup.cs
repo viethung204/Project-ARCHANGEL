@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class GrenadeLauncherPickup : MonoBehaviour
 {
     public GameObject GrenadeLauncher;
-
-
+    public AudioClip pickupAudio;
+    public float AudioVolume = 10f;
+    private Camera PlayerCamera;
     private Transform WeaponsHolder;
     private AmmoManager ammoManager;
 
@@ -30,7 +31,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
         switchWeapons = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<SwitchWeapons>();
 
         weaponsOrder = (GameObject.Find("Weapons Holder")).gameObject.GetComponent<WeaponsOrder>();
-
+        PlayerCamera = Camera.main;
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
@@ -45,8 +46,8 @@ public class GrenadeLauncherPickup : MonoBehaviour
             WeaponsNoti.text = "You got the Grenade Laucher!";
             notification.textTimer = 0;
             GrenadeLauncher.transform.SetParent(WeaponsHolder);
-
-            loadout.grenadeLauncherState = 1;
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
+            LoadoutManager.grenadeLauncherState = 1;
             weaponsOrder.Reorder();
 
             int currentPlace = GrenadeLauncher.transform.GetSiblingIndex();
@@ -59,6 +60,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && GrenadeLauncher.transform.parent == WeaponsHolder)
         {
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager.GLInvAmmo += 6;
             Destroy(gameObject);
         }

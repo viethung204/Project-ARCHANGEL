@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalButton: {fileID: 722124472}
-  secondsWait: 51
+  secondsWait: 38
 --- !u!4 &649759580
 Transform:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFont:
-    path: weedsgm3.sf2
+    path: RLNDGM.SF2
 --- !u!4 &2086918966
 Transform:
   m_ObjectHideFlags: 0

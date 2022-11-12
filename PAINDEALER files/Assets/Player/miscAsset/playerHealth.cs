@@ -7,18 +7,21 @@ public class playerHealth : MonoBehaviour
 {
     public float Health = 100f;
     private float m_Health = 100f;
-    public float Armor = 100f;
+    public static float Armor;
     private float damageTaken;
     Text armorText;
     Text healthText;
     public Animator playerAnimator;
     Image HealthIndicator;
     Image ArmorIndicator;
-    public bool BioSuit = false;
+    public static bool BioSuit = false;
 
+    public static bool powerUp = false;
+    public Image powerUpFilter;
     DieNDeadScript dieScript;
 
     GameObject hitFilter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,34 @@ public class playerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(powerUp == true)
+        {
+            powerUpFilter.enabled = true;
+            Health = 100;
+            Shredder.damage = 20f;
+            RevolverScript.damage = 40f;
+            PumpShotgun.damage = 40f;
+            ShotgunScript.damage = 40f;
+            Fist.damage = 12f;
+        }
+        else
+        {
+            powerUpFilter.enabled = false;
+            Shredder.damage = 5f;
+            RevolverScript.damage = 10f;
+            PumpShotgun.damage = 10f;
+            ShotgunScript.damage = 10f;
+            Fist.damage = 3f;
+        }
+
+        if(Armor <= 0)
+        {
+            Armor = 0;
+        }
+        if(Armor >= 100)
+        {
+            Armor = 100;
+        }
 
         if (Health < m_Health)
         {
@@ -41,8 +72,8 @@ public class playerHealth : MonoBehaviour
             if(Armor > 0)
             {
                 damageTaken = m_Health - Health;
-                Health = m_Health - (damageTaken * 1/3);
-                Armor = Armor - (damageTaken * 2/3);
+                Health = m_Health - (damageTaken * 2/3);
+                Armor = Armor - (damageTaken * 1/3);
                 m_Health = Health;
             }
             else
@@ -59,6 +90,10 @@ public class playerHealth : MonoBehaviour
         if (BioSuit == true)
         {
             StartCoroutine(Dissolve());
+        }
+        if(powerUp == true)
+        {
+            StartCoroutine(PowerDown());
         }
         healthText.text = Mathf.Round(Health).ToString();
         HealthIndicator.fillAmount = Health/100;
@@ -97,9 +132,15 @@ public class playerHealth : MonoBehaviour
         
     }
 
+    IEnumerator PowerDown()
+    {
+        yield return new WaitForSeconds(15f);
+        powerUp = false;
+    }
+
     IEnumerator Dissolve()
     {
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(15f);
         BioSuit = false;
     }
 

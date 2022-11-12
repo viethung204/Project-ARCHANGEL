@@ -9,8 +9,11 @@ public class NextLevel : MonoBehaviour
     public Animator fadeAnimator;
     public int nextLevelIndexNumber;
 
+    public GameObject thisContainer;
+    public GameObject confirmContainer;
+
     // Update is called once per frame
-    public void intoTheGame()
+    public void Yes()
     {
         fadeAnimator.SetTrigger("fade");
         StartCoroutine(LevelTransition());
@@ -20,5 +23,18 @@ public class NextLevel : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(nextLevelIndexNumber);
+    }
+
+    public void Confirmation()
+    {
+        if (ES3.KeyExists("activeScene") == true)
+        {
+            thisContainer.SetActive(false);
+            confirmContainer.SetActive(true);
+        }
+        else
+        {
+            Yes();
+        }
     }
 }

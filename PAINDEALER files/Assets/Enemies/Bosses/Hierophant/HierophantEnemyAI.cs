@@ -32,7 +32,6 @@ public class HierophantEnemyAI : MonoBehaviour
     Animator eAnimator;
     Health health;
 
-    hearing hearing;
 
     int animLayer = 0;
 
@@ -47,13 +46,11 @@ public class HierophantEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = gameObject.GetComponent<hearing>();
     }
     private void Update()
     {
         
         agent.speed = agentSpeed;
-        hearing.Alert();
         
         if (fovScript.canSeePlayer == true && Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance && Vector3.Distance(transform.position, TargetTransform.position) > atk2Distance)
         {

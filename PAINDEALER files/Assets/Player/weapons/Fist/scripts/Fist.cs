@@ -10,7 +10,7 @@ using Image = UnityEngine.UI.Image;
 
 public class Fist : MonoBehaviour
 {
-    public float damage = 10f;
+    public static float damage = 3f;
     public float range = 100f;
     public Camera PlayerCam;
     public Animator animator;

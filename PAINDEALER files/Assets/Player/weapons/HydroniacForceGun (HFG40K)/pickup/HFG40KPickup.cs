@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class HFG40KPickup : MonoBehaviour
 {
     public GameObject HFG40K;
-
+    public AudioClip pickupAudio;
+    public float AudioVolume = 10f;
     private Transform WeaponsHolder;
-
+    private Camera PlayerCamera;
     private Text WeaponsNoti;
     private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
@@ -31,7 +32,7 @@ public class HFG40KPickup : MonoBehaviour
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
-
+        PlayerCamera = Camera.main;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,9 +44,9 @@ public class HFG40KPickup : MonoBehaviour
             WeaponsNoti.text = "You picked up the legendary HFG40K! Hell yeah!";
             notification.textTimer = 0;
             HFG40K.transform.SetParent(WeaponsHolder);
-            loadout.hfgState = 1;
+            LoadoutManager.hfgState = 1;
             weaponsOrder.Reorder();
-
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             int currentPlace = HFG40K.transform.GetSiblingIndex();
 
             switchWeapons.selectedWeapon = currentPlace;
@@ -55,6 +56,7 @@ public class HFG40KPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && HFG40K.transform.parent == WeaponsHolder)
         {
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager.CoreInvAmmo += 2;
             Destroy(gameObject);
         }

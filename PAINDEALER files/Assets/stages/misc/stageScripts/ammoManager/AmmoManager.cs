@@ -11,14 +11,31 @@ public class AmmoManager : MonoBehaviour
     public static int GLInvAmmo;
     public static int grenadeCount;
 
-
-    public void Update()
+    private void Update()
     {
-        PlayerPrefs.SetInt("revolverInvAmmo", RevolverInvAmmo);
-        PlayerPrefs.SetInt("ShotgunInvAmmo", ShotgunInvAmmo);
-        PlayerPrefs.SetInt("GLInvAmmo", GLInvAmmo);
-        PlayerPrefs.SetInt("ShredderInvAmmo", ShredderInvAmmo);
-        PlayerPrefs.SetInt("HFGInvAmmo", CoreInvAmmo);
-        PlayerPrefs.SetInt("Grenade", grenadeCount);
+        if(RevolverInvAmmo > 200)
+        {
+            RevolverInvAmmo = 200;
+        }
+        if(ShotgunInvAmmo > 50)
+        {
+            ShotgunInvAmmo = 50;
+        }
+        if(ShredderInvAmmo > 200)
+        {
+            ShredderInvAmmo = 200;
+        }
+        if (GLInvAmmo > 50)
+        {
+            GLInvAmmo = 50;
+        }
+        if (CoreInvAmmo > 5)
+        {
+            CoreInvAmmo = 5;
+        }
+        if (grenadeCount > 5)
+        {
+            grenadeCount = 5;
+        }
     }
 }

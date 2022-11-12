@@ -12,6 +12,7 @@ public class pauseMenu : MonoBehaviour
     public GameObject GHolder;
     public GameObject Capsule;
     public SC_FPSController controller;
+    public int LoadingScreenIndex;
 
     public Animator fadeAnimator;
     public int mainMenuIndexNumber;
@@ -76,9 +77,21 @@ public class pauseMenu : MonoBehaviour
         //SceneManager.LoadScene(mainMenuIndexNumber);
     }
 
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        fadeAnimator.SetTrigger("fade");
+        StartCoroutine(RestartTransition());
+    }
+
     public IEnumerator LevelTransition()
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(mainMenuIndexNumber);
+    }
+    public IEnumerator RestartTransition()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(LoadingScreenIndex);
     }
 }

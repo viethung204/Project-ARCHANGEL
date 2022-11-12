@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class RevolverPickup : MonoBehaviour
 {
     public GameObject Revolver;
-
+    public AudioClip pickupAudio;
+    public float AudioVolume = 10f;
     private Transform WeaponsHolder;
-
+    private Camera PlayerCamera;
     private Text WeaponsNoti;
     private WeaponsNotiController notification;
     private SwitchWeapons switchWeapons;
@@ -31,7 +32,7 @@ public class RevolverPickup : MonoBehaviour
 
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
-
+        PlayerCamera = Camera.main;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,9 +45,9 @@ public class RevolverPickup : MonoBehaviour
             WeaponsNoti.text = "You picked up the Revolver!";
             notification.textTimer = 0;
             Revolver.transform.SetParent(WeaponsHolder);
-            loadout.revolverState = 1;
+            LoadoutManager.revolverState = 1;
 
-
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             weaponsOrder.Reorder();
 
             int currentPlace = Revolver.transform.GetSiblingIndex();
@@ -60,7 +61,7 @@ public class RevolverPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Revolver.transform.parent == WeaponsHolder)
         {
-
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager.RevolverInvAmmo += 12;
             Destroy(gameObject);
         }

@@ -11,6 +11,8 @@ TagManager:
   - projectile
   - activeLoadout
   - idleLoadout
+  - toxic
+  - died
   layers:
   - Default
   - TransparentFX

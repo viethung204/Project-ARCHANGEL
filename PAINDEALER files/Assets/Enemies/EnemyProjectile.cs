@@ -6,7 +6,6 @@ public class EnemyProjectile : MonoBehaviour
 {
     public float lifespan;
     public GameObject Explosion;
-    public float radius = 3f;
 
 
     // Update is called once per frame
@@ -19,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.tag == "projectile")
+        if (collision.gameObject.tag == "projectile" || collision.gameObject.tag == "Enemy")
         {
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }

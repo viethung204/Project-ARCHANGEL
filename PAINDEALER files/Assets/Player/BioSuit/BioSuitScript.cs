@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class BioSuitScript : MonoBehaviour
 {
-    playerHealth BioSuitCheck;
     Text notiText;
     private WeaponsNotiController notification;
 
     private void Start()
     {
-        BioSuitCheck = GameObject.Find("Capsule").GetComponent<playerHealth>();
         notiText = GameObject.Find("weaponsNoti").GetComponent<Text>();
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
     }
@@ -21,9 +19,9 @@ public class BioSuitScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             notiText.enabled = true;
-            notiText.text = "You picked up a BiO suit!";
+            notiText.text = "Picked up a BiO suit!";
             notification.textTimer = 0;
-            BioSuitCheck.BioSuit = true;
+            playerHealth.BioSuit = true;
             Destroy(gameObject);
         }
     }

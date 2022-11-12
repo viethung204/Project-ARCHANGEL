@@ -14,19 +14,16 @@ public class MCGZEnemyAI : MonoBehaviour
     public float minimumDistance;
     public float maximumDistance;
     NavMeshAgent agent;
-    public float Damage = 5;
+    public float Damage;
     public float range = 500f;
-
+    yaxisrotation rotate;
     FieldOfView fovScript;
 
     Animator eAnimator;
     Health health;
-
-    public float radius = 5;
-    public GetPoint getpoint;
     int animLayer = 0;
 
-    hearing hearing;
+
 
     public bool seen = false;
     // Update is called once per frame
@@ -37,22 +34,21 @@ public class MCGZEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = GetComponent<hearing>();
+        rotate = GetComponent<yaxisrotation>();
     }
 
     private void Update()
     {
+        if (health.health <= 0)
+        {
+            this.enabled = false;
+        }
         agent.speed = agentSpeed;
         agent.acceleration = 999;
-        hearing.Alert();
         if(isPlaying(eAnimator,"Hurt Blend Tree") || isPlaying(eAnimator, "AttackingBlendTree"))
         {
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
-        }
-        if(health.health <= 0)
-        {
-            this.enabled = false;
         }
         if (fovScript.canSeePlayer == true)
         {
@@ -67,11 +63,13 @@ public class MCGZEnemyAI : MonoBehaviour
 
         if (Vector3.Distance(transform.position, TargetTransform.position) <= maximumDistance && fovScript.canSeePlayer == true) 
         {
+            rotate.enabled = true;
             FacingPlayer();
             AttackPlayerPose();
         }
         else
         {
+            rotate.enabled = false;
             eAnimator.SetBool("isAttacking", false);
         }
 
@@ -91,7 +89,7 @@ public class MCGZEnemyAI : MonoBehaviour
         if(!isPlaying(eAnimator, "AttackingBlendTree"))
         {
             agent.isStopped = false;
-            if (Vector3.Distance(transform.position, TargetTransform.position) > maximumDistance && !isPlaying(eAnimator, "Hurt Blend Tree"))
+            if (!isPlaying(eAnimator, "Hurt Blend Tree"))
             {
                 eAnimator.SetBool("isAttacking", false);
                 FacingPlayer();

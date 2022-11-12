@@ -164,6 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29876abc5679ed34db95f193bb2aff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 10
+  lifespan: 5
   Explosion: {fileID: 920974550447964121, guid: 7acaa6297796e43419653140874ee8fd, type: 3}
-  radius: 3

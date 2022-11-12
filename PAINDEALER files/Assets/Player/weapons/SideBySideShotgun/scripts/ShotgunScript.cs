@@ -10,10 +10,10 @@ using Random = UnityEngine.Random;
 
 public class ShotgunScript : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 100f;
+    public static float damage = 10f;
+    public float range = 30f;
     public Camera PlayerCam;
-    public float CurrentAmmo = 2f;
+    public static int CurrentAmmo = 2;
     const float MaxAmmo = 2f;
     public AmmoManager ammoManager;
     public Animator animator;
@@ -91,7 +91,6 @@ public class ShotgunScript : MonoBehaviour
      void ShootMechanics()
     {
         RaycastHit HitInfo;
-        ShootSound();
         for (int i = 0; i < pellets; i++)
         {
             var direction = PlayerCam.transform.forward + new Vector3(Random.Range(-maxSpread, maxSpread), Random.Range(-maxSpread, maxSpread), 0f);
@@ -117,19 +116,6 @@ public class ShotgunScript : MonoBehaviour
         yield return new WaitForSeconds(1.27f);
         CurrentAmmo += 2;
         AmmoManager.ShotgunInvAmmo -= 2;    
-    }
-
-    public void ShootSound()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
-        foreach (Collider NearbyObjects in colliders)
-        {
-            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
-            if (hearScript != null && hearScript.enabled == true)
-            {
-                hearScript.shotfired = true;
-            }
-        }
     }
 
     //check if animtion is playing

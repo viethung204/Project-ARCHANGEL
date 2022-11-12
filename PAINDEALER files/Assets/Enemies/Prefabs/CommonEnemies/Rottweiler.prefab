@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 555185869}
   - component: {fileID: 1609803687}
   - component: {fileID: 1609803688}
-  - component: {fileID: 1609803696}
   - component: {fileID: 7381665264411715616}
   m_Layer: 0
   m_Name: Rottweiler
@@ -140,10 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 1
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
+  diedYet: 0
   chanceForHurtAnimation: 10
 --- !u!65 &2230169055893013909
 BoxCollider:
@@ -172,7 +172,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 58
   m_CollisionDetection: 2
 --- !u!114 &555185869
 MonoBehaviour:
@@ -208,13 +208,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa65d0617e33fc1498a6c368be5e4125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentSpeed: 11
+  agentSpeed: 8
   RotationSpeed: 8
   minimumDistance: 0
   maximumDistance: 0
   Damage: 5
   attacked: 0
   range: 500
+  seen: 0
 --- !u!195 &1609803688
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -237,20 +238,6 @@ NavMeshAgent:
   m_BaseOffset: 0.55714285
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1609803696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5227392207031917903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hearingDistance: 200
-  shotfired: 0
 --- !u!114 &7381665264411715616
 MonoBehaviour:
   m_ObjectHideFlags: 0

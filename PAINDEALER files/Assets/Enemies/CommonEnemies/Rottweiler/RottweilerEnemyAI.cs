@@ -18,12 +18,13 @@ public class RottweilerEnemyAI : MonoBehaviour
     public bool attacked = false;
     public float range = 500f;
 
+
     FieldOfView fovScript;
 
     Animator eAnimator;
     Health health;
 
-    hearing hearing;
+
 
     int animLayer = 0;
     public bool seen = false;
@@ -36,17 +37,17 @@ public class RottweilerEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = GetComponent<hearing>();
     }
 
     private void Update()
     {
-        agent.speed = agentSpeed;
-        hearing.Alert();
-        if(health.health <= 0)
+        if (health.health <= 0)
         {
             this.enabled = false;
+            agent.enabled = false;
         }
+        agent.speed = agentSpeed;
+
         if (fovScript.canSeePlayer == true )
         {
             seen = true;

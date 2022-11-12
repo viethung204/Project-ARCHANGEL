@@ -18,13 +18,13 @@ public class SatyrEnemyAI : MonoBehaviour
     public bool attacked = false;
     public float range = 500f;
 
+
     FieldOfView fovScript;
     Rigidbody rb;
 
     Animator eAnimator;
     Health health;
 
-    hearing hearing;
     Transform thisGuy;
 
     int animLayer = 0;
@@ -39,19 +39,18 @@ public class SatyrEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = gameObject.GetComponent<hearing>();
     }
     private void Update()
     {
+        if (health.health <= 0)
+        {
+            this.enabled = false;
+            agent.enabled = false;
+        }
         agent.speed = agentSpeed;
-        hearing.Alert();
         if(isPlaying(eAnimator,"Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree"))
         {
             agent.velocity = Vector3.zero;
-        }
-        if(health.health <= 0)
-        {
-            this.enabled = false;
         }
         if (fovScript.canSeePlayer == true )
         {
@@ -72,13 +71,7 @@ public class SatyrEnemyAI : MonoBehaviour
         {
             eAnimator.SetBool("isAttacking", false);
             agent.isStopped = false;
-        }
-
-        //enemy activated if player get too close
-        if (Vector3.Distance(transform.position, TargetTransform.position) < minimumDistance)
-        {
-            fovScript.angle = 360f;
-        }   
+        } 
         Debug.DrawRay(transform.position, transform.forward * 1000, Color.green);
     }
     //Note bcuz 4 some reason I get confused by this: minimumDistance < currentDistance < maximumDistance
@@ -118,7 +111,7 @@ public class SatyrEnemyAI : MonoBehaviour
     {
         eAnimator.SetBool("isAttacking", true);
         agent.isStopped = true;
-        //agent.acceleration = 0;
+       // agent.acceleration = 0;
         //agent.speed = 0;
         FacingPlayer();
     }

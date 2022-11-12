@@ -25,7 +25,6 @@ public class GrenadeLauncher : MonoBehaviour
     public AudioSource EmptyClick;
     public Image UICrosshair;
     public Sprite crosshair;
-    int GLInvAmmo;
 
     public GameObject grenadeProjectile;
     public GameObject SpawnLocation;
@@ -44,7 +43,7 @@ public class GrenadeLauncher : MonoBehaviour
         ammoType.text = "40mm";
         weaponName.text = "MGL";
         UIWeaponIcon.gameObject.SetActive(true);
-        currentAmmoText.text = GLInvAmmo.ToString("00#");
+        currentAmmoText.text = AmmoManager.GLInvAmmo.ToString("00#");
         invAmmoText.text = "XXX";
         UIWeaponIcon.GetComponent<Image>().sprite = weaponIcon;
         weaponIconRect.rectTransform.sizeDelta = new Vector2(150f, 150f);
@@ -71,9 +70,8 @@ public class GrenadeLauncher : MonoBehaviour
     void Shoot()
     {
 
-        if (GLInvAmmo > 0 && !isPlaying(animator, "shoot"))
+        if (AmmoManager.GLInvAmmo > 0 && !isPlaying(animator, "shoot"))
         {
-            ShootSound();
             //Create a new gameObject out of the newly spawn projectile
             GameObject grenade =  Instantiate(grenadeProjectile, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
 
@@ -87,10 +85,10 @@ public class GrenadeLauncher : MonoBehaviour
             projectileRb.AddForce(force, ForceMode.Impulse);
 
             animator.SetTrigger("shoot");
-            GLInvAmmo -= 1;
+            AmmoManager.GLInvAmmo -= 1;
             RecoilScript.RecoilFire();
         }
-        else if (GLInvAmmo == 0)
+        else if (AmmoManager.GLInvAmmo == 0)
         {
             //play *click* sound
             EmptyClick.Play();
@@ -99,18 +97,7 @@ public class GrenadeLauncher : MonoBehaviour
 
 
     }
-    public void ShootSound()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
-        foreach (Collider NearbyObjects in colliders)
-        {
-            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
-            if (hearScript != null && hearScript.enabled == true)
-            {
-                hearScript.shotfired = true;
-            }
-        }
-    }
+
 
     //check if animtion is playing
     bool isPlaying(Animator anim, string stateName)

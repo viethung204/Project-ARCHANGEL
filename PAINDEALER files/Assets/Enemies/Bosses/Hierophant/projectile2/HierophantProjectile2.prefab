@@ -117,14 +117,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472846569120259640}
   serializedVersion: 2
-  m_Mass: 0.3
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!65 &4687331753749957279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152,7 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 10
   Explosion: {fileID: 8784205994383928992, guid: 45ad2e98f848a7d44809b17c2c3321f8, type: 3}
-  radius: 3
 --- !u!114 &6852597768158936785
 MonoBehaviour:
   m_ObjectHideFlags: 0

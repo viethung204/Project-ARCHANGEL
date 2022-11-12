@@ -19,8 +19,8 @@ GameObject:
   m_Name: ToxicRiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4294732683745316919
 Transform:
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106b889980e1fe84b815c4a26e4cc323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthScript: {fileID: 0}
   playerCollider: {fileID: 0}
 --- !u!95 &4294732683745316874
 Animator:

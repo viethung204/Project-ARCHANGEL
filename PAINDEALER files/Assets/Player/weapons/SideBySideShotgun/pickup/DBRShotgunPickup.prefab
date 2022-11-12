@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4fb7e6d2ffb4047a50ee305069ac41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyCameraTransform: {fileID: 0}
   alignNotLook: 1
 --- !u!54 &822631244482122100
 Rigidbody:
@@ -131,10 +130,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 2
 --- !u!114 &822631244482122101
 MonoBehaviour:
@@ -149,8 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   A1Shotgun: {fileID: 0}
-  WeaponsHolder: {fileID: 0}
-  WeaponPickupNoti: {fileID: 0}
-  WeaponsNoti: {fileID: 0}
-  switchWeapons: {fileID: 0}
-  weaponsOrder: {fileID: 0}
+  pickupAudio: {fileID: 8300000, guid: 303b54cc73711b34eaed9da9bae1ea40, type: 3}
+  AudioVolume: 10

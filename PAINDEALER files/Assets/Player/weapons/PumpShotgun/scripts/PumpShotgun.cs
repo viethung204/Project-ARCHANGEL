@@ -9,10 +9,10 @@ using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 public class PumpShotgun : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 50f;
+    public static float damage = 10f;
+    public float range = 30f;
     public Camera PlayerCam;
-    public float CurrentAmmo = 1f;
+    public static int CurrentAmmo = 1;
     public Animator animator;
     public Text currentAmmoText;
     public Text invAmmoText;
@@ -87,7 +87,6 @@ public class PumpShotgun : MonoBehaviour
 
     void Shoot()
     {
-        ShootSound();
         RaycastHit HitInfo;
         for (int i = 0; i < pellets; i++)
         {
@@ -113,19 +112,6 @@ public class PumpShotgun : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         CurrentAmmo += 1;
         AmmoManager.ShotgunInvAmmo -= 1;
-    }
-
-    public void ShootSound()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 50f);
-        foreach (Collider NearbyObjects in colliders)
-        {
-            hearing hearScript = NearbyObjects.transform.GetComponent<hearing>();
-            if (hearScript != null && hearScript.enabled == true)
-            {
-                hearScript.shotfired = true;
-            }
-        }
     }
 
     //check if animtion is playing

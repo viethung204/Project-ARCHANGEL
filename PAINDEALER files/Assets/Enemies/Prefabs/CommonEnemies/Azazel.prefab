@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 2120649916944733587}
   - component: {fileID: 1522069167}
   - component: {fileID: 9047217414803461387}
-  - component: {fileID: 421136206}
   - component: {fileID: 421136207}
   - component: {fileID: 421136208}
   - component: {fileID: 2909192065367623255}
@@ -173,10 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777302c8f1405744aa5fb4c4ad1b2772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 125
+  health: 100
   deceleration: 1.5
   travelSpeed: 1.5
   gibThreshold: -1000
+  diedYet: 0
   chanceForHurtAnimation: 5
 --- !u!65 &2120649916944733584
 BoxCollider:
@@ -205,7 +205,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 58
   m_CollisionDetection: 2
 --- !u!114 &1522069167
 MonoBehaviour:
@@ -241,20 +241,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1911
   canSeePlayer: 0
---- !u!114 &421136206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5410587497860812106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe995f3f42727e4799e7153ddb973b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hearingDistance: 100
-  shotfired: 0
 --- !u!195 &421136207
 NavMeshAgent:
   m_ObjectHideFlags: 0

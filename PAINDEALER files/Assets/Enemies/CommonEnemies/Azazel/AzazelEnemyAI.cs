@@ -29,7 +29,6 @@ public class AzazelEnemyAI : MonoBehaviour
     Animator eAnimator;
     Health health;
 
-    hearing hearing;
     Transform thisGuy;
 
     int animLayer = 0;
@@ -45,12 +44,10 @@ public class AzazelEnemyAI : MonoBehaviour
         TargetTransform = (GameObject.Find("Capsule")).gameObject.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         health = GetComponent<Health>();
-        hearing = gameObject.GetComponent<hearing>();
     }
     private void Update()
     {
         agent.speed = agentSpeed;
-        hearing.Alert();
 
 
         if (fovScript.canSeePlayer == true)
@@ -62,11 +59,6 @@ public class AzazelEnemyAI : MonoBehaviour
         if (seen == true && fovScript.canSeePlayer == false)
         {
             ChaseAfterPlayer();
-        }
-        //enemy activated if player get too close
-        if (Vector3.Distance(transform.position, TargetTransform.position) < closeDistance)
-        {
-            fovScript.angle = 360f;
         }
 
         //melee-ing
@@ -85,14 +77,14 @@ public class AzazelEnemyAI : MonoBehaviour
         }
 
         //range attack
-        if (Vector3.Distance(transform.position, TargetTransform.position) <= rangeDistance && Vector3.Distance(transform.position, TargetTransform.position) > meleeDistance)
+        if (Vector3.Distance(transform.position, TargetTransform.position) <= rangeDistance && Vector3.Distance(transform.position, TargetTransform.position) > meleeDistance && fovScript.canSeePlayer == true)
         {
             eAnimator.SetBool("isMelee", false);
             FacingPlayer();
             RangeAttackPlayerPose();
         }
 
-        if(Vector3.Distance(transform.position, TargetTransform.position) > rangeDistance)
+        if(Vector3.Distance(transform.position, TargetTransform.position) > rangeDistance && fovScript.canSeePlayer == true)
         {
             eAnimator.SetBool("isMelee", false);
             eAnimator.SetBool("isRange", false);

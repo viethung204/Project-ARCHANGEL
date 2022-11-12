@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ShredderPickup : MonoBehaviour
 {
     public GameObject Shredder;
-
-
+    public AudioClip pickupAudio;
+    public float AudioVolume = 10f;
+    private Camera PlayerCamera;
     private Transform WeaponsHolder;
 
 
@@ -34,7 +35,7 @@ public class ShredderPickup : MonoBehaviour
         WeaponsNoti = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<Text>();
 
         notification = (GameObject.Find("weaponsNoti")).gameObject.GetComponent<WeaponsNotiController>();
-
+        PlayerCamera = Camera.main;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,9 +47,9 @@ public class ShredderPickup : MonoBehaviour
             WeaponsNoti.enabled = true;
             WeaponsNoti.text = "You picked up the Shredder!";
             notification.textTimer = 0;
-
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             Shredder.transform.SetParent(WeaponsHolder);
-            loadout.shredderState = 1;
+            LoadoutManager.shredderState = 1;
             weaponsOrder.Reorder();
 
             int currentPlace = Shredder.transform.GetSiblingIndex();
@@ -61,7 +62,7 @@ public class ShredderPickup : MonoBehaviour
         }
         else if (other.CompareTag("Player") && Shredder.transform.parent == WeaponsHolder)
         {
-
+            AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             AmmoManager.ShredderInvAmmo += 50;
             Destroy(gameObject);
         }
