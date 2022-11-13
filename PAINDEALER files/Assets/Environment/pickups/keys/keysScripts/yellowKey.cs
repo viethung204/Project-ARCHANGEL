@@ -27,7 +27,7 @@ public class yellowKey : MonoBehaviour
         {
             WeaponsNoti.enabled = true;
             notification.textTimer = 0;
-            WeaponsNoti.text = "picked up the YELLOW key";
+            WeaponsNoti.text = "picked up the YELLOW key.";
             source.Play();
             keyCheck.yellowKey = true;
             Destroy(gameObject);

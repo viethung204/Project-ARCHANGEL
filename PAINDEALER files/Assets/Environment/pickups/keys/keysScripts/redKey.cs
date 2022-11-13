@@ -24,7 +24,7 @@ public class redKey : MonoBehaviour
         {
             WeaponsNoti.enabled = true;
             notification.textTimer = 0;
-            WeaponsNoti.text = "picked up the RED key";
+            WeaponsNoti.text = "picked up the RED key.";
             source.Play();
             keyCheck.redKey = true;
             Destroy(gameObject);

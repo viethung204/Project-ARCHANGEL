@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalButton: {fileID: 722124472}
-  secondsWait: 38
+  secondsWait: 36
 --- !u!4 &649759580
 Transform:
   m_ObjectHideFlags: 0
@@ -1381,6 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d57af9fd73cb2a49a8b59f0f987ad41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextButton: {fileID: 722124472}
 --- !u!1 &2086918962
 GameObject:
   m_ObjectHideFlags: 0

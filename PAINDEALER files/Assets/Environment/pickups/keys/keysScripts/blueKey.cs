@@ -24,7 +24,7 @@ public class blueKey : MonoBehaviour
         {
             WeaponsNoti.enabled = true;
             notification.textTimer = 0;
-            WeaponsNoti.text = "picked up the BLUE key";
+            WeaponsNoti.text = "picked up the BLUE key.";
             source.Play();
             keyCheck.blueKey = true;
             Destroy(gameObject);

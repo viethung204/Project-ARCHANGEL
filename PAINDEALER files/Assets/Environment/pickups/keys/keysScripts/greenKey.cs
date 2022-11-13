@@ -25,7 +25,7 @@ public class greenKey : MonoBehaviour
         {
             WeaponsNoti.enabled = true;
             notification.textTimer = 0;
-            WeaponsNoti.text = "picked up the GREEN key";
+            WeaponsNoti.text = "picked up the GREEN key.";
             source.Play();
             keyCheck.greenKey = true;
             Destroy(gameObject);
