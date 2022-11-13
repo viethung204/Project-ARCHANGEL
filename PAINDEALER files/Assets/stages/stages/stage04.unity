@@ -21753,6 +21753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Haedex
       objectReference: {fileID: 0}
+    - target: {fileID: 6089901069108840937, guid: 502b1ac4bd5fbca4e9380de92040a1cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6089901069108840943, guid: 502b1ac4bd5fbca4e9380de92040a1cf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -29039,6 +29043,10 @@ PrefabInstance:
     - target: {fileID: 6089901069108840937, guid: 502b1ac4bd5fbca4e9380de92040a1cf, type: 3}
       propertyPath: m_Name
       value: Haedex (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089901069108840937, guid: 502b1ac4bd5fbca4e9380de92040a1cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6089901069108840943, guid: 502b1ac4bd5fbca4e9380de92040a1cf, type: 3}
       propertyPath: m_RootOrder
@@ -41615,14 +41623,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 67417657}
-    - target: {fileID: 6604887481539488220, guid: 09fe55fdae48d11478214f11dde7f96d, type: 3}
-      propertyPath: chanceForHurtAnimation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6604887481539488221, guid: 09fe55fdae48d11478214f11dde7f96d, type: 3}
-      propertyPath: m_Constraints
-      value: 122
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09fe55fdae48d11478214f11dde7f96d, type: 3}
 --- !u!1 &1581101182

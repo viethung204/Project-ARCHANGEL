@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
     {
         health -= amount;
         float HurtAnimChance = Random.Range(0f, 10f);
-        if(health > 0 && HurtAnimChance <= chanceForHurtAnimation) 
+        if(health > 0 && HurtAnimChance < chanceForHurtAnimation) 
         { 
             EnemyAnimator.SetTrigger("isHurt");
             EnemyAnimator.SetBool("isAttacking", false);

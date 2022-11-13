@@ -165,4 +165,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 10
   Explosion: {fileID: 722230243842438706, guid: e0579fd28ae81614ba7f8b7928219dbf, type: 3}
-  radius: 3

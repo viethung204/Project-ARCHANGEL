@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1310436817}
   m_Layer: 0
   m_Name: LOHProjectile
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,4 +166,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 10
   Explosion: {fileID: 7058251342857085962, guid: de80a706b021c394f9c2224513791274, type: 3}
-  radius: 3

@@ -139,7 +139,7 @@ public class HierophantEnemyAI : MonoBehaviour
             this.enabled = false;
         }
 
-        if (isPlaying(eAnimator, "Hurt Blend Tree") || isPlaying(eAnimator, "Atk Blend Tree") || isPlaying(eAnimator, "Atk2 Blend Tree"))
+        if (isPlaying(eAnimator, "Atk Blend Tree") || isPlaying(eAnimator, "Atk2 Blend Tree"))
         {
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
@@ -155,7 +155,7 @@ public class HierophantEnemyAI : MonoBehaviour
     {
         eAnimator.SetBool("isAttacking2", false);
         eAnimator.SetBool("isAttacking1", false);
-        if (!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Hurt Blend Tree") && !isPlaying(eAnimator, "Atk2 Blend Tree"))
+        if (!isPlaying(eAnimator, "Atk Blend Tree") && !isPlaying(eAnimator, "Atk2 Blend Tree"))
         {
             agent.isStopped = false;
             if (Vector3.Distance(transform.position, TargetTransform.position) < chaseDistance)

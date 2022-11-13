@@ -26,6 +26,7 @@ public class playerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Armor = 0f;
         healthText = GameObject.Find("healthText").GetComponent<Text>();
         armorText = GameObject.Find("ArmorText").GetComponent<Text>();
         ArmorIndicator = GameObject.Find("ArmorIndicator").GetComponent<Image>();
