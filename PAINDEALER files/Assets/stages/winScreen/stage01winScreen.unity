@@ -439,6 +439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsCount: {fileID: 354624229}
   minutesCount: {fileID: 1721385514}
+  minutesText: {fileID: 1169549125}
+  secondsText: {fileID: 1096909277}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0

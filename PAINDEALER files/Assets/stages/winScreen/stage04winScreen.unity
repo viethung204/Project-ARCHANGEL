@@ -269,6 +269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsCount: {fileID: 770684694}
   minutesCount: {fileID: 1729822701}
+  minutesText: {fileID: 1353195204}
+  secondsText: {fileID: 561272073}
 --- !u!4 &225737975
 Transform:
   m_ObjectHideFlags: 0

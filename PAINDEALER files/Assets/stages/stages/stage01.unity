@@ -82860,6 +82860,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1762297124}
     m_Modifications:
+    - target: {fileID: 50905976, guid: 69079464734ec4346875aa5a2e6e84c5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 38457272}
     - target: {fileID: 5410587497860812106, guid: 69079464734ec4346875aa5a2e6e84c5, type: 3}
       propertyPath: m_Name
       value: Azazel

@@ -11,6 +11,8 @@ public class winStageTimeCounting : MonoBehaviour
     float seconds;
     public TextMeshProUGUI secondsCount;
     public TextMeshProUGUI minutesCount;
+    public TextMeshProUGUI minutesText;
+    public TextMeshProUGUI secondsText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +28,22 @@ public class winStageTimeCounting : MonoBehaviour
     {
         secondsCount.text = seconds.ToString();
         minutesCount.text = minutes.ToString();
+        if(minutes > 1)
+        {
+            minutesText.text = "minutes";
+        }
+        else
+        {
+            minutesText.text = "minute";
+        }
+
+        if(seconds > 1)
+        {
+            secondsText.text = "seconds";
+        }
+        else
+        {
+            secondsText.text = "second";
+        }
     }
 }

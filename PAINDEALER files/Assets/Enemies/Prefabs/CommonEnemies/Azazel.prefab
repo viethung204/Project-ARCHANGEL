@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1486161917}
+  - component: {fileID: 50905976}
   m_Layer: 0
   m_Name: AzazelSpawnPoint
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 5410587497860812108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &50905976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486161916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16199f3f4b654fc498e340d0e591d273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &5410587497860812106
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +299,7 @@ MonoBehaviour:
   range: 500
   APprojectile: {fileID: 5353300377522810021, guid: 9b9ee5c537ddc4e4381ffbce97b5d764, type: 3}
   SpawnLocation: {fileID: 1486161916}
-  throwForce: 20
+  throwForce: 30
   seen: 0
 --- !u!114 &2909192065367623255
 MonoBehaviour:
