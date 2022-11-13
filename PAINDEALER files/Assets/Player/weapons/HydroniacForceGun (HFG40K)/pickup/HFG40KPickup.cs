@@ -41,7 +41,7 @@ public class HFG40KPickup : MonoBehaviour
         {
             HFG40K.SetActive(true);
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You picked up the legendary HFG40K! Hell yeah!";
+            WeaponsNoti.text = "picked up the legendary HFG40K! Hell yeah!";
             notification.textTimer = 0;
             HFG40K.transform.SetParent(WeaponsHolder);
             LoadoutManager.hfgState = 1;

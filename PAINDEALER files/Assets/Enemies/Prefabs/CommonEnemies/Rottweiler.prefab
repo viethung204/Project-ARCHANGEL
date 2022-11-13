@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa65d0617e33fc1498a6c368be5e4125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentSpeed: 8
+  agentSpeed: 10
   RotationSpeed: 8
   minimumDistance: 0
   maximumDistance: 0

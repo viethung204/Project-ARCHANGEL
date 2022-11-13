@@ -42,7 +42,7 @@ public class RevolverPickup : MonoBehaviour
 
             Revolver.SetActive(true);
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You picked up the Revolver!";
+            WeaponsNoti.text = "picked up the Revolver!";
             notification.textTimer = 0;
             Revolver.transform.SetParent(WeaponsHolder);
             LoadoutManager.revolverState = 1;

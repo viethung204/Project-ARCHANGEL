@@ -43,7 +43,7 @@ public class GrenadeLauncherPickup : MonoBehaviour
         {
             GrenadeLauncher.SetActive(true);
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You got the Grenade Laucher!";
+            WeaponsNoti.text = "picked up the Grenade Laucher!";
             notification.textTimer = 0;
             GrenadeLauncher.transform.SetParent(WeaponsHolder);
             AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);

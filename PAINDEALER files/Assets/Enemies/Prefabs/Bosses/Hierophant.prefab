@@ -204,7 +204,7 @@ MonoBehaviour:
   travelSpeed: 1.5
   gibThreshold: -1000
   diedYet: 0
-  chanceForHurtAnimation: 0.1
+  chanceForHurtAnimation: 0
 --- !u!65 &6604887481539488222
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class ShredderPickup : MonoBehaviour
 
             Shredder.SetActive(true);
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You picked up the Shredder!";
+            WeaponsNoti.text = "picked up the Shredder!";
             notification.textTimer = 0;
             AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             Shredder.transform.SetParent(WeaponsHolder);

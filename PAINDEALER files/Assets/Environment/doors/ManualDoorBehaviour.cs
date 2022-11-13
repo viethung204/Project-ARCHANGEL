@@ -47,7 +47,7 @@ public class ManualDoorBehaviour : MonoBehaviour
         else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.redKey == false)
         {
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You need the RED key";
+            WeaponsNoti.text = "Need the RED key.";
         }
         else if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
@@ -67,7 +67,7 @@ public class ManualDoorBehaviour : MonoBehaviour
         else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.blueKey == false)
         {
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You need the BLUE key";
+            WeaponsNoti.text = "Need the BLUE key.";
         }
         else if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
@@ -87,7 +87,7 @@ public class ManualDoorBehaviour : MonoBehaviour
         else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.greenKey == false)
         {
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You need the GREEN key";
+            WeaponsNoti.text = "Need the GREEN key.";
         }
         else if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
@@ -107,7 +107,7 @@ public class ManualDoorBehaviour : MonoBehaviour
         else if (gameObject.layer == LayerMask.NameToLayer("interactable") && keyCheck.yellowKey == false)
         {
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You need the YELLOW key";
+            WeaponsNoti.text = "Need the YELLOW key.";
         }
         else if (gameObject.layer == LayerMask.NameToLayer("Default"))
         {
@@ -139,7 +139,7 @@ public class ManualDoorBehaviour : MonoBehaviour
 
     IEnumerator AnimWait()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(9f);
         animator.SetTrigger("off");
         gameObject.layer = LayerMask.NameToLayer("interactable");
     }

@@ -29,8 +29,6 @@ public class AzazelEnemyAI : MonoBehaviour
     Animator eAnimator;
     Health health;
 
-    Transform thisGuy;
-
     int animLayer = 0;
     public bool seen = false;
 
@@ -56,7 +54,7 @@ public class AzazelEnemyAI : MonoBehaviour
             fovScript.angle = 360f;
             ChaseAfterPlayer();
         }
-        if (seen == true && fovScript.canSeePlayer == false)
+        if (seen == true && fovScript.canSeePlayer == false && !isPlaying(eAnimator, "Range Blend Tree"))
         {
             ChaseAfterPlayer();
         }
@@ -142,6 +140,7 @@ public class AzazelEnemyAI : MonoBehaviour
 
     void MeleeAttackPlayerPose()
     {
+        agent.velocity = Vector3.zero;
         agent.isStopped = true;
         eAnimator.SetBool("isRange", false);
         eAnimator.SetBool("isMelee", true);
@@ -150,6 +149,8 @@ public class AzazelEnemyAI : MonoBehaviour
 
     void RangeAttackPlayerPose()
     {
+        agent.speed = 0;
+        agent.velocity = Vector3.zero;
         agent.isStopped = true;
         eAnimator.SetBool("isMelee", false);
         eAnimator.SetBool("isRange", true);

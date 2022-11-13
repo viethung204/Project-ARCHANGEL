@@ -43,7 +43,7 @@ public class PumpShotgunPickup : MonoBehaviour
             AudioSource.PlayClipAtPoint(pickupAudio, PlayerCamera.gameObject.transform.position, AudioVolume);
             Shotgun.SetActive(true);
             WeaponsNoti.enabled = true;
-            WeaponsNoti.text = "You got the Shotgun!";
+            WeaponsNoti.text = "picked up the Pump Shotgun!";
             notification.textTimer = 0;
             Shotgun.transform.SetParent(WeaponsHolder);
             LoadoutManager.pumpShotgunState = 1;

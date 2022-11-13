@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class redKey : MonoBehaviour
 {
     interactor keyCheck;
-    public Text WeaponsNoti;
+    Text WeaponsNoti;
     public AudioSource source;
     private WeaponsNotiController notification;
 

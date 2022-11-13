@@ -1285,7 +1285,7 @@ MonoBehaviour:
     everywhere. Your eyes scan around to find yourself in an unfamiliar room, almost
     like a dungeon. \n\nPeeking through the crack in the wall, you can not believe
     what you see, demons, corpses, toxic rivers and fire pits.  No doubt, you are
-    now in Hell. Gun in hand, now you must find a way out..."
+    currently in Hell. Gun in hand, you must now find a way out..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2c944ab7bbc6c14690be999ba325bc9, type: 2}
   m_sharedMaterial: {fileID: -1881664150622758167, guid: d2c944ab7bbc6c14690be999ba325bc9, type: 2}
