@@ -14,7 +14,7 @@ Framework: Unity
 Programming Language: C#
 
 ## DESCRIPTION
-This is basically a Doom clone lmao
+Basically a Doom clone lmao
 
 ## RELEASE INFORMATION
 This game was released on 13th of November, 2022  
