@@ -1,7 +1,7 @@
 ## BASIC INFORMATION
 
 Name: Project ARCHANGEL  
-Category: Interactive Entertainment  
+Category: Games  
 Started on: 21st of August, 2022
 
 Status: Released  
