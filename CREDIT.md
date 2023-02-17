@@ -4,7 +4,7 @@
 #### PROGRAMMING:
 Nguyen Viet Hung
 
-#### GAME GRAPHICS:
+#### GAME GRAPHICS/SOUND EFFECTS:
 <pre>
 +Via Realm667:
 ProjectAngel         DBThanatos              Xaser               
