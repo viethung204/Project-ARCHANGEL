@@ -2,7 +2,7 @@
 
 Name: Project ARCHANGEL  
 Category: Games  
-Language: English
+Language: English  
 Genre: Action, First Person Shooter  
 Started on: 21st of August, 2022
 
