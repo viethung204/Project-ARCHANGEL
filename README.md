@@ -2,14 +2,14 @@
 
 Name: Project ARCHANGEL  
 Category: Games  
-Language: English  
+Language: English
+Genre: Action, First Person Shooter
 Started on: 21st of August, 2022
 
 Status: Released  
 Platforms: Windows  
 Developer: 57knuckleknock  
 Publisher: 57knucklekock  
-Genre: Action, First Person Shooter
 
 Game Engine/Framework: Unity  
 Programming Language: C#
