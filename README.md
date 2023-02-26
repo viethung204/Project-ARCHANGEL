@@ -18,7 +18,8 @@ Programming Language: C#
 Basically a Doom clone lmao
 
 ## RELEASE INFORMATION
-This game was released on 13th of November, 2022  
+Finished on 13th of November, 2022
+Released on 13th of November, 2022  
 Download at: https://57knuckleknock.itch.io/project-archangel
 
 ## LICENSE
